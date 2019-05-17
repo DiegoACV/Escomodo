@@ -1,0 +1,153 @@
+
+/*
+PALETA DE COLORES
+Blanco Amarillento
+#FFEDBF
+Naranja Clarito
+#F7803C
+Naranja Fuerte
+#F54828
+Negro no tan negro
+#2E0D23
+El otro blanco como beige
+#F8E4C1
+*/
+
+body{
+	background-color: #F8E4C1;
+}
+
+.row{
+	margin-bottom: 0px !important;
+}
+
+nav{
+	background-color: #F54828 !important;
+}
+
+.titles{
+	color: #F8E4C1;
+}
+
+.brand-logo{
+	font-color: #F8E4C1;
+}
+
+.fa-shopping-cart{
+	margin-left: 15px; 
+}
+
+#logo{
+	height: 64px;
+	width: 150px;
+}
+
+a.right{
+	height: 100% !important;
+	width: 30% !important;
+}
+
+h1{
+	color: #F54828;
+	font-size: auto;
+}
+
+h3{
+	color: #F54828;
+	text-align: center;
+	font-size: 30px;
+	margin:10px 0px;
+}
+
+h6{
+	color: #2E0D23;
+	font-size: 20px;
+	text-align: center;
+}
+
+p{
+	color: #2E0D23;
+	font-size: 20px;
+	text-align: justify;
+}
+
+.rowMargin {
+	margin-top: 11.25px;
+}
+
+a.btn-large{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 25px;
+	height: 70px;
+	width: 400px;
+
+	padding-top: 1%;
+
+	color: #F8E4C1;
+	background-color: #F54828;
+
+}
+
+.btn-large:visited{
+  background-color: #FFEDBF;
+}
+.btn-large:hover {
+  background-color: #F7803C;
+}
+.btn-large:active{
+  background-color: #F7803C;
+}
+.btn-large:focus{
+  background-color: #F7803C;
+}
+
+.page-footer{
+	background-color: #2E0D23;
+}
+
+.white-text{
+	color: #F8E4C1 !important;
+}
+
+.footerLink{
+
+}
+
+
+
+@media only screen and (max-width: 992px){
+	h3{
+		font-size: 20px;
+	}
+
+	h6{
+		font-size: 15px;
+	}
+
+	h1{
+		font-size: 40px;
+	}
+
+}
+
+
+@media only screen and (max-width: 600px){
+	h3{
+		font-size: 30px;
+	}
+
+	h6{
+		font-size: 20px;
+	}
+
+	h1{
+		font-size: auto;
+	}
+
+	#logo{
+		height: 56px;
+		width: 132px;
+	}
+}
+

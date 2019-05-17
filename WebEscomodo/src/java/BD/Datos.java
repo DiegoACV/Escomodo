@@ -28,7 +28,7 @@ public class Datos {
     public Datos() {
         //poner los datos apropiados
         this.usrBD = "root";
-        this.passBD = "root";
+        this.passBD = "n0m3l0";
         this.urlBD = "jdbc:mysql://127.0.0.1:3306/escomodo";
         this.driverClassName = "com.mysql.jdbc.Driver";
     }
