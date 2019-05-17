@@ -17,6 +17,7 @@ create table cliente
 create table establecimiento
 (
 	idest int not null auto_increment primary key,
+    nombre nvarchar(60) not null,
     ubicacion nvarchar(100) not null,
     representante nvarchar(60) not null,
     email nvarchar(40) not null,
@@ -30,6 +31,7 @@ create table establecimiento
 create table platillo 
 (
 	idplatillo int not null auto_increment primary key,
+    nombre nvarchar(60) not null,
     valoracion float(2,1) not null,
     precio float(5,2) not null,
     descripcion tinytext not null,
@@ -76,7 +78,6 @@ create table aceptpedido
     foreign key(repartidor) references repartidor(idrepartidor) on delete cascade on update cascade,
     foreign key(pedido) references pedido(idpedido) on delete cascade on update cascade
 );
-
 
 
 

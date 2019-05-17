@@ -62,7 +62,7 @@ select * from repartidor;
 
 drop procedure if exists sp_AEstablecimiento;
 delimiter **
-create procedure sp_AEstablecimiento(in ubi nvarchar(100), in rep nvarchar(60), in mail nvarchar(40), in tel nvarchar(20), in hor nvarchar(40), in cont nvarchar(16), in fot nvarchar(80))
+create procedure sp_AEstablecimiento(in nom nvarchar(60),in ubi nvarchar(100), in rep nvarchar(60), in mail nvarchar(40), in tel nvarchar(20), in hor nvarchar(40), in cont nvarchar(16), in fot nvarchar(80))
 begin
 	declare msj nvarchar(60); 
     declare ide int;
@@ -73,7 +73,7 @@ begin
     if exs = 0 then
 
 		set ide =(select ifnull(max(idest),0) + 1 from establecimiento);
-		insert into establecimiento values(ide,ubi,rep,mail,tel,hor, aes_encrypt(cont, 'huecofriends'),fot, true);
+		insert into establecimiento values(ide,nom,ubi,rep,mail,tel,hor, aes_encrypt(cont, 'huecofriends'),fot, true);
 		set msj='Has sido registrado';
 
     else
@@ -83,7 +83,7 @@ begin
 end**
 delimiter ;
 
-call sp_AEstablecimiento('pus escom xddd','yo mero', 'prueba@aaaa.com', '5555555', 'horario', '1234', 'prueba.png');
+call sp_AEstablecimiento('Tienda','pus escom xddd','yo mero', 'prueba@aaaa.com', '5555555', 'horario', '1234', 'prueba.png');
 select * from establecimiento;
 
 
