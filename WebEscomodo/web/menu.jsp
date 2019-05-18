@@ -1,8 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession();
-    //ldn.Establecimiento est = new ldn.Establecimiento(sesion.getAttribute("Mail").toString());   CUANDO HAYA SESIONES
-    ldn.Establecimiento est = new ldn.Establecimiento("prueba@aaaa.com");
+    sesion.setAttribute("Mail", "prueba@aaaa.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    ldn.Establecimiento est = new ldn.Establecimiento(sesion.getAttribute("Mail").toString());
     String nomEst = est.getNombre();
     
 %>
@@ -21,7 +22,7 @@
 	<script src="libs/materialize/js/materialize.min.js"></script>
 	<script src="libs/jquery-confirm/js/jquery-confirm.js"></script>
 	<link rel="stylesheet" href="css/colors.css">
-	<link rel="stylesheet" href="css/productos.css">
+	<link rel="stylesheet" href="css/menu.css">
 	<link rel="stylesheet" href="css/stilyes.css">
 <body>
 	<div>
@@ -45,26 +46,19 @@
 </nav>
 	</div>
 	<div class="my_container">
-		<div class="section"><h3 class="header">Menú de <%=nomEst%></h3></div>
-		<hr class="sound_waves-text">
+		<div class = "row rowMargin">
+                    <div class = "col s12 m3 l3">
+                            <h3 class="header">Menú de <%=nomEst%></h3>
+                    </div>
+                            <%if(sesion.getAttribute("Tipo").toString() == "2"){%>
+                    <div class = "col s12 m3 l3 " style=" padding-top: 1.5%; padding-right: 30%" align="center">
+                        <button class="btn-floating btn-large waves-effect waves-light red" data-button-id="Escomida1"><i class="fas fa-plus"></i></button>                    
+                    </div> <%}%>
+		</div>
+                <hr class="sound_waves-text">
 		<div class="section items">
 		<div class="row">
-			<div class="col s12 m6 l4">
-				<div class="card small sticky-action" data-product="Escomida1">
-    				<div class="card-image">
-      				<img class="activator" src="img/comida1.jpg">
-    				</div>
-   					<div class="card-content">
-      				<span class="card-title">Escomida1<button class="btn-flat right fav" data-button-id="Escomida1"><i class="far fa-heart"></i></button><button class="btn-flat right add" data-button-id="Escomida1"><i class="fas fa-shopping-cart"></i></button></span>
-    				</div>
-    				<div class="card-action">
-    				<span class="grey-text">4.7 <i class="fas fa-star"></i><span class="right">$100.00</span></span>
-    				</div>
-    				<div class="card-reveal">
-      				<span class="card-title">Escomida1<i class="right fas fa-times"></i></span>
-      				<p>Here is some more information about this product that is only revealed once clicked on.</p>
-    				</div>
-  				</div>
+			<div class="col s12 m4 l4">
 			</div>
 		</div>
 		<div class="row"></div>
