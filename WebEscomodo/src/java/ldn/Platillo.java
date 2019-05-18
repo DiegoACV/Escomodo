@@ -12,6 +12,8 @@ public class Platillo {
     private float _valoracion;
     private float _precio;
     private String _descripcion;
+    private String _foto;
+    private String _origen;
     
     public Platillo(){
         _nombre="";
@@ -42,6 +44,14 @@ public class Platillo {
     public String getDescripcion() {
         return _descripcion;
     }
+    
+    public String getFoto() {
+        return _foto;
+    }
+    
+    public String getOrigen() {
+        return _origen;
+    }
 
     public void setNombre(String _nombre) {
         this._nombre = _nombre;
@@ -59,54 +69,40 @@ public class Platillo {
         this._descripcion = _descripcion;
     }
     
-    public static int countPlatillos(){
-        BD.Datos base = new BD.Datos();
-        ResultSet respuesta = null;
-        int numero=0;
-        try
-        {
-            base.conectar();
-            respuesta = base.consulta("select count(*) as cantidad from platillo");
-            if(respuesta.next())
-                numero = Integer.parseInt(respuesta.getString("cantidad"));
-            
-            base.cierraConexion();
-        }
-        catch(Exception error)
-        {
-            numero = -1;
-        }
-        
-        return numero;
+    public void setFoto(String _foto) {
+        this._foto = _foto;
     }
     
-    public ArrayList getDBdata(int idProducto){
+    public void setOrigen(String _origen){
+        this._origen=_origen;
+    }
+    
+    public static ArrayList<Platillo> getPlatillos(){
         BD.Datos base = new BD.Datos();
         ResultSet respuesta = null;
-        ArrayList datos = new ArrayList();
-        
-        try
-        {
+        ArrayList<Platillo> listaPlatillos=new ArrayList<Platillo>();
+        try{
             base.conectar();
-            respuesta = base.consulta("select platillo.nombre, valoracion, precio, descripcion, platillo.foto, "
-            + "establecimiento.nombre as lugar from platillo, establecimiento where idplatillo= "+idProducto+" and establecimiento=idest");
-            if(respuesta.next()){
-                datos.add(respuesta.getString("nombre"));
-                datos.add(respuesta.getFloat("valoracion"));
-                datos.add(respuesta.getFloat("precio"));
-                datos.add(respuesta.getString("descripcion"));
-                datos.add("images/comida1.jpg");//cambiar por la foto de la base
-                datos.add(respuesta.getString("lugar"));
+            respuesta= base.consulta("call verPlatillo();");
+         
+            while (respuesta.next()){
+            
+                Platillo platillo = new Platillo();
+                platillo.setNombre(respuesta.getString("nombre"));
+                platillo.setValoracion(respuesta.getFloat("valoracion"));
+                platillo.setPrecio(respuesta.getFloat("precio"));
+                platillo.setDescripcion(respuesta.getString("descripcion"));
+                platillo.setFoto("images/comida1.jpg");//cambiar por la foto de la base
+                platillo.setOrigen(respuesta.getString("lugar"));
+            
+                listaPlatillos.add(platillo);
             }
             base.cierraConexion();
         }
-        catch(Exception error)
-        {
-            for (int i = 0; i < 6; i++) {
-                datos.add(error);
-            }
+        catch (Exception e){
+            e.printStackTrace();
         }
-        
-        return datos;
-    }
+        return listaPlatillos;
+   }
+    
 }
