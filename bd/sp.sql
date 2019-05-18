@@ -136,4 +136,31 @@ select CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16)) end_data from repar
 call sp_Login('prueba@aa.com', '1234');
 
 
+drop procedure if exists sp_APlatillo;
+delimiter **
+create procedure sp_APlatillo(in nom nvarchar(60), in pre float(5,2), in des tinytext, in fot nvarchar(80), in est int)
+begin
+	declare msj nvarchar(60); 
+    declare idp int;
+    declare exs int;
+    
+	set idp =(select ifnull(max(idplatillo),0) + 1 from platillo);
+	insert into platillo values(idp,nom,0,pre,des, fot, est);
+	set msj='Platillo registrado';
+    select msj as MSJ;
+end**
+delimiter ;
+
+call sp_APlatillo('platillo1', 5.50, 'platillo de prueba', 'p1.png', 1);
+select * from platillo;
+
+drop procedure if exists sp_getEstbyMail;
+delimiter **
+create procedure sp_getEstbyMail(in mail varchar(40))
+begin
+	select * from establecimiento where email = mail;
+end**
+delimiter ;
+
+call sp_getEstbyMail('prueba@aaaa.com');
 
