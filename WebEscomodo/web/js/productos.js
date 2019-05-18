@@ -1,19 +1,37 @@
 $(document).ready(function(){
         
-        var numItemsDisplayed = $('.card.small.sticky-action').length;
         
         function isScrolledIntoView(elem){
-            var docViewTop = $(window).scrollTop();
-            var docViewBottom = docViewTop + $(window).height();
-            var elemTop = $(elem).offset().top;
-            var elemBottom = elemTop + $(elem).height();
-            return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            if(elem.length>0){
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+                var elemTop = $(elem).offset().top;
+                var elemBottom = elemTop + $(elem).height();
+                return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            }
         }
 
         $(window).scroll(function() {    
+            var numItemsDisplayed = $('.card.small.sticky-action').length;
             if(isScrolledIntoView($('.scrollCreator'))){
+                $('div.scrollCreator').addClass('delete');
                 $('div').removeClass('scrollCreator');
-                alert('Hola');
+                $.ajax({
+                    method:"post",
+                    url:"crearElementos.jsp",
+                    data:"numItemsDisplayed="+numItemsDisplayed,
+                    success:function(resp){
+                        $("div.row").append(resp);
+                        if($("#continue").attr("data-continue")=="true"){
+                            $("div.my_container").append("<div class=\"scrollCreator\"></div>");
+                            $(".delete").remove();
+                        }
+                    },
+                    error:function(){
+                        alert("error");
+                    }
+                    
+                });
             }    
         });
         
@@ -25,11 +43,11 @@ $(document).ready(function(){
 		shake	  : true
 	});
 
-	$(".activator").hover(function(){
+	$(document).on("mouseenter",".activator",function(){
   		$(this).css("cursor", "pointer");
   	});
-
-  	$(".btn-flat.right.fav").on('click', function(){
+        
+        $(document).on("click",".btn-flat.right.fav",function(){
   		if($(this).children("i").attr('class')=="far fa-heart"){
   			$(this).children("i").removeClass("far fa-heart");
   			$(this).children("i").addClass("fas fa-heart");

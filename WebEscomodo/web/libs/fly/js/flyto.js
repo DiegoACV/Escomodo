@@ -30,51 +30,69 @@
                 eltoDrag = _this.closest(".card.small.sticky-action").find("img").eq(0);
                 elName=_this.closest(".card.small.sticky-action").attr("data-product");
             if (eltoDrag) {
-
-                /*$dialog({
-                    title: elName,
-                    content:'url:agregarCarrito.html',
-                    animation: 'zoom',
-
-                })*/
-
-                var imgclone = eltoDrag.clone()
-                .offset({
-                top: eltoDrag.offset().top,
-                left: eltoDrag.offset().left
-                })
-                .css({
-                    'opacity': '0.5',
-                    'position': 'absolute',
-                    'height': eltoDrag.height() /2,
-                    'width': eltoDrag.width() /2,
-                    'z-index': '100'
-                })
-                .appendTo($('body'))
-                .animate({
-                    'top': target.offset().top + 10,
-                    'left': target.offset().left + 15,
-                    'height': eltoDrag.height() /2,
-                    'width': eltoDrag.width() /2
-                }, 1000, 'easeInOutExpo');
+                $.confirm({
+                    title: '<h4 class="header sound_waves_text">'+elName+'</h4>',
+                    icon: 'fas fa-utensils',
+                    content: '<hr><div class="col s12"><div class="section"><h5 class'+
+                    '="header">Instrucciones especiales: </h5></div><div class="section">'+
+                    '<textarea id="textarea1" class="my_Area" autofocus></textarea></div>'+
+                    '<h5 class="one-line">Cantidad:</h5><button class="ultrasonic_motion btn-flat plus"'+
+                    ' data-button-id="Escomida1"><i class="fas fa-plus"></i></button><p '+
+                    'class="flow-text one-line" data-q-id="Escomida1">1</p><button'+
+                    ' class="ultrasonic_motion btn-flat minus"'+
+                    ' data-button-id="Escomida1"><i class="fas fa-minus"></i></button></div>',
+                    buttons: {
+                    confirmar: function () {
+                        var cantidad= parseInt($(".minus").parent().children("p:first").text(),10);
+                        var imgclone = eltoDrag.clone()
+                        .offset({
+                            top: eltoDrag.offset().top,
+                            left: eltoDrag.offset().left
+                        })
+                        .css({
+                            'opacity': '0.5',
+                            'position': 'absolute',
+                            'height': eltoDrag.height() /2,
+                            'width': eltoDrag.width() /2,
+                            'z-index': '100'
+                        })
+                        .appendTo($('body'))
+                        .animate({
+                            'top': target.offset().top + 10,
+                            'left': target.offset().left + 15,
+                            'height': eltoDrag.height() /2,
+                            'width': eltoDrag.width() /2
+                        }, 1000, 'easeInOutExpo');
             
-                if (settings.shake) {
-                    setTimeout(function () {
-                    target.effect("shake", {
-                    times: 2
-                }, 200);
+                        if (settings.shake) {
+                            setTimeout(function () {
+                                target.effect("shake", {
+                                times: 2
+                            }, 200);
                 
-                }, 1500);
-            }
+                            }, 1500);
+                        }
 
-    
-            imgclone.animate({
-                'width': 0,
-                'height': 0
-            }, function () {
-                $(this).detach()
-            });
+                        imgclone.animate({
+                            'width': 0,
+                            'height': 0
+                        }, function () {
+                        $(this).detach()
+                        });
+                    },
+                    cancelar: function () {
+                        $.alert({
+                            title: "Elemento no agregado",
+                            content: '',
+                            icon: 'fas fa-utensils',
+                            theme: 'material',
+                            useBootstrap: false,
+                            boxWidth: '400px'
+			});
+                    },
+                    }
 
+                });
 
         }
         });
