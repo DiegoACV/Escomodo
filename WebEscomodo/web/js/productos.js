@@ -1,5 +1,23 @@
 $(document).ready(function(){
+        
+        var numItemsDisplayed = $('.card.small.sticky-action').length;
+        
+        function isScrolledIntoView(elem){
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+            var elemTop = $(elem).offset().top;
+            var elemBottom = elemTop + $(elem).height();
+            return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+        }
 
+        $(window).scroll(function() {    
+            if(isScrolledIntoView($('.scrollCreator'))){
+                $('div').removeClass('scrollCreator');
+                alert('Hola');
+            }    
+        });
+        
+        
 	$('.section.items').flyto({
 		item      : '.card.small.sticky-action',
 		target    : '#cart',
@@ -38,5 +56,19 @@ $(document).ready(function(){
   		}
   		
   	});
+
+  	$(document).on("click",".plus",function(){
+            var platillo = $(this).attr("data-button-id");
+            var cantidad= parseInt($(this).parent().children("p:first").text(),10);
+            $(this).parent().children("p:first").text(cantidad+1)
+    });
+
+        $(document).on("click",".minus",function(){
+            var platillo = $(this).attr("data-button-id");
+            var cantidad= parseInt($(this).parent().children("p:first").text(),10);
+            if(cantidad>1){
+            	$(this).parent().children("p:first").text(cantidad-1)
+            }
+    });
 
 });
