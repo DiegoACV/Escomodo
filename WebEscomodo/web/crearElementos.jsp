@@ -11,12 +11,13 @@
     int index=Integer.parseInt(request.getParameter("numItemsDisplayed"));
     ArrayList <Platillo>platillos=Platillo.getPlatillos();
     Platillo a;
+    int cantidadDesplegar=12;
                     
     int cantidad=platillos.size();
     int restantes=platillos.size()-index;
     if(restantes !=0){
         int max=0;
-        if(restantes>12)
+        if(restantes>cantidadDesplegar)
             max=12;
         else
             max=restantes;
@@ -40,7 +41,7 @@
                 out.println("<h6 class=\"left header grey-text\"><strong>"+a.getOrigen()+"</strong></h6>");
                 out.println("</div></div></div>");
             }
-            if(max==12){
+            if(max==cantidadDesplegar){
                 out.println("<input type='hidden' data-continue='true' id='continue'>");    
             }
             else{

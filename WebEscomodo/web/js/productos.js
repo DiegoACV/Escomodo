@@ -1,6 +1,5 @@
 $(document).ready(function(){
         
-        
         function isScrolledIntoView(elem){
             if(elem.length>0){
                 var docViewTop = $(window).scrollTop();
@@ -10,11 +9,10 @@ $(document).ready(function(){
                 return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
             }
         }
-
-        $(window).scroll(function() {    
+        
+        function createElements(){
             var numItemsDisplayed = $('.card.small.sticky-action').length;
-            if(isScrolledIntoView($('.scrollCreator'))){
-                $('div.scrollCreator').addClass('delete');
+            $('div.scrollCreator').addClass('delete');
                 $('div').removeClass('scrollCreator');
                 $.ajax({
                     method:"post",
@@ -32,9 +30,15 @@ $(document).ready(function(){
                     }
                     
                 });
+        }
+
+        $(window).scroll(function() {    
+            if(isScrolledIntoView($('.scrollCreator'))){
+                createElements();
             }    
         });
         
+        createElements();
         
 	$('.section.items').flyto({
 		item      : '.card.small.sticky-action',
