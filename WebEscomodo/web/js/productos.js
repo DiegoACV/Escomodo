@@ -1,5 +1,5 @@
 $(document).ready(function(){
-        
+        //funcion que checa el scroll de la página, verifica cuando se encuentra el "elem"
         function isScrolledIntoView(elem){
             if(elem.length>0){
                 var docViewTop = $(window).scrollTop();
@@ -9,7 +9,8 @@ $(document).ready(function(){
                 return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
             }
         }
-        
+        //función que crea los elementos del tipo ".card.small.sticky-action"
+        //por medio de ajax se imprime todo lo establecido en crearElementos.jsp
         function createElements(){
             var numItemsDisplayed = $('.card.small.sticky-action').length;
             $('div.scrollCreator').addClass('delete');
