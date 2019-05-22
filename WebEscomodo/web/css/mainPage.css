@@ -73,6 +73,8 @@ p{
 
 .rowMargin {
 	margin-top: 11.25px;
+	padding-right: 50px;
+	padding-left: 50px;
 }
 
 a.btn-large{
@@ -127,6 +129,26 @@ a.btn-large{
 
 	h1{
 		font-size: 40px;
+	}
+
+	a.btn-large{
+		margin-top: 35px;
+		margin-bottom: 35px;
+		font-size: 20px;
+		height: 55px;
+		width: 280px;
+
+		padding-top: 0;
+	}
+
+	#RC{
+		font-size: 17px;
+	}
+
+	.rowMargin {
+		margin-top: 11.25px;
+		padding-right: 13px;
+		padding-left: 13px;
 	}
 
 }
