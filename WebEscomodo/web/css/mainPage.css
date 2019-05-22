@@ -47,6 +47,11 @@ a.right{
 	width: 30% !important;
 }
 
+.divider{
+	background-color: #F54828;
+	margin: 25px 25px;
+}
+
 h1{
 	color: #F54828;
 	font-size: auto;
@@ -78,7 +83,7 @@ p{
 }
 
 a.btn-large{
-	margin-top: 50px;
+	margin-top: 35px;
 	margin-bottom: 50px;
 	font-size: 25px;
 	height: 70px;
@@ -130,7 +135,7 @@ a.btn-large{
 	}
 
 	a.btn-large{
-		margin-top: 35px;
+		margin-top: 15px;
 		margin-bottom: 35px;
 		font-size: 20px;
 		height: 55px;
