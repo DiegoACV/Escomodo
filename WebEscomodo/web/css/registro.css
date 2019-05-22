@@ -32,3 +32,19 @@ a.right{
 	height: 100% !important;
 	width: 30% !important;
 }
+
+h1, h3{
+	color: #F54828;
+	margin: 50px 0px;
+}
+
+.divider{
+	background-color: #F54828;
+
+	position: fixed;
+	right: 50%;
+	
+	width: 1px;
+	height: 20%;
+  	margin: 0;
+}
