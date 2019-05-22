@@ -1,3 +1,16 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+	HttpSession sesion = request.getSession();
+	
+
+
+
+
+
+
+%>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +84,7 @@
 			<div class="row">
 				<div class = "col s12 m6 l6 center-align">
 					<h3>
-						¡Conviertete en un Escomensal!
+						¡Conviértete en un Escomensal!
 					</h3>
 				</div>
 
@@ -86,8 +99,20 @@
 			</div>
 
 			<div class="row">
-				<div>
+				<div class="col s4 m2 l2">
 					
+				</div>
+
+				<div class="col s8 m4 l4">
+					<div>
+						<div class="input-field">
+				          <input id="nombre" type="text" class="validate">
+				          <label for="nombre">Nombre Completo</label>
+				        </div>
+					</div>
+					<div>
+						
+					</div>
 				</div>
 			</div>
 
