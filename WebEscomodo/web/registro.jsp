@@ -99,21 +99,36 @@
 			</div>
 
 			<div class="row">
-				<div class="col s4 m2 l2">
-					
-				</div>
+                            
+                <div class = "col s12 m6 l6">
+                    <form action="?acc = 1" method="POST" id="registro">
+                    
+                        <div class = "row">
 
-				<div class="col s8 m4 l4">
-					<div>
-						<div class="input-field">
-				          <input id="nombre" type="text" class="validate">
-				          <label for="nombre">Nombre Completo</label>
-				        </div>
-					</div>
-					<div>
-						
-					</div>
-				</div>
+                            <div class="col s4 m4 l4">
+                            	<!-- Aqui va lo de la foto-->
+                            </div>
+
+                            <div class="col s8 m8 l8">
+                                    
+	                            <div class="input-field">
+	                              <input id="nombre" type="text" class="validate">
+	                              <label for="nombre">Nombre Completo</label>
+	                            </div>
+	                                
+	                            <div class="input-field">
+	                                <input id="boleta" type="text" class="validate">
+	                                <label for="boleta">No. de Boleta</label>
+	                            </div>
+                                
+                            </div>
+
+                        </div>
+                        
+                    </form>
+                </div>
+                                
+                                
 			</div>
 
 
