@@ -14,7 +14,7 @@ El otro blanco como beige
 */
 
 body{
-	background-color: #F8E4C1;
+	background-color: #FFFFFF;
 }
 
 .row{
@@ -26,11 +26,11 @@ nav{
 }
 
 .titles{
-	color: #F8E4C1;
+	color: #FFFFFF;
 }
 
 .brand-logo{
-	font-color: #F8E4C1;
+	font-color: #FFFFFF;
 }
 
 .fa-shopping-cart{
@@ -86,14 +86,12 @@ a.btn-large{
 
 	padding-top: 1%;
 
-	color: #F8E4C1;
+	color: #FFFFFF;
 	background-color: #F54828;
 
 }
 
-.btn-large:visited{
-  background-color: #FFEDBF;
-}
+
 .btn-large:hover {
   background-color: #F7803C;
 }
@@ -109,7 +107,7 @@ a.btn-large{
 }
 
 .white-text{
-	color: #F8E4C1 !important;
+	color: #FFFFFF !important;
 }
 
 .footerLink{
