@@ -25,10 +25,6 @@ nav{
 	background-color: #F54828 !important;
 }
 
-.titles{
-	color: #FFFFFF;
-}
-
 .brand-logo{
 	font-color: #FFFFFF;
 }
@@ -115,8 +111,19 @@ a.btn-large{
 	color: #FFFFFF !important;
 }
 
-.footerLink{
+#logoFooter{
+	height: 90%;
+	width: 90%;
+}
 
+.logoDiv{
+	display: flex;
+	justify-content: center;
+}
+
+.contacts-small li i.fab{
+	font-size: 45px;
+	padding: 0px 25px;
 }
 
 
@@ -154,6 +161,16 @@ a.btn-large{
 		padding-left: 13px;
 	}
 
+	#logoFooter{
+		height: 50%;
+		width: 50%;
+	}
+
+	.footerRow{
+		text-align: center;
+	}
+
+
 }
 
 
@@ -173,6 +190,11 @@ a.btn-large{
 	#logo{
 		height: 56px;
 		width: 132px;
+	}
+
+	#logoFooter{
+		height: 70%;
+		width: 70%;
 	}
 }
 

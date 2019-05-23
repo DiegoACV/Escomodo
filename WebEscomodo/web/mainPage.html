@@ -23,6 +23,7 @@
 	<link href="css/mainPage.css" rel="stylesheet">
 
 	<script type="text/javascript" src="js/mainPage.js"></script>
+	<script type="text/javascript" src="js/foot.js"></script>
 
 </head>
 
@@ -37,10 +38,10 @@
 				    <div class="nav-wrapper">
 
 				      <ul id="nav-mobile" class="left hide-on-med-and-down">
-				        <li><a href="mainPage.html" class = "titles">Escomodo</a></li>
-				        <li><a href="productos.html" class = "titles">Escomida</a></li>
-				        <li><a href="collapsible.html" class = "titles">Escomercio</a></li>
-				        <li><a href="sass.html" class = "brand-logo" id="cart"><i class="fas fa-shopping-cart titles"></i></a></li>
+				        <li><a href="mainPage.html" class = "white-text">Escomodo</a></li>
+				        <li><a href="productos.html" class = "white-text">Escomida</a></li>
+				        <li><a href="collapsible.html" class = "white-text">Escomercio</a></li>
+				        <li><a href="sass.html" class = "brand-logo" id="cart"><i class="fas fa-shopping-cart white-text"></i></a></li>
 				      </ul>
 
 				      <a href="mainPage.html" class="brand-logo center">
@@ -52,7 +53,7 @@
 					        <div class="input-field">
 					          <input id="search" type="search" required>
 					          <label class="label-icon" for="search">
-					          	<i class="fas fa-search" class = "titles"></i>
+					          	<i class="fas fa-search" class = "white-text"></i>
 					          </label>
 					        </div>
 					    </form>
@@ -137,26 +138,47 @@
 
 	<footer class="page-footer">
 		 <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="white-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            <div class="row footerRow">
+              <div class="col l6 s12 logoDiv">
+                <img src="images/escomodo.png" class = "responsive-img valign-wrapper align-center" id = "logoFooter">
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Contacto</h5>
-                <ul>
-                  <li><a class="white-text" href="#!">Facebook</a></li>
-                  <li><a class="white-text" href="#!">Twitter</a></li>
-                  <li><a class="white-text" href="#!">Instagram</a></li>
-                  <li><a class="white-text" href="#!">Escom</a></li>
+                <h4 class="white-text">Contacto</h4>
+
+                <ul class = "contacts-big">
+
+                  <li>
+                  	<i class="fab fa-facebook-square white-text"></i>
+                  	<a class="white-text" href="#!">Facebook</a>
+                  </li>
+                  <li>
+                  	<i class="fab fa-twitter white-text"></i>
+                  	<a class="white-text" href="#!">Twitter</a>
+                  </li>
+                  <li>
+                  	<i class="fab fa-instagram white-text"></i>
+                  	<a class="white-text" href="#!">Instagram</a>
+                  </li>
+
                 </ul>
+
+                <ul class = "contacts-small">
+
+                  <li>
+                  	<i class="fab fa-facebook-square white-text"></i>
+                  	<i class="fab fa-twitter white-text"></i>
+                  	<i class="fab fa-instagram white-text"></i>
+                  </li>
+
+                </ul>
+
               </div>
             </div>
           </div>
+
           <div class="footer-copyright">
             <div class="container white-text">
-            © 2019 CRAYDS
-            <a class="white-text text-lighten-4 right" href="#!">More Links</a>
+            	© 2019 CRAYDS
             </div>
           </div>
 
