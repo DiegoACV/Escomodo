@@ -105,4 +105,31 @@ public class Platillo {
         return listaPlatillos;
    }
     
+    public static ArrayList<Platillo> getPlatillosbyMail(String mail){
+    BD.Datos base = new BD.Datos();
+    ResultSet respuesta = null;
+    ArrayList<Platillo> listaPlatillos=new ArrayList<Platillo>();
+    try{
+        base.conectar();
+        respuesta= base.consulta("call verPlatillobyMail('"+mail+"');");
+
+        while (respuesta.next()){
+
+            Platillo platillo = new Platillo();
+            platillo.setNombre(respuesta.getString("nombre"));
+            platillo.setValoracion(respuesta.getFloat("valoracion"));
+            platillo.setPrecio(respuesta.getFloat("precio"));
+            platillo.setDescripcion(respuesta.getString("descripcion"));
+            platillo.setFoto("images/comida1.jpg");//cambiar por la foto de la base
+            platillo.setOrigen(respuesta.getString("lugar"));
+
+            listaPlatillos.add(platillo);
+        }
+        base.cierraConexion();
+    }
+    catch (Exception e){
+        e.printStackTrace();
+    }
+    return listaPlatillos;
+   }
 }

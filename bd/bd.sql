@@ -51,6 +51,7 @@ create table pedido
     lugar nvarchar(60) not null,
     estado nvarchar(3) not null,
     calificado boolean not null,
+    especif tinytext, 
     foreign key(cliente) references cliente(idcliente) on delete cascade on update cascade,
     foreign key(platillo) references platillo(idplatillo) on delete cascade on update cascade
 );

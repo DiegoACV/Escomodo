@@ -3,18 +3,22 @@
     HttpSession sesion = request.getSession();
     sesion.setAttribute("Mail", "prueba@aaaa.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
-    ldn.Establecimiento est = new ldn.Establecimiento(sesion.getAttribute("Mail").toString());
-    String nomEst = est.getNombre();
+    
+    String mail = request.getParameter("email") == null ? "" : request.getParameter("email");
+    mail = "prueba@aaaa.com"; //BORRAR CUANDO MANDEMOS EL NOMBRE DESDE LAS OTRAS PAG
+    ldn.Establecimiento est = new ldn.Establecimiento(mail);
+    String nomest = est.getNombre();
+    String m = est.getEmail();
     
 %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Menú <%=nomEst%></title>
+		<title>Menú <%=est.getNombre()%></title>
 	</head>
 	<script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
-	<script src="js/productos.js"></script>
+	<script src="js/menu.js"></script>
 	<script type="text/javascript" src="libs/fly/js/flyto.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link href="libs/materialize/css/materialize.min.css" rel="stylesheet">
@@ -43,29 +47,23 @@
 			</form>
 		</a>
 	</div>
-</nav>
+                </nav>
 	</div>
-	<div class="my_container">
-		<div class = "row rowMargin">
-                    <div class = "col s12 m3 l3">
-                            <h3 class="header">Menú de <%=nomEst%></h3>
-                    </div>
-                            <%if(sesion.getAttribute("Tipo").toString() == "2"){%>
-                    <div class = "col s12 m3 l3 " style=" padding-top: 1.5%; padding-right: 30%" align="center">
-                        <button class="btn-floating btn-large waves-effect waves-light red" data-button-id="Escomida1"><i class="fas fa-plus"></i></button>                    
-                    </div> <%}%>
-		</div>
-                <hr class="sound_waves-text">
+	 <div class="my_container">
+		<div class="section"><h3 class="header left-align">Menú de <%=est.getNombre()%></h3></div>
+                <%if(est.getEmail().equals(sesion.getAttribute("Mail").toString())){%>
+                <div >
+                    <button class="btn-floating btn-large waves-effect waves-light red" data-button-id="Escomida1"><i class="fas fa-plus"></i></button>                    
+                </div> <%}%>
+                <input type="hidden" id="email" name="email" value="<%=est.getEmail()%>" />
+		<hr class="sound_waves-text">
 		<div class="section items">
-		<div class="row">
-			<div class="col s12 m4 l4">
-			</div>
+                    <div class="row"></div>
 		</div>
-		<div class="row"></div>
-		<div class="row"></div>
-		<div class="row"></div>
-		</div>
+                <div class="scrollCreator"></div>
 	</div>
 
 </body>
 </html>
+
+       

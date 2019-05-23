@@ -152,6 +152,7 @@ end**
 delimiter ;
 
 call sp_APlatillo('platillo1', 5.50, 'platillo de prueba', 'p1.png', 1);
+
 select * from platillo;
 
 drop procedure if exists sp_getEstbyMail;
@@ -175,4 +176,47 @@ end; **
 delimiter ;
 
 call verPlatillo();
+
+
+drop procedure if exists verPlatillobyMail;
+delimiter **
+create procedure verPlatillobyMail(in mail nvarchar(40))
+begin
+	declare cuantos int;
+    set cuantos=(select count(*) from platillo, establecimiento where establecimiento=idest and email = mail);
+	select platillo.nombre, valoracion, precio, descripcion, platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento where establecimiento=idest and mail = email;
+end; **
+delimiter ;
+
+call verPlatillobyMail("prueba@aaaa.com");
+
+
+drop procedure if exists sp_APedido;
+delimiter **
+create procedure sp_APedido(in cte int, in plat int, in hor time, in pcio float(5,2), in cant int, in lug nvarchar(60), in e nvarchar(3), in esp tinytext, in opc int)
+begin
+	declare msj nvarchar(60); 
+    declare idp int;
+    declare exs int;
+	set idp =(select ifnull(max(idpedido),0) + 1 from pedido);
+	insert into pedido values(idp,cte,plat,hor,pcio,cant, lug, e, false, esp);
+	if opc = 1 then
+		set msj = "Pedido registrado";
+	else 
+		if opc = 2 then
+			set msj = "Agregado al carrito";
+		else 
+			if opc = 3 then
+				set msj = "Agregado a favoritos";
+			else
+				set msj = "Selecciona una opción correcta";
+			end if;
+		end if;
+	end if;
+    select msj as MSJ;
+end**
+delimiter ;
+
+call sp_APedido(1, 1, "23:59:59", 80, 2, "huecosalon", "1", "especificaciones", 2);
+
 
