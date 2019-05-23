@@ -1,5 +1,46 @@
 $(document).ready(function(){
+        //funcion que checa el scroll de la página, verifica cuando se encuentra el "elem"
+        function isScrolledIntoView(elem){
+            if(elem.length>0){
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+                var elemTop = $(elem).offset().top;
+                var elemBottom = elemTop + $(elem).height();
+                return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            }
+        }
+        //función que crea los elementos del tipo ".card.small.sticky-action"
+        //por medio de ajax se imprime todo lo establecido en crearElementos.jsp
+        function createElements(){
+            var numItemsDisplayed = $('.card.small.sticky-action').length;
+            $('div.scrollCreator').addClass('delete');
+                $('div').removeClass('scrollCreator');
+                $.ajax({
+                    method:"post",
+                    url:"crearElementos.jsp",
+                    data:"numItemsDisplayed="+numItemsDisplayed,
+                    success:function(resp){
+                        $("div.row").append(resp);
+                        if($("#continue").attr("data-continue")=="true"){
+                            $("div.my_container").append("<div class=\"scrollCreator\"></div>");
+                            $(".delete").remove();
+                        }
+                    },
+                    error:function(){
+                        alert("error");
+                    }
+                    
+                });
+        }
 
+        $(window).scroll(function() {    
+            if(isScrolledIntoView($('.scrollCreator'))){
+                createElements();
+            }    
+        });
+        
+        createElements();
+        
 	$('.section.items').flyto({
 		item      : '.card.small.sticky-action',
 		target    : '#cart',
@@ -7,11 +48,11 @@ $(document).ready(function(){
 		shake	  : true
 	});
 
-	$(".activator").hover(function(){
+	$(document).on("mouseenter",".activator",function(){
   		$(this).css("cursor", "pointer");
   	});
-
-  	$(".btn-flat.right.fav").on('click', function(){
+        
+        $(document).on("click",".btn-flat.right.fav",function(){
   		if($(this).children("i").attr('class')=="far fa-heart"){
   			$(this).children("i").removeClass("far fa-heart");
   			$(this).children("i").addClass("fas fa-heart");
@@ -45,10 +86,10 @@ $(document).ready(function(){
             $(this).parent().children("p:first").text(cantidad+1)
     });
 
-    $(document).on("click",".minus",function(){
+        $(document).on("click",".minus",function(){
             var platillo = $(this).attr("data-button-id");
             var cantidad= parseInt($(this).parent().children("p:first").text(),10);
-            if(cantidad>0){
+            if(cantidad>1){
             	$(this).parent().children("p:first").text(cantidad-1)
             }
     });

@@ -38,16 +38,30 @@ h1, h3{
 	margin: 50px 0px;
 }
 
-.divider{
+.divider.vertical{
 	background-color: #F54828;
 
-	position: fixed;
+	position: absolute;
 	right: 50%;
 	
 	width: 1px;
-	height: 20%;
-  	margin: 0;
+	height: 50%;
+
+  margin-top: 7%;
+
 }
+
+.divider{
+  background-color: #F54828;
+  height: 0px;
+}
+
+#escomensal, #escom8{
+  padding: 40px;
+}
+
+
+
 
    /* label color */
    .input-field label {
@@ -77,3 +91,103 @@ h1, h3{
    .input-field .prefix.active {
      color: #F54828 !important;
    }
+
+   .input-field input[type=password]:focus + label {
+     color: #F54828 !important;
+   }
+   /* label underline focus color */
+   .input-field input[type=password]:focus {
+     border-bottom: 1px solid #F54828 !important;
+     box-shadow: 0 1px 0 0 #F7803C !important;
+   }
+
+   .input-field input[type=password].valid {
+     border-bottom: 1px solid #9C9C9C !important;
+     box-shadow: 0 1px 0 0 #FC9C9C !important;
+   }
+  
+   .input-field input[type=password].invalid {
+     border-bottom: 1px solid #F54828 !important;
+     box-shadow: 0 1px 0 0 #F7803C !important;
+   }
+
+button.btn-large{
+  margin-top: 35px;
+  margin-bottom: 50px;
+  font-size: 21px;
+  height: 65px;
+  width: 300px;
+
+  padding-top: 0%;
+
+  color: #FFFFFF;
+  background-color: #F54828;
+
+}
+
+.btn-large:hover {
+  background-color: #F7803C;
+}
+.btn-large:active{
+  background-color: #F7803C;
+}
+.btn-large:focus{
+  background-color: #F7803C;
+}
+
+.fa-user-plus, .fa-briefcase{
+  padding-left: 7%;
+}
+
+
+.page-footer{
+  background-color: #2E0D23;
+}
+
+.white-text{
+  color: #FFFFFF !important;
+}
+
+
+@media only screen and (max-width: 992px){
+
+  button.btn-large{
+    margin-top: 15px;
+    margin-bottom: 35px;
+    font-size: 18px;
+    height: 55px;
+    width: 200px;
+
+    padding: 0;
+  }
+
+  .divider.vertical{
+    height: 75%;
+  }
+
+}
+
+
+@media only screen and (max-width: 600px){
+
+  button.btn-large{
+    margin-top: 25px;
+    margin-bottom: 45px;
+    font-size: 21px;
+    height: 65px;
+    width: 280px;
+
+    padding: 0;
+  }
+
+  .divider.vertical{
+    width: 0px;
+  }
+
+  .divider{
+    height: 1px;
+    width: 100%;
+  }
+
+}
+

@@ -32,13 +32,13 @@
             if (eltoDrag) {
                 $.confirm({
                     title: '<h4 class="header sound_waves_text">'+elName+'</h4>',
-                    icon: 'fas fa-utensils fa-lg',
+                    icon: 'fas fa-utensils',
                     content: '<hr><div class="col s12"><div class="section"><h5 class'+
                     '="header">Instrucciones especiales: </h5></div><div class="section">'+
                     '<textarea id="textarea1" class="my_Area" autofocus></textarea></div>'+
                     '<h5 class="one-line">Cantidad:</h5><button class="ultrasonic_motion btn-flat plus"'+
                     ' data-button-id="Escomida1"><i class="fas fa-plus"></i></button><p '+
-                    'class="flow-text one-line" data-q-id="Escomida1">0</p><button'+
+                    'class="flow-text one-line" data-q-id="Escomida1">1</p><button'+
                     ' class="ultrasonic_motion btn-flat minus"'+
                     ' data-button-id="Escomida1"><i class="fas fa-minus"></i></button></div>',
                     buttons: {
@@ -82,13 +82,13 @@
                     },
                     cancelar: function () {
                         $.alert({
-                            title:'<h5 class="header"><i class="fas fa-utensils"></i>'+
-                            ' Elemento no agregado</h5>',
-                            content:'',
+                            title: "Elemento no agregado",
+                            content: '',
+                            icon: 'fas fa-utensils',
                             theme: 'material',
-    			    useBootstrap: false,
+                            useBootstrap: false,
                             boxWidth: '400px'
-                        })
+			});
                     },
                     }
 
