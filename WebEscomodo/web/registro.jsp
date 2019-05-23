@@ -2,11 +2,66 @@
 <%
 	HttpSession sesion = request.getSession();
 	
+	ldn.Cliente cliente = new ldn.Cliente();
+	//ldn.Repartidor repartidor = new ldn.Repartidor();
+
+	String mensaje = "";
+
+	String nom = "";
+	String bol = "";
+	String email = "";
+	String tel = "";
+	String contra = "";
+	//String img = "";
+
+	String acc = request.getParameter("acc") == null ? "0" : request.getParameter("acc");
+
+	if (acc.equals("1")) {
+
+		nom = request.getParameter("nombre") == null ? "" : request.getParameter("nombre");
+		bol = request.getParameter("boleta") == null ? "" : request.getParameter("boleta");
+		email = request.getParameter("email") == null ? "" : request.getParameter("email");
+		tel = request.getParameter("tel") == null ? "" : request.getParameter("tel");
+		contra = request.getParameter("contra") == null ? "" : request.getParameter("contra");
+		//img
+
+		mensaje = cliente.registrar(nom, bol, email, tel, contra);
+
+		if(mensaje.equals("Has sido registrado")){
+			sesion.setAttribute("Mail", email);
+            sesion.setAttribute("Tipo", "1");
+
+            %><script> alert("<%=mensaje%>"); </script><%
+
+            response.sendRedirect("mainPage.html");
+		}
+
+		
+	} 
+
+	if (acc.equals("2")){
+
+		nom = request.getParameter("nombre8") == null ? "" : request.getParameter("nombre8");
+		bol = request.getParameter("boleta8") == null ? "" : request.getParameter("boleta8");
+		email = request.getParameter("email8") == null ? "" : request.getParameter("email8");
+		tel = request.getParameter("tel8") == null ? "" : request.getParameter("tel8");
+		contra = request.getParameter("contra8") == null ? "" : request.getParameter("contra8");
+		//img
+
+		//mensaje = repartidor.registrar(nom, bol, email, tel, contra);
+		/*
+		if(mensaje.equals("Has sido registrado")){
+			sesion.setAttribute("Mail", email);
+            sesion.setAttribute("Tipo", "2");
+
+            //alert mensaje
+
+            response.sendRedirect("mainPage.html");
+		}*/
 
 
 
-
-
+	}
 
 %>
 
@@ -91,7 +146,7 @@
 						</h3>
 					</div>
 
-                    <form action="?acc = 1" method="POST" id="registro">
+                    <form action="?acc=1" method="POST" id="registro">
                     
                         <div class = "row">
 
@@ -102,12 +157,12 @@
                             <div class="col s8 m8 l8">
                                     
 	                            <div class="input-field">
-	                              <input id="nombre" type="text" class="validate">
+	                              <input id="nombre" name="nombre" type="text" class="validate">
 	                              <label for="nombre">Nombre Completo</label>
 	                            </div>
 	                                
 	                            <div class="input-field">
-	                                <input id="boleta" type="text" class="validate">
+	                                <input id="boleta" name="boleta" type="text" class="validate">
 	                                <label for="boleta">No. de Boleta</label>
 	                            </div>
                                 
@@ -119,14 +174,14 @@
 
                         	<div class="col s12 m12 l6">
                         		<div class="input-field">
-	                              <input id="email" type="text" class="validate">
+	                              <input id="email" name="email" type="text" class="validate">
 	                              <label for="email">Correo Electrónico</label>
 	                            </div>
                         	</div>
 
                         	<div class="col s12 m12 l6">
                         		<div class="input-field">
-	                              <input id="tel" type="text" class="validate">
+	                              <input id="tel" name="tel" type="text" class="validate">
 	                              <label for="tel">Número de Teléfono</label>
 	                            </div>
                         	</div>
@@ -137,7 +192,7 @@
 
                         	<div class="col s12 m12 l6">
                         		<div class="input-field">
-	                              <input id="contra" type="password" class="validate">
+	                              <input id="contra" name="contra" type="password" class="validate">
 	                              <label for="contra">Contraseña</label>
 	                            </div>
                         	</div>
@@ -175,7 +230,7 @@
 						</h3>
 					</div>
 
-					<form action="?acc = 2" method="POST" id="registro8">
+					<form action="?acc=2" method="POST" id="registro8">
                 
                         <div class = "row">
 
