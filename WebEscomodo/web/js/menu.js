@@ -18,10 +18,9 @@ $(document).ready(function(){
             $('div.scrollCreator').addClass('delete');
                 $('div').removeClass('scrollCreator');
                 $.ajax({
-                    method:"post",
-                    contentType: "application/json; charset=utf-8",
+                    type:"POST",
                     url: "crearElementosMail.jsp",
-                    data: data,
+                    data: jQuery.param({ numItemsDisplayed: numItemsDisplayed, email : email}),
                     success:function(resp){
                         $("div.row").append(resp);
                         if($("#continue").attr("data-continue")=="true"){
