@@ -29,8 +29,12 @@ nav{
 	font-color: #FFFFFF;
 }
 
-.fa-shopping-cart{
-	margin-left: 15px; 
+.fa-shopping-cart, .fa-bars{
+	margin: 0px 15px; 
+}
+
+ul.left, ul.right{
+	padding: 0px 50px;
 }
 
 #logo{
@@ -38,15 +42,58 @@ nav{
 	width: 150px;
 }
 
-a.right{
+ul.right{
 	height: 100% !important;
-	width: 30% !important;
+	width: auto;
 }
+
+ul li a.btn{
+	background-color: #FFFFFF;
+	color: #F54828;
+}
+ul li a.btn:hover {
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul li a.btn:active{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul li a.btn:focus{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+
+ul.sidenav li a{
+	font-size: 18px !important;
+	margin: 15px auto;
+}
+
+ul.sidenav li a.btn{
+	background-color: #F54828;
+	color: #FFFFFF;
+}
+ul.sidenav li a.btn:hover{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul.sidenav li a.btn:active{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul.sidenav li a.btn:focus{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+
+
 
 .divider{
 	background-color: #F54828;
 	margin: 25px 25px;
 }
+
+
 
 h1{
 	color: #F54828;
@@ -109,6 +156,10 @@ a.btn-large{
 
 .white-text{
 	color: #FFFFFF !important;
+}
+
+.orange-text{
+	color: #F54828 !important;
 }
 
 #logoFooter{

@@ -14,7 +14,7 @@ $(document).ready(
 		}
 
 		wind.resize(function(){
-			if(wind.width() > 992){
+			if(wind.width() > 975){
 				ulBig.show();
 				ulSmall.hide();
 			} else {

@@ -37,28 +37,31 @@
 				<nav>
 				    <div class="nav-wrapper">
 
+				      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+				      	<i class="fas fa-bars"></i>
+				      </a>
+
 				      <ul id="nav-mobile" class="left hide-on-med-and-down">
-				        <li><a href="mainPage.html" class = "white-text">Escomodo</a></li>
 				        <li><a href="productos.html" class = "white-text">Escomida</a></li>
-				        <li><a href="collapsible.html" class = "white-text">Escomercio</a></li>
-				        <li><a href="sass.html" class = "brand-logo" id="cart"><i class="fas fa-shopping-cart white-text"></i></a></li>
+				        <li><a href="establecimientos.html" class = "white-text">Escomercio</a></li>
 				      </ul>
+
+				      <ul class="right hide-on-med-and-down">
+
+			      		<li><a href="carrito.jsp"><i class="fas fa-shopping-cart white-text"></i></a></li>
+			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
+
+					  </ul>
 
 				      <a href="mainPage.html" class="brand-logo center">
 				      	<img src="images/escomodo.png" class = "responsive-img" id = "logo">
 				      </a>
 
-				      <a href="#" class="right hide-on-med-and-down">
-						<form>
-					        <div class="input-field">
-					          <input id="search" type="search" required>
-					          <label class="label-icon" for="search">
-					          	<i class="fas fa-search" class = "white-text"></i>
-					          </label>
-					        </div>
-					    </form>
-				      </a>
-
+				      <ul class="sidenav" id="mobile-demo">
+					    <li><a href="productos.html" class = "orange-text">Escomida</a></li>
+				        <li><a href="establecimientos.html" class = "orange-text">Escomercio</a></li>
+				        <li><a href="carrito.jsp" class="orange-text"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
+			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
 				    </div>
 				</nav>
 			</div>
@@ -185,6 +188,7 @@
 	</footer>
 
  
+ <script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
 </body>
 
 </html>
