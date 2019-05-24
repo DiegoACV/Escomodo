@@ -19,7 +19,7 @@
     if(restantes !=0){
         int max=0;
         if(restantes>cantidadDesplegar)
-            max=12;
+            max=cantidadDesplegar;
         else
             max=restantes;
 
