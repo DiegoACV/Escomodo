@@ -177,6 +177,15 @@ delimiter ;
 
 call verPlatillo();
 
+drop procedure if exists verEstablecimiento;
+delimiter **
+create procedure verEstablecimiento()
+begin
+	select idest, nombre, email, foto from establecimiento;
+end; **
+delimiter ;
+
+call verEstablecimiento();
 
 drop procedure if exists verPlatillobyMail;
 delimiter **

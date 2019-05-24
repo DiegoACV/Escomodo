@@ -28,7 +28,7 @@ $(document).ready(function(){
                         }
                     },
                     error:function(){
-                        alert("error");
+                        $("div.my_container").append("<h3 class='header'>Error en el servidor, int&eacute;ntelo m&aacute;s tarde :(</h3>");
                     }
                     
                 });    
