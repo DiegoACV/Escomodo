@@ -132,4 +132,25 @@ public class Platillo {
     }
     return listaPlatillos;
    }
+    
+    public String registrar(String nombre, float precio, String desc, String foto, String mailest)
+    {
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        try
+        {
+            base.conectar();
+            respuesta = base.consulta("call sp_APlatillo('"+nombre+"',"+precio+",'"+desc+"','"+foto+"','"+mailest+"')");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error)
+        {
+            msj = error.toString();
+        }
+        return msj;
+    }
 }

@@ -138,20 +138,20 @@ call sp_Login('prueba@aa.com', '1234');
 
 drop procedure if exists sp_APlatillo;
 delimiter **
-create procedure sp_APlatillo(in nom nvarchar(60), in pre float(5,2), in des tinytext, in fot nvarchar(80), in est int)
+create procedure sp_APlatillo(in nom nvarchar(60), in pre float(5,2), in des tinytext, in fot nvarchar(80), in mailest nvarchar(60))
 begin
 	declare msj nvarchar(60); 
     declare idp int;
     declare exs int;
     
 	set idp =(select ifnull(max(idplatillo),0) + 1 from platillo);
-	insert into platillo values(idp,nom,0,pre,des, fot, est);
+	insert into platillo values(idp,nom,0,pre,des, fot, (select idest from establecimiento where email = mailest));
 	set msj='Platillo registrado';
     select msj as MSJ;
 end**
 delimiter ;
 
-call sp_APlatillo('platillo1', 5.50, 'platillo de prueba', 'p1.png', 1);
+call sp_APlatillo('platillo1', 5.50, 'platillo de prueba', 'p1.png', 'prueba@b.com');
 
 select * from platillo;
 
@@ -218,5 +218,4 @@ end**
 delimiter ;
 
 call sp_APedido(1, 1, "23:59:59", 80, 2, "huecosalon", "1", "especificaciones", 2);
-
 
