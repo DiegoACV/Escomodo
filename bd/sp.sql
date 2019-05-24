@@ -151,7 +151,7 @@ begin
 end**
 delimiter ;
 
-call sp_APlatillo('platillo1', 5.50, 'platillo de prueba', 'p1.png', 'prueba@b.com');
+call sp_APlatillo('platillo1', 5.50, 'platillo de prueba', 'p1.png', 'prueba@aaaa.com');
 
 select * from platillo;
 
@@ -228,3 +228,51 @@ delimiter ;
 
 call sp_APedido(1, 1, "23:59:59", 80, 2, "huecosalon", "1", "especificaciones", 2);
 
+
+call sp_ACliente('Yax','2015090790', 'yx@aa.com', '5555555', '1234', 'prueba.png');
+call sp_ARepartidor('Luis','2015570199', 'prueba@ada.com', '5555555', 'horario', '1234', 'prueba.png');
+insert into pedido values(2,2, 1,'08:30:00',"5",2,"happy","joi",false,"");
+insert into pedido values(3,1, 1,'08:30:00',"70",1,"happy","joi",false,"");
+insert into pedido values(4,1, 1,'08:30:00',"60",1,"happy","joi",false,"");
+insert into pedido values(5,1, 1,'08:30:00',"20",1,"happy","joi",false,"");
+insert into aceptpedido values(1,1,1,4.5);
+insert into aceptpedido values(2,2,2,3.8);
+insert into aceptpedido values(3,1,3,5);
+insert into aceptpedido values(4,1,4,4.0);
+insert into aceptpedido values(5,2,5,4.0);
+
+drop procedure if exists actValoracion;
+delimiter **
+create procedure actValoracion(in mail nvarchar(40))
+begin
+	declare val float(2,1);
+	set val= (select AVG(valrep) from aceptpedido, repartidor where idrepartidor = repartidor and email = mail);
+    update repartidor set valoracion=val where email=mail;
+end; **
+delimiter ;
+
+call actValoracion("prueba@aaa.com"); 
+call actValoracion("prueba@ada.com"); 
+
+drop procedure if exists contarPedidos;
+delimiter **
+create procedure contarPedidos(in mail nvarchar(40))
+begin
+	declare cuantos int;
+	set cuantos= (select count(*) from aceptpedido, repartidor where idrepartidor = repartidor and email = mail);
+	select cuantos AS NP;
+end; **
+delimiter ;
+
+call contarPedidos("prueba@aaa.com");
+
+drop procedure if exists verRepartidor;
+delimiter **
+create procedure verRepartidor(in mail nvarchar(40))
+begin
+	select nombre, email, tel, horario, foto, valoracion from repartidor where email = mail;
+end; **
+delimiter ;
+
+call verRepartidor("prueba@aaa.com");
+call verRepartidor("prueba@ada.com");
