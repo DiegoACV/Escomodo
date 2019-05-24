@@ -1,6 +1,7 @@
 package ldn;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Establecimiento 
 {
@@ -21,6 +22,13 @@ public class Establecimiento
         this._email = _email;
         this._tel = _tel;
         this._horario = _horario;
+        this._foto = _foto;
+    }
+    
+    public Establecimiento(int _idest, String _nombre, String _email, String _foto) {
+        this._idest = _idest;
+        this._nombre = _nombre;
+        this._email = _email;
         this._foto = _foto;
     }
     
@@ -62,6 +70,27 @@ public class Establecimiento
             System.out.println(error.getMessage());
         }
     }
+    
+    public static ArrayList<Establecimiento> getEstablecimientos(){
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        ArrayList<Establecimiento> listaEst=new ArrayList<Establecimiento>();
+        try{
+            base.conectar();
+            respuesta= base.consulta("call verEstablecimiento();");
+         
+            while (respuesta.next()){
+                Establecimiento e = new Establecimiento(respuesta.getInt("idest"),respuesta.getString("nombre")
+                ,respuesta.getString("email"), "images/comida1.jpg");//cambiar foto
+                listaEst.add(e);
+            }
+            base.cierraConexion();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return listaEst;
+   }
 
     public int getIdest() {
         return _idest;
