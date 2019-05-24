@@ -71,7 +71,7 @@ public class Repartidor extends Usuario{
         try
         {
             base.conectar();
-            respuesta = base.consulta("call cuentaPedidos('"+email+"')");
+            respuesta = base.consulta("call contarPedidos('"+email+"')");
             if(respuesta.next())
                 np = respuesta.getInt("NP");
             
