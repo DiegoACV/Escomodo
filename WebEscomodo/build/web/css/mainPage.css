@@ -25,32 +25,75 @@ nav{
 	background-color: #F54828 !important;
 }
 
-.titles{
-	color: #FFFFFF;
-}
-
 .brand-logo{
 	font-color: #FFFFFF;
 }
 
-.fa-shopping-cart{
-	margin-left: 15px; 
+.fa-shopping-cart, .fa-bars{
+	margin: 0px 15px; 
+}
+
+ul.left, ul.right{
+	padding: 0px 50px;
 }
 
 #logo{
-	height: 64px;
-	width: 150px;
+	height: 62px;
+	width: 123px;
 }
 
-a.right{
+ul.right{
 	height: 100% !important;
-	width: 30% !important;
+	width: auto;
 }
+
+ul li a.btn{
+	background-color: #FFFFFF;
+	color: #F54828;
+}
+ul li a.btn:hover {
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul li a.btn:active{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul li a.btn:focus{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+
+ul.sidenav li a{
+	font-size: 18px !important;
+	margin: 15px auto;
+}
+
+ul.sidenav li a.btn{
+	background-color: #F54828;
+	color: #FFFFFF;
+}
+ul.sidenav li a.btn:hover{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul.sidenav li a.btn:active{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+ul.sidenav li a.btn:focus{
+  background-color: #F7803C;
+  color: #FFFFFF;
+}
+
+
 
 .divider{
 	background-color: #F54828;
 	margin: 25px 25px;
 }
+
+
 
 h1{
 	color: #F54828;
@@ -115,10 +158,33 @@ a.btn-large{
 	color: #FFFFFF !important;
 }
 
-.footerLink{
-
+.orange-text{
+	color: #F54828 !important;
 }
 
+#logoFooter{
+	height: 70%;
+	width: 70%;
+	margin-bottom: 10px;
+}
+
+.logoDiv{
+	display: flex;
+	justify-content: center;
+}
+
+.contacts-small li i.fab{
+	font-size: 45px;
+	padding: 0px 25px;
+}
+
+
+@media only screen and (max-width: 1410px){
+	#logoFooter{
+		height: 80%;
+		width: 80%;
+	}
+}
 
 
 @media only screen and (max-width: 992px){
@@ -154,6 +220,16 @@ a.btn-large{
 		padding-left: 13px;
 	}
 
+	#logoFooter{
+		height: 50%;
+		width: 50%;
+	}
+
+	.footerRow{
+		text-align: center;
+	}
+
+
 }
 
 
@@ -173,6 +249,11 @@ a.btn-large{
 	#logo{
 		height: 56px;
 		width: 132px;
+	}
+
+	#logoFooter{
+		height: 70%;
+		width: 70%;
 	}
 }
 

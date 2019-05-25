@@ -1,11 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession();
-    sesion.setAttribute("Mail", "prueba@aaaa.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Mail", "prueba@b.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     
     String mail = request.getParameter("email") == null ? "" : request.getParameter("email");
-    mail = "prueba@aaaa.com"; //BORRAR CUANDO MANDEMOS EL NOMBRE DESDE LAS OTRAS PAG
+    mail = "prueba@b.com"; //BORRAR CUANDO MANDEMOS EL NOMBRE DESDE LAS OTRAS PAG
     ldn.Establecimiento est = new ldn.Establecimiento(mail);
     String nomest = est.getNombre();
     String m = est.getEmail();
@@ -28,6 +28,8 @@
 	<link rel="stylesheet" href="css/colors.css">
 	<link rel="stylesheet" href="css/menu.css">
 	<link rel="stylesheet" href="css/stilyes.css">
+        <link href="css/aplatillo.css" rel="stylesheet">
+
 <body>
 	<div>
 		<nav>
@@ -49,11 +51,12 @@
 	</div>
                 </nav>
 	</div>
-	 <div class="my_container">
+	<div class="my_container">
+            <div> 
 		<div class="section"><h3 class="header left-align">Menú de <%=est.getNombre()%></h3></div>
                 <%if(est.getEmail().equals(sesion.getAttribute("Mail").toString())){%>
                 <div >
-                    <button class="btn-floating btn-large waves-effect waves-light red" data-button-id="Escomida1"><i class="fas fa-plus"></i></button>                    
+                    <button class="btn-floating btn-large waves-effect waves-light red aprod" data-button-id="aprod" id="aprod"><i class="fas fa-plus"></i></button>                    
                 </div> <%}%>
                 <input type="hidden" id="email" name="email" value="<%=est.getEmail()%>" />
 		<hr class="sound_waves-text">
@@ -61,6 +64,7 @@
                     <div class="row"></div>
 		</div>
                 <div class="scrollCreator"></div>
+            </div>
 	</div>
 
 </body>

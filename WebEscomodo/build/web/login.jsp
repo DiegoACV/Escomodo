@@ -35,18 +35,72 @@
 
     }
 %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingresar</title>
+
+        <link type="text/css" rel="stylesheet" href="libs/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+        <script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
+        <script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link href="css/login.css" rel="stylesheet">
+
+        <script type="text/javascript" src="js/login.js"></script>
     </head>
     <body>
-        <h1>Ingresar</h1>
-        <form action="?acc=1" method="POST" id="login">
-            <input type="text" id="email" name="email" placeholder="Correo Electrónico" class=""/><br>
-            <input type="password" id="contra" name="contra" placeholder="Contrase&ntilde;a" class=""/><br>
-            <input type="submit" id="Login" value="Ingresar" class="" onclick=""/><br>
-        </form>
+
+        <div class = "row login">
+            <div id="div-login-col" class="col s8 l4 offset-l4 offset-s2">
+                <div class="card">
+
+                    <div class="card-content center-align">
+                        <a href="mainPage.html">
+                            <img src="https://drive.google.com/uc?id=1g2Fvmk3s7cDx5cMR1rKVOZZyOTj_DjaP" class="responsive-img" id="logo">
+                        </a>
+                    </div>
+
+                    <div class="card-content">
+                        <form action="?acc=1" method="POST" id="login">
+
+                            <div class="row">
+                                <div class="input-field">
+                                    <i class="prefix far fa-user"></i>
+                                    <input type="text" id="email" name="email"  class="validate">
+                                    <label for="email">Correo Electrónico</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field">
+                                    <i class="prefix fas fa-lock"></i>
+                                    <input type="password" id="contra" name="contra" class="validate">
+                                    <label for="email">Contraseña</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="center-align">
+                                    <button class="btn-large waves-effect waves-light" type="submit" name="action" id="Login">Ingresar</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </body>
+
+    <footer>
+    </footer>
 </html>
