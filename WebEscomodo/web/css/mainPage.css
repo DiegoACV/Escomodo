@@ -38,8 +38,8 @@ ul.left, ul.right{
 }
 
 #logo{
-	height: 64px;
-	width: 150px;
+	height: 62px;
+	width: 123px;
 }
 
 ul.right{
@@ -163,8 +163,9 @@ a.btn-large{
 }
 
 #logoFooter{
-	height: 90%;
-	width: 90%;
+	height: 70%;
+	width: 70%;
+	margin-bottom: 10px;
 }
 
 .logoDiv{
@@ -177,6 +178,13 @@ a.btn-large{
 	padding: 0px 25px;
 }
 
+
+@media only screen and (max-width: 1410px){
+	#logoFooter{
+		height: 80%;
+		width: 80%;
+	}
+}
 
 
 @media only screen and (max-width: 992px){
