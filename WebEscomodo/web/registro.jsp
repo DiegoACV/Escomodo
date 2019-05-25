@@ -138,13 +138,7 @@
 
 			<div class="row">
                             
-                <div class = "col s12 m6 l6" id="escomensal">
-
-                	<div class = "col s12 m12 l12 center-align">
-						<h3>
-							¡Conviértete en un Escomensal!
-						</h3>
-					</div>
+                <div class = "container" id="registro">
 
                     <form action="?acc=1" method="POST" id="registro">
                     
@@ -217,99 +211,8 @@
                         </div>
                         
                     </form>
-                </div>
-
-                <div class="divider vertical"></div>
-                <div class="divider"></div>
-
-            	<div class = "col s12 m6 l6" id="escom8">
-
-            		<div class = "col s12 m12 l12 center-align">
-						<h3>
-							¡Únete a nuestro equipo de Escom8s!
-						</h3>
-					</div>
-
-					<form action="?acc=2" method="POST" id="registro8">
-                
-                        <div class = "row">
-
-                            <div class="col s4 m4 l4">
-                            	<!-- Aqui va lo de la foto-->
-                            </div>
-
-                            <div class="col s8 m8 l8">
-                                    
-	                            <div class="input-field">
-	                              <input id="nombre8" type="text" class="validate">
-	                              <label for="nombre8">Nombre Completo</label>
-	                            </div>
-	                                
-	                            <div class="input-field">
-	                                <input id="boleta8" type="text" class="validate">
-	                                <label for="boleta8">No. de Boleta</label>
-	                            </div>
-                                
-                            </div>
-
-                        </div>
-
-                        <div class = "row">
-
-                        	<div class="col s12 m12 l6">
-                        		<div class="input-field">
-	                              <input id="email8" type="text" class="validate">
-	                              <label for="email8">Correo Electrónico</label>
-	                            </div>
-                        	</div>
-
-                        	<div class="col s12 m12 l6">
-                        		<div class="input-field">
-	                              <input id="tel8" type="text" class="validate">
-	                              <label for="tel8">Número de Teléfono</label>
-	                            </div>
-                        	</div>
-
-                        </div>
-
-                        <div class = "row">
-
-                        	<div class="col s12 m12 l6">
-                        		<div class="input-field">
-	                              <input id="contra8" type="password" class="validate">
-	                              <label for="contra8">Contraseña</label>
-	                            </div>
-                        	</div>
-
-                        	<div class="col s12 m12 l6">
-                        		<div class="input-field">
-	                              <input id="contra28" type="password" class="validate">
-	                              <label for="contra28">Confirma la Contraseña</label>
-	                            </div>
-                        	</div>
-
-                        </div>
-
-                        <div>
-                        	<!-- Aqui lo de agregar horario -->
-                        </div>
-
-                        <div class="row">
-                    	
-                        	<div class="col s12 m12 l12 center-align">
-                        		<button class="btn-large waves-effect waves-light" type="submit" name="action">Registrarse
-								    <i class="fas fa-briefcase"></i>
-								</button>
-                        	</div>
-
-                        </div>
-                        
-                    </form>
-
-
-            	</div>
-                                
-			</div>
+             
+				</div>
 
 		</div>
 

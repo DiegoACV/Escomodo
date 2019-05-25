@@ -82,7 +82,7 @@
                                 <div class="input-field">
                                     <i class="prefix fas fa-lock"></i>
                                     <input type="password" id="contra" name="contra" class="validate">
-                                    <label for="email">Contraseña</label>
+                                    <label for="contra">Contraseña</label>
                                 </div>
                             </div>
 
@@ -93,6 +93,12 @@
                             </div>
 
                         </form>
+
+                        <div class="row" id="sinCuentaRow">
+                            <a href="registro.jsp" class="">
+                                <p id="sinCuenta" class="right-align">¿No tienes una Cuenta? ¡Regístrate!</p>
+                            </a>
+                        </div>
                     </div>
 
                 </div>
@@ -102,5 +108,8 @@
     </body>
 
     <footer>
+        <div id="copy">
+            © 2019 CRAYDS
+        </div>
     </footer>
 </html>
