@@ -34,27 +34,69 @@ $(document).ready(function(){
                     
                 });
         }
-
+        
         $(window).scroll(function() {    
             if(isScrolledIntoView($('.scrollCreator'))){
                 createElements();
             }    
         });
-        
-        createElements();
-        
-	$('.section.items').flyto({
-		item      : '.card.small.sticky-action',
-		target    : '#cart',
-		button    : '.btn-flat.right.add',
-		shake	  : true
-	});
+        $(document).on("click", ".aprod", function(){
+            $.confirm({
+                title: '<h4 class="header sound_waves_text">Agrega un producto</h4>',
+                icon: 'fas fa-utensils',
+                content: '<div class="input-field">'+
+                            '<input id="nombre" name="nombre" type="text" class="validate">'+
+                            '<label for="nombre">Nombre del platillo</label></div>'+
+                         '<div class="input-field">'+
+                            '<input id="precio" name="precio" type="text" class="validate">'+
+                            '<label for="precio">Precio</label></div>'+
+                        ' <div class="input-field">'+
+                            '<textarea id="desc" name="desc" class="validate materialize-textarea"></textarea>'+
+                            '<label for="textarea1">Descripción del platillo</label></div>',
+                buttons: {
+                agregar: function agregarPlatillo() {
+                    $.ajax({
+                        type:"POST",
+                        url: "agregarPlatillo.jsp",
+                        data: jQuery.param({ nombre: document.getElementById("nombre").value, precio : document.getElementById("precio").value, desc: document.getElementById("desc").value}),
+                        success:function(){
+                            $.alert({
+                                title: "Platillo agregado",
+                                content: '',
+                                icon: 'fas fa-utensils',
+                                theme: 'material',
+                                useBootstrap: false,
+                                boxWidth: '400px'
+                            });
+                        },
+                        error:function(){
+                            alert("error");
+                        }
+
+            });
+                },
+                cancelar: function () {
+                    $.alert({
+                        title: "Elemento no agregado",
+                        content: '',
+                        icon: 'fas fa-utensils',
+                        theme: 'material',
+                        useBootstrap: false,
+                        boxWidth: '400px'
+                    });
+                }
+                }
+
+            });
+
+        //}
+        });
 
 	$(document).on("mouseenter",".activator",function(){
   		$(this).css("cursor", "pointer");
   	});
         
-        $(document).on("click",".btn-flat.right.fav",function(){
+        $(document).on("click",".fav",function(){
   		if($(this).children("i").attr('class')=="far fa-heart"){
   			$(this).children("i").removeClass("far fa-heart");
   			$(this).children("i").addClass("fas fa-heart");
@@ -95,5 +137,8 @@ $(document).ready(function(){
             	$(this).parent().children("p:first").text(cantidad-1)
             }
     });
+    
+    //LLAMADAS A FUNCIONES
+        createElements();   
 
 });
