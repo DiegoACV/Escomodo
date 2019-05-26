@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <%
     HttpSession sesion = request.getSession();
-    sesion.setAttribute("Mail", "prueba@aaa.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Mail", "prueba@ada.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     String mail = sesion.getAttribute("Mail").toString();
     ldn.Repartidor rep = new ldn.Repartidor(mail);
@@ -68,21 +68,25 @@
                     </div>
                 </nav>
 	</div>
-        <div class = "row rowMargin">
-            <div class = "col s12 m4 l4">
-                <div class ="col s12 m4 l4"></div>
-                <div class ="col s12 m4 l8">
-                    <img src='<%=Foto%>' class='circle responsive-img z-depth-3'/>
-                    <h2><%=Nombre%></h2>
+        <div>
+            <div class="row rowMargin valign-wrapper">
+                <div class = "col s12 m4 l12 offset-l1 red">
+                    <div class ="col s12 m4 l2">
+                        <img src='<%=Foto%>' class='circle responsive-img z-depth-3'/>
+                    </div>
                 </div>
-                <div class ="col s12 m4 l4"></div>
             </div>
-            <div class = "col s12 m4 l4">
-                <h2><%=np%></h2>
-                <h2>Pedidos completados</h2>
-            </div>
-            <div class = "col s12 m4 l4">
-                <h2><%=Valoracion%></h2>
+            <div class="row rowMargin">
+                <div class = "col s12 m4 l4 red">
+                    <p class="center-align flow-text"><%=Nombre%></p>
+                </div>
+                <div class = "col s12 m4 l4 orange">
+                    <p class="center-align flow-text"> <%=np%> </p>
+                    <p class="center-align flow-text">Pedidos completados</p>
+                </div>
+                <div class = "col s12 m4 l4 red">
+                    <span><p class="center-align flow-text"><%=Valoracion%><i class="medium fas fa-star "></i></p></span>
+                </div>
             </div>
         </div>      
     </body>

@@ -27,12 +27,9 @@ begin
 end**
 delimiter ;
 
-call sp_ACliente('Diego','2015370179', 'prueba@aa.com', '5555555', '1234', 'prueba.png');
-select * from cliente;
-
 drop procedure if exists sp_ARepartidor;
 delimiter **
-create procedure sp_ARepartidor(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in tel nvarchar(20), in hor nvarchar(40), in cont nvarchar(16), in fot nvarchar(80))
+create procedure sp_ARepartidor(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in tel nvarchar(20), in hor nvarchar(150), in cont nvarchar(16), in fot nvarchar(80))
 begin
 	declare msj nvarchar(60); 
     declare idr int;
@@ -57,9 +54,6 @@ begin
 end**
 delimiter ;
 
-call sp_ARepartidor('repar','2015570179', 'prueba@aaa.com', '5555555', 'horario', '1234', 'prueba.png');
-select * from repartidor;
-
 drop procedure if exists sp_AEstablecimiento;
 delimiter **
 create procedure sp_AEstablecimiento(in nom nvarchar(60),in ubi nvarchar(100), in rep nvarchar(60), in mail nvarchar(40), in tel nvarchar(20), in hor nvarchar(40), in cont nvarchar(16), in fot nvarchar(80))
@@ -82,11 +76,6 @@ begin
     select msj as MSJ;
 end**
 delimiter ;
-
-call sp_AEstablecimiento('Tienda','pus escom xddd','yo mero', 'prueba@aaaa.com', '5555555', 'horario', '1234', 'prueba.png');
-select * from establecimiento;
-
-
 
 drop procedure if exists sp_Login;
 delimiter **
@@ -131,11 +120,6 @@ begin
 end**
 delimiter ;
 
-select CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16)) end_data from repartidor;
-
-call sp_Login('prueba@aa.com', '1234');
-
-
 drop procedure if exists sp_APlatillo;
 delimiter **
 create procedure sp_APlatillo(in nom nvarchar(60), in pre float(5,2), in des tinytext, in fot nvarchar(80), in mailest nvarchar(60))
@@ -151,10 +135,6 @@ begin
 end**
 delimiter ;
 
-call sp_APlatillo('platillo1', 5.50, 'platillo de prueba', 'p1.png', 'prueba@aaaa.com');
-
-select * from platillo;
-
 drop procedure if exists sp_getEstbyMail;
 delimiter **
 create procedure sp_getEstbyMail(in mail varchar(40))
@@ -162,8 +142,6 @@ begin
 	select * from establecimiento where email = mail;
 end**
 delimiter ;
-
-call sp_getEstbyMail('prueba@aaaa.com');
 
 drop procedure if exists verPlatillo;
 delimiter **
@@ -175,8 +153,6 @@ begin
 end; **
 delimiter ;
 
-call verPlatillo();
-
 drop procedure if exists verEstablecimiento;
 delimiter **
 create procedure verEstablecimiento()
@@ -184,8 +160,6 @@ begin
 	select idest, nombre, email, foto from establecimiento;
 end; **
 delimiter ;
-
-call verEstablecimiento();
 
 drop procedure if exists verPlatillobyMail;
 delimiter **
@@ -197,62 +171,19 @@ begin
 end; **
 delimiter ;
 
-call verPlatillobyMail("prueba@aaaa.com");
-
-
-drop procedure if exists sp_APedido;
-delimiter **
-create procedure sp_APedido(in cte int, in plat int, in hor time, in pcio float(5,2), in cant int, in lug nvarchar(60), in e nvarchar(3), in esp tinytext, in opc int)
-begin
-	declare msj nvarchar(60); 
-    declare idp int;
-    declare exs int;
-	set idp =(select ifnull(max(idpedido),0) + 1 from pedido);
-	insert into pedido values(idp,cte,plat,hor,pcio,cant, lug, e, false, esp);
-	if opc = 1 then
-		set msj = "Pedido registrado";
-	else 
-		if opc = 2 then
-			set msj = "Agregado al carrito";
-		else 
-			if opc = 3 then
-				set msj = "Agregado a favoritos";
-			else
-				set msj = "Selecciona una opción correcta";
-			end if;
-		end if;
-	end if;
-    select msj as MSJ;
-end**
-delimiter ;
-
-call sp_APedido(1, 1, "23:59:59", 80, 2, "huecosalon", "1", "especificaciones", 2);
-
-
-call sp_ACliente('Yax','2015090790', 'yx@aa.com', '5555555', '1234', 'prueba.png');
-call sp_ARepartidor('Luis','2015570199', 'prueba@ada.com', '5555555', 'horario', '1234', 'prueba.png');
-insert into pedido values(2,2, 1,'08:30:00',"5",2,"happy","joi",false,"");
-insert into pedido values(3,1, 1,'08:30:00',"70",1,"happy","joi",false,"");
-insert into pedido values(4,1, 1,'08:30:00',"60",1,"happy","joi",false,"");
-insert into pedido values(5,1, 1,'08:30:00',"20",1,"happy","joi",false,"");
-insert into aceptpedido values(1,1,1,4.5);
-insert into aceptpedido values(2,2,2,3.8);
-insert into aceptpedido values(3,1,3,5);
-insert into aceptpedido values(4,1,4,4.0);
-insert into aceptpedido values(5,2,5,4.0);
-
 drop procedure if exists actValoracion;
 delimiter **
 create procedure actValoracion(in mail nvarchar(40))
 begin
 	declare val float(2,1);
-	set val= (select AVG(valrep) from aceptpedido, repartidor where idrepartidor = repartidor and email = mail);
-    update repartidor set valoracion=val where email=mail;
+	set val= (select AVG(valrep) from aceptpedido, repartidor where idrepartidor = repartidor and valrep!=0 and email = mail);
+    if val>1 then
+		update repartidor set valoracion=val where email=mail;
+    else
+		update repartidor set valoracion=0 where email=mail;
+    end if;
 end; **
 delimiter ;
-
-call actValoracion("prueba@aaa.com"); 
-call actValoracion("prueba@ada.com"); 
 
 drop procedure if exists contarPedidos;
 delimiter **
@@ -264,8 +195,6 @@ begin
 end; **
 delimiter ;
 
-call contarPedidos("prueba@aaa.com");
-
 drop procedure if exists verRepartidor;
 delimiter **
 create procedure verRepartidor(in mail nvarchar(40))
@@ -274,5 +203,68 @@ begin
 end; **
 delimiter ;
 
-call verRepartidor("prueba@aaa.com");
-call verRepartidor("prueba@ada.com");
+drop procedure if exists sp_APedido;
+delimiter **
+create procedure sp_APedido(in idclien int, in idplat int, fech date,in hor time,
+in preciot float(5,2), in cant int, in lug nvarchar(60), in est int, especif tinytext )
+begin
+	declare msj nvarchar(60); 
+    declare idp int;
+    declare exs int;
+    declare idestab int;
+    set idestab= (select establecimiento from platillo where idplat=idplatillo);
+	set idp =(select ifnull(max(idpedido),0) + 1 from pedido);
+    
+	if est = 1 then
+		insert into pedido values(idp,idclien,idplat,idestab,fech, hor,preciot, cant, lug, est, 0, especif);
+		set msj = "Producto agregado al carrito";
+	else 
+		if est = 2 then
+			insert into pedido values(idp,idclien,idplat,idestab,fech, hor,preciot, cant, lug, est, 0, especif);
+			set msj = "Agregado a favoritos";
+		else
+			set msj="Estado inválido";
+		end if;
+	end if;
+    select msj as MSJ;
+end**
+delimiter ;
+
+drop procedure if exists udEstadoPed;
+delimiter **
+create procedure udEstadoPed(in idclien int, in idestab int, fech date,in hor time,
+in preciot float(5,2),  in lug nvarchar(60), in est int)
+begin
+	declare msj nvarchar(60); 
+	if est = 3 then
+		update pedido set fecha=fech, hora=hor, preciotot=preciot, lugar=lug, estado=3 
+			where cliente= idclien and establecimiento=idestab and estado=1;
+		set msj = "Pedido confirmado";
+	else 
+		if est = 4 then
+			update pedido set estado=4 where cliente= idclien and establecimiento=idestab and fecha=fech and 
+				hora=hor and preciotot=preciot and lugar=lug and estado=3;
+			set msj = "Espera de pago";
+		else
+			if est =5 then
+				update pedido set estado=5 where cliente= idclien and establecimiento=idestab and fecha=fech and 
+					hora=hor and preciotot=preciot and lugar=lug and (estado=4 or estado =3);
+				set msj = "Lista de espera";
+            else
+				if est = 6 then
+					update pedido set estado=6 where cliente= idclien and establecimiento=idestab and fecha=fech and 
+						hora=hor and preciotot=preciot and lugar=lug and estado=5;
+					set msj = "Entrega en proceso";
+				else
+					if est = 7 then
+						update pedido set estado=7 where cliente= idclien and establecimiento=idestab and fecha=fech and 
+							hora=hor and preciotot=preciot and lugar=lug and estado=6;
+						set msj = "Entregado";
+                    end if;
+				end if;
+            end if;
+		end if;
+	end if;
+    select msj as MSJ;
+end**
+delimiter ;
