@@ -42,7 +42,7 @@ i.fa-user, i.fa-lock{
 
    .input-field input[type=text].valid {
      border-bottom: 1px solid #F54828 !important;
-     box-shadow: 0 1px 0 0 #FC9C9C !important;
+     box-shadow: 0 1px 0 0 #F54828 !important;
    }
   
    .input-field input[type=text].invalid {
@@ -66,13 +66,17 @@ i.fa-user, i.fa-lock{
 
    .input-field input[type=password].valid {
      border-bottom: 1px solid #F54828 !important;
-     box-shadow: 0 1px 0 0 #FC9C9C !important;
+     box-shadow: 0 1px 0 0 #F54828 !important;
    }
   
    .input-field input[type=password].invalid {
      border-bottom: 1px solid #F54828 !important;
-     box-shadow: 0 1px 0 0 #F7803C !important;
+     box-shadow: 0 1px 0 0 #F54828 !important;
    }
+
+div.input-field input{
+	color: #FFFFFF;
+}
 
 button.btn-large{
   color: #FFFFFF;
