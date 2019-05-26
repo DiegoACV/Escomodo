@@ -43,7 +43,7 @@ create table platillo
 create table estpedido
 (
 	idestado int not null auto_increment primary key,
-    descripcion nvarchar(20) not null
+    descripcion nvarchar(30) not null
 );
 
 create table pedido 
@@ -58,7 +58,7 @@ create table pedido
     cantidad int not null,
     lugar nvarchar(60) not null,
     estado int not null,
-    calificado boolean not null,
+    calificacion float(2,1) not null,
     especif tinytext, 
     foreign key(cliente) references cliente(idcliente) on delete cascade on update cascade,
     foreign key(platillo) references platillo(idplatillo) on delete cascade on update cascade,
@@ -72,7 +72,7 @@ create table repartidor
     boleta nvarchar(10) not null,
     email nvarchar(40) not null,
     tel nvarchar(20) not null,
-    horario nvarchar(40) not null,
+    horario nvarchar(150) not null,
     contra varbinary(255) not null,
     foto nvarchar(80) not null,
     valoracion float(2,1) not null,
