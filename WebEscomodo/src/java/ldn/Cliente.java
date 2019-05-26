@@ -14,6 +14,30 @@ public class Cliente extends Usuario{
         super(nombre, boleta, email, tel, contra);
     }
     
+    public Cliente(String mail)
+    {
+        super();
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        try
+        {
+            base.conectar();
+            respuesta = base.consulta("call verClientebyMail('"+mail+"');");
+            if(respuesta.next()){
+                this.setNombre(respuesta.getString("nombre"));
+                this.setBoleta(respuesta.getString("boleta"));
+                this.setTel(respuesta.getString("tel"));
+                this.setEmail(respuesta.getString("email"));
+                this.setFoto("images/default.png");
+            }
+            base.cierraConexion();
+        }
+        catch(Exception error)
+        {
+           System.out.println(error.getMessage());
+        }
+    }
+    
     public String registrar(String nombre, String boleta, String email, String tel, String contra){
         
         String msj = "";
@@ -23,6 +47,27 @@ public class Cliente extends Usuario{
         try{
             base.conectar();
             respuesta = base.consulta("call sp_ACliente('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+contra+"','prueba.png')");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            msj = error.toString();
+        }
+        
+        return msj;
+    }
+    
+    public String cambios(String nombre, String boleta, String email, String tel, String acontra, String foto, String ncontra)
+    {
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_CCliente('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+acontra+"','"+foto+"','"+ncontra+"');");
             if(respuesta.next())
                 msj = respuesta.getString("MSJ");
             

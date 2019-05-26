@@ -18,7 +18,7 @@ $(document).ready(function(){
                 $('div').removeClass('scrollCreator');
                 $.ajax({
                     method:"post",
-                    url:"crearElementos.jsp",
+                    url:"crearElementosPlatillos.jsp",
                     data:"numItemsDisplayed="+numItemsDisplayed,
                     success:function(resp){
                         $("div.row").append(resp);
