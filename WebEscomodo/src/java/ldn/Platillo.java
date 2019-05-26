@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author christopher
  */
 public class Platillo {
+    private int _id;
     private String _nombre;
     private float _valoracion;
     private float _precio;
@@ -16,17 +17,23 @@ public class Platillo {
     private String _origen;
     
     public Platillo(){
+        _id=0;
         _nombre="";
         _valoracion=0f;
         _precio=0f;
         _descripcion="";
     }
     
-    public Platillo(String nombre, float valoracion, float precio, String descripcion){
+    public Platillo(int id, String nombre, float valoracion, float precio, String descripcion){
+        _id=id;
         _nombre=nombre;
         _valoracion=valoracion;
         _precio=precio;
         _descripcion=descripcion;
+    }
+    
+    public int getId(){
+        return _id;
     }
 
     public String getNombre() {
@@ -51,6 +58,10 @@ public class Platillo {
     
     public String getOrigen() {
         return _origen;
+    }
+    
+    public void setId(int _id){
+        this._id=_id;
     }
 
     public void setNombre(String _nombre) {
@@ -88,6 +99,7 @@ public class Platillo {
             while (respuesta.next()){
             
                 Platillo platillo = new Platillo();
+                platillo.setId(respuesta.getInt("idplatillo"));
                 platillo.setNombre(respuesta.getString("nombre"));
                 platillo.setValoracion(respuesta.getFloat("valoracion"));
                 platillo.setPrecio(respuesta.getFloat("precio"));
@@ -116,6 +128,7 @@ public class Platillo {
         while (respuesta.next()){
 
             Platillo platillo = new Platillo();
+            platillo.setId(respuesta.getInt("idplatillo"));
             platillo.setNombre(respuesta.getString("nombre"));
             platillo.setValoracion(respuesta.getFloat("valoracion"));
             platillo.setPrecio(respuesta.getFloat("precio"));

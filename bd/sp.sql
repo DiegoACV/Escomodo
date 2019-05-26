@@ -147,9 +147,9 @@ drop procedure if exists verPlatillo;
 delimiter **
 create procedure verPlatillo()
 begin
-	declare cuantos int;
-    set cuantos=(select count(*) from platillo);
-	select platillo.nombre, valoracion, precio, descripcion, platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento where establecimiento=idest;
+	select idplatillo, platillo.nombre, valoracion, precio, descripcion, 
+    platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento 
+    where establecimiento=idest order by valoracion desc;
 end; **
 delimiter ;
 
