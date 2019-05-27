@@ -165,9 +165,15 @@ drop procedure if exists verPlatillobyMail;
 delimiter **
 create procedure verPlatillobyMail(in mail nvarchar(40))
 begin
-	declare cuantos int;
-    set cuantos=(select count(*) from platillo, establecimiento where establecimiento=idest and email = mail);
-	select platillo.nombre, valoracion, precio, descripcion, platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento where establecimiento=idest and mail = email;
+	select idplatillo, platillo.nombre, valoracion, precio, descripcion, platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento where establecimiento=idest and email = mail;
+end; **
+delimiter ;
+
+drop procedure if exists verClientebyMail;
+delimiter **
+create procedure verClientebyMail(in mail nvarchar(40))
+begin
+	select nombre, boleta, email, tel, foto from cliente where email = mail;
 end; **
 delimiter ;
 
@@ -265,6 +271,35 @@ begin
             end if;
 		end if;
 	end if;
+    select msj as MSJ;
+end**
+delimiter ;
+
+drop procedure if exists sp_CCliente;
+delimiter **
+create procedure sp_CCliente(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in t nvarchar(20), in acont nvarchar(16), in fot nvarchar(80), in ncont nvarchar(16))
+begin
+	declare msj nvarchar(60); 
+    declare exs int;
+	
+    set exs = (select count(*) from cliente where email = mail and email != (select email from cliente where boleta = bol));
+    
+    if exs = 0 then
+			if acont = 'sc' and ncont = 'sc' then
+				update cliente set nombre = nom, email = mail, tel = t, foto = fot where boleta = bol;
+                set msj='Datos actualizados!';
+			else
+				set exs = (select count(*) from cliente where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
+                if exs = 1 then
+					update cliente set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends'), foto = fot where boleta = bol;
+					set msj='Datos actualizados';
+				else
+					set msj ='La contraseña anterior es incorrecta';
+				end if;
+        end if;
+    else
+		set msj ='Este correo ya está registrado por otro usuario';
+    end if;
     select msj as MSJ;
 end**
 delimiter ;

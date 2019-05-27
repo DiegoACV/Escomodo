@@ -83,4 +83,26 @@ public class Repartidor extends Usuario{
         }
         return np;
     }
+    
+    public String registrar(String nombre, String boleta, String email, String tel, String horario, String contra){
+        
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_ARepartidor('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+horario+"','"+contra+"','prueba.png')");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            msj = error.toString();
+        }
+        
+        return msj;
+    }
+            
 }

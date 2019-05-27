@@ -3,27 +3,21 @@
 	HttpSession sesion = request.getSession();
 	
 	ldn.Cliente cliente = new ldn.Cliente();
-	//ldn.Repartidor repartidor = new ldn.Repartidor();
+	ldn.Repartidor repartidor = new ldn.Repartidor();
 
 	String mensaje = "";
 
-	String nom = "";
-	String bol = "";
-	String email = "";
-	String tel = "";
-	String contra = "";
+	String nom = request.getParameter("nombre") == null ? "" : request.getParameter("nombre");
+	String bol = request.getParameter("boleta") == null ? "" : request.getParameter("boleta");
+	String email = request.getParameter("email") == null ? "" : request.getParameter("email");
+	String tel = request.getParameter("tel") == null ? "" : request.getParameter("tel");
+	String contra = request.getParameter("contra") == null ? "" : request.getParameter("contra");
 	//String img = "";
+	String horario = "";
 
 	String acc = request.getParameter("acc") == null ? "0" : request.getParameter("acc");
 
 	if (acc.equals("1")) {
-
-		nom = request.getParameter("nombre") == null ? "" : request.getParameter("nombre");
-		bol = request.getParameter("boleta") == null ? "" : request.getParameter("boleta");
-		email = request.getParameter("email") == null ? "" : request.getParameter("email");
-		tel = request.getParameter("tel") == null ? "" : request.getParameter("tel");
-		contra = request.getParameter("contra") == null ? "" : request.getParameter("contra");
-		//img
 
 		mensaje = cliente.registrar(nom, bol, email, tel, contra);
 
@@ -33,33 +27,87 @@
 
             %><script> alert("<%=mensaje%>"); </script><%
 
-            response.sendRedirect("mainPage.html");
+            response.sendRedirect("mainPage.jsp");
 		}
 
-		
 	} 
 
 	if (acc.equals("2")){
 
-		nom = request.getParameter("nombre8") == null ? "" : request.getParameter("nombre8");
-		bol = request.getParameter("boleta8") == null ? "" : request.getParameter("boleta8");
-		email = request.getParameter("email8") == null ? "" : request.getParameter("email8");
-		tel = request.getParameter("tel8") == null ? "" : request.getParameter("tel8");
-		contra = request.getParameter("contra8") == null ? "" : request.getParameter("contra8");
-		//img
+		String dia1 = request.getParameter("dia1") == null ? "" : request.getParameter("dia1");
+		String dia2 = request.getParameter("dia2") == null ? "" : request.getParameter("dia2");
+		String dia3 = request.getParameter("dia3") == null ? "" : request.getParameter("dia3");
+		String dia4 = request.getParameter("dia4") == null ? "" : request.getParameter("dia4");
+		String dia5 = request.getParameter("dia5") == null ? "" : request.getParameter("dia5");
+		String dia6 = request.getParameter("dia6") == null ? "" : request.getParameter("dia6");
+		String dia7 = request.getParameter("dia7") == null ? "" : request.getParameter("dia7");
+		String dia8 = request.getParameter("dia8") == null ? "" : request.getParameter("dia8");
+		String dia9 = request.getParameter("dia9") == null ? "" : request.getParameter("dia9");
+		String dia10 = request.getParameter("dia10") == null ? "" : request.getParameter("dia10");
 
-		//mensaje = repartidor.registrar(nom, bol, email, tel, contra);
-		/*
+		String hI1 = request.getParameter("horaInicio1") == null ? "" : request.getParameter("horaInicio1") + "-";
+		String hI2 = request.getParameter("horaInicio2") == null ? "" : request.getParameter("horaInicio2") + "-";
+		String hI3 = request.getParameter("horaInicio3") == null ? "" : request.getParameter("horaInicio3") + "-";
+		String hI4 = request.getParameter("horaInicio4") == null ? "" : request.getParameter("horaInicio4") + "-";
+		String hI5 = request.getParameter("horaInicio5") == null ? "" : request.getParameter("horaInicio5") + "-";
+		String hI6 = request.getParameter("horaInicio6") == null ? "" : request.getParameter("horaInicio6") + "-";
+		String hI7 = request.getParameter("horaInicio7") == null ? "" : request.getParameter("horaInicio7") + "-";
+		String hI8 = request.getParameter("horaInicio8") == null ? "" : request.getParameter("horaInicio8") + "-";
+		String hI9 = request.getParameter("horaInicio9") == null ? "" : request.getParameter("horaInicio9") + "-";
+		String hI10 = request.getParameter("horaInicio10") == null ? "" : request.getParameter("horaInicio10") + "-";
+
+		String hF1 = request.getParameter("horaFin1") == null ? "" : request.getParameter("horaFin1");
+		String hF2 = request.getParameter("horaFin2") == null ? "" : request.getParameter("horaFin2");
+		String hF3 = request.getParameter("horaFin3") == null ? "" : request.getParameter("horaFin3");
+		String hF4 = request.getParameter("horaFin4") == null ? "" : request.getParameter("horaFin4");
+		String hF5 = request.getParameter("horaFin5") == null ? "" : request.getParameter("horaFin5");
+		String hF6 = request.getParameter("horaFin6") == null ? "" : request.getParameter("horaFin6");
+		String hF7 = request.getParameter("horaFin7") == null ? "" : request.getParameter("horaFin7");
+		String hF8 = request.getParameter("horaFin8") == null ? "" : request.getParameter("horaFin8");
+		String hF9 = request.getParameter("horaFin9") == null ? "" : request.getParameter("horaFin9");
+		String hF10 = request.getParameter("horaFin10") == null ? "" : request.getParameter("horaFin10");
+
+		if(dia1!=""){
+			horario = dia1 + hI1 + hF1;
+		}
+		if(dia2!=""){
+			horario = horario + dia2 + hI2 + hF2;
+		}
+		if(dia3!=""){
+			horario = horario + dia3 + hI3 + hF3;
+		}
+		if(dia4!=""){
+			horario = horario + dia4 + hI4 + hF4;
+		}
+		if(dia5!=""){
+			horario = horario + dia5 + hI5 + hF5;
+		}
+		if(dia6!=""){
+			horario = horario + dia6 + hI6 + hF6;
+		}
+		if(dia7!=""){
+			horario = horario + dia7 + hI7 + hF7;
+		}
+		if(dia8!=""){
+			horario = horario + dia8 + hI8 + hF8;
+		}
+		if(dia9!=""){
+			horario = horario + dia9 + hI9 + hF9;
+		}
+		if(dia10!=""){
+			horario = horario + dia10 + hI10 + hF10;
+		}
+
+		mensaje = repartidor.registrar(nom, bol, email, tel, horario, contra);
+
 		if(mensaje.equals("Has sido registrado")){
 			sesion.setAttribute("Mail", email);
-            sesion.setAttribute("Tipo", "2");
+            sesion.setAttribute("Tipo", "3");
 
-            //alert mensaje
+            %><script> alert("<%=mensaje%>"); </script><%
 
-            response.sendRedirect("mainPage.html");
-		}*/
-
-
+            response.sendRedirect("mainPage.jsp");
+		}
 
 	}
 
@@ -108,13 +156,13 @@
 				    <div class="nav-wrapper">
 
 				      <ul id="nav-mobile" class="left hide-on-med-and-down">
-				        <li><a href="mainPage.html" class = "titles">Escomodo</a></li>
+				        <li><a href="mainPage.jsp" class = "titles">Escomodo</a></li>
 				        <li><a href="productos.html" class = "titles">Escomida</a></li>
 				        <li><a href="collapsible.html" class = "titles">Escomercio</a></li>
 				        <li><a href="sass.html" class = "brand-logo"><i class="fas fa-shopping-cart titles"></i></a></li>
 				      </ul>
 
-				      <a href="mainPage.html" class="brand-logo center">
+				      <a href="mainPage.jsp" class="brand-logo center">
 				      	<img src="images/escomodo.png" class = "responsive-img" id = "logo">
 				      </a>
 
@@ -175,7 +223,7 @@
                             <div class="col s11 m11 l5 vertical-margin">
                             	 <div class="switch center-align">
 								    <label>
-								      <a id="eo">Escomodo</a>
+								      <a id="eo">Escomensal</a>
 								      <input type="checkbox" id="input-switch">
 								      <span class="lever"></span>
 								      <a id="e8">Escom8</a>
@@ -239,13 +287,13 @@
                         	<div id="horario1">
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia1">
+									    <select  name="dia1">
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -258,7 +306,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio1" type="text" class="timepicker">
+	                    				<input id="horaInicio1" name="horaInicio1" type="text" class="timepicker">
 	                    				<label for="horaInicio1"> Hora de Inicio </label>
 	                    			</div>
 	                    		</div>
@@ -269,7 +317,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin1" type="text" class="timepicker">
+	                    				<input id="horaFin1" name="horaFin1" type="text" class="timepicker">
 	                    				<label for="horaFin1"> Hora de Final </label>
 	                    			</div>
 	                    		</div>
@@ -285,13 +333,13 @@
                         	<div id="horario2"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia2"><!---------------------------------------->
+									    <select  name="dia2"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -304,7 +352,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio2" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio2" name="horaInicio2" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio2"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -315,7 +363,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin2" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin2" name="horaFin2" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin2"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -331,13 +379,13 @@
                         	<div id="horario3"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia3"><!---------------------------------------->
+									    <select  name="dia3"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -350,7 +398,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio3" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio3" name="horaInicio3" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio3"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -361,7 +409,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin3" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin3" name="horaFin3" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin3"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -378,13 +426,13 @@
                         	<div id="horario4"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia4"><!---------------------------------------->
+									    <select  name="dia4"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -397,7 +445,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio4" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio4" name="horaInicio4" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio4"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -408,7 +456,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin4" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin4" name="horaFin4" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin4"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -425,13 +473,13 @@
                         	<div id="horario5"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia5"><!---------------------------------------->
+									    <select  name="dia5"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -444,7 +492,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio5" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio5" name="horaInicio5" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio5"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -455,7 +503,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin5" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin5" name="horaFin5" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin5"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -472,13 +520,13 @@
                         	<div id="horario6"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia6"><!---------------------------------------->
+									    <select  name="dia6"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -491,7 +539,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio6" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio6" name="horaInicio6" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio6"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -502,7 +550,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin6" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin6" name="horaFin6" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin6"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -519,13 +567,13 @@
                         	<div id="horario7"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia7"><!---------------------------------------->
+									    <select  name="dia7"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -538,7 +586,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio7" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio7" name="horaInicio7" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio7"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -549,7 +597,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin7" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin7" name="horaFin7" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin7"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -566,13 +614,13 @@
                         	<div id="horario8"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia8"><!---------------------------------------->
+									    <select  name="dia8"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -585,7 +633,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio8" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio8" name="horaInicio8" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio8"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -596,7 +644,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin8" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin8" name="horaFin8" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin8"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -613,13 +661,13 @@
                         	<div id="horario9"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia9"><!---------------------------------------->
+									    <select  name="dia9"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -632,7 +680,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio9" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio9" name="horaInicio9" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio9"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -643,7 +691,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin9" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin9" name="horaFin9" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin9"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>
@@ -660,13 +708,13 @@
                         	<div id="horario10"><!---------------------------------------------------->
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  id="dia10"><!---------------------------------------->
+									    <select  name="dia10"><!---------------------------------------->
 									      <option value="" disabled selected>Elíge un día</option>
-									      <option value="1">Lunes</option>
-									      <option value="2">Martes</option>
-									      <option value="3">Miércoles</option>
-									      <option value="3">Jueves</option>
-									      <option value="3">Viernes</option>
+									      <option value="L">Lunes</option>
+									      <option value="M">Martes</option>
+									      <option value="W">Miércoles</option>
+									      <option value="J">Jueves</option>
+									      <option value="V">Viernes</option>
 									    </select>
 									    <label>Día</label>
 									</div>
@@ -679,7 +727,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio10" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio10 name="horaInicio1"" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio10"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -690,7 +738,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin10" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin10 name="horaFin1"" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin10"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>

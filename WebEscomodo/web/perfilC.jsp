@@ -1,25 +1,25 @@
 <%-- 
-    Document   : perfilR
-    Created on : 22/05/2019, 02:23:40 PM
+    Document   : perfilC
+    Created on : 26/05/2019, 04:31:39 PM
     Author     : Yax
 --%>
 
+<%@page import="ldn.Pedido"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
     HttpSession sesion = request.getSession();
-    sesion.setAttribute("Mail", "y-chan@hotmail.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
-    sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Mail", "diegoCV@crayds.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Tipo", "1"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     String mail = sesion.getAttribute("Mail").toString();
     int tipo = Integer.parseInt(sesion.getAttribute("Tipo").toString());
-    ldn.Repartidor rep = new ldn.Repartidor(mail);
-    String Nombre = rep.getNombre();
-    String Tel = rep.getTel();
-    String Horario = rep.getHorario();
-    String Foto = rep.getFoto();
-    String Valoracion = rep.getValoracion();
-    int np = rep.NPedidos(mail);
-    
+    ldn.Cliente cli = new ldn.Cliente(mail);
+    String Nombre = cli.getNombre();
+    String Tel = cli.getTel();
+    String Boleta = cli.getBoleta();
+    String Foto = cli.getFoto();
+    String Email = cli.getEmail();    
 %>
 <html>
     <head>
@@ -27,7 +27,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<title>Escomodo</title>
-
+        <%if(mail==null || tipo != 1){%>
+                <script>window.location.replace("mainPage.html");</script>
+        <%}%>
 	<meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'/>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -37,13 +39,15 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
 	<script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
-	<script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
-
+        <script type="text/javascript" src="libs/jquery-3.1.1/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/foot.js"></script>
+        <script type="text/javascript" src="js/pedidos.js"></script>
+        
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link href="css/mainPage.css" rel="stylesheet">
         <link href="css/perfil.css" rel="stylesheet">
-        <script type="text/javascript" src="js/foot.js"></script>
     </head>
     <body>
         <div class = "row">
@@ -80,47 +84,57 @@
         </div>
         <div>
             <div class="row rowMarginT">
-                <div class = "col s6 m4 l2 offset-s3 offset-m4 offset-l5">
+                <div class = "col s6 m4 l2">
                     <div>
                         <img src='<%=Foto%>' class='circle responsive-img z-depth-3'/>
                     </div>
                 </div>
-                <div class="col s2 m2 l4"></div> 
-                <%if(tipo == 2){%>
+                <div class="col s5 m6 l9">
+                    <br>
+                    <div class="col s12 m12 l12">
+                        <span class="center-align letradeIMPAKTO"><%=Nombre%></span>
+                    </div>
+                    <div class="col s6 m6 l6">
+                        <span class="center-align noIMPAKTO"><%=Boleta%></span>
+                    </div>
+                    <div class="col s6 m6 l6">
+                        <span class="center-align noIMPAKTO"><%=Email%></span>
+                    </div>
+                </div>
                 <div class = "col s1 m2 l1">
                     <a class="btn-floating btn-large"><span><i class="small material-icons">edit</i></span></a>
                 </div>
-                <%}%>
-            </div>
-            <div class="row rowMarginT">
-                <div class = "col s12 m12 l4 push-l4 center-align">
-                    <span class="center-align letradeIMPAKTO"><%=Nombre%></span>
-                </div>
-                <div class = "col s6 m6 l4 pull-l4 center-align">
-                  <span class="center-align letradeIMPAKTO"><%=np%> <br> </span>
-                  <span class="noIMPAKTO">Pedidos completados</span>
-                </div>  
-                <div class = "col s6 m6 l4 center-align">
-                    <br>
-                    <span class="letradeIMPAKTO"><%=Valoracion%><i class="medium fas fa-star "></i></span>
-                </div>
             </div>
             <div class="row">
-                <div class="col s6 m6 l4"><div class = "divider"></div></div>
-                <div class="col l4 center-align">
-                </div>
-                <div class="col s6 m6 l4"><div class = "divider"></div></div>
+                <div class="col s12 m12 l12"><div class = "divider"></div></div>
             </div>
-            <%if(tipo == 2){%>  
-                <div class = "row rowMarginT">
-                    <div class = "col s12 m6 l6" align="center">
-                            <a class="waves-effect waves-light btn-large" href=" ">Pedidos disponibles</a>
-                    </div>
-                    <div class = "col s12 m6 l6" align="center">
-                            <a class="waves-effect waves-light btn-large" href=" ">Historial pedidos</a>
-                    </div>
+            <div class = "row">
+                <div class = "col s12 m6 l6 offset-m3 offset-l3" align="center">
+                        <span class="center-align flow-text">Mis pedidos</span>
                 </div>
-            <%}%>
+                <div>
+                    <%
+                       ArrayList <Pedido>pedidos=Pedido.getPedidos(mail);
+                       Pedido a; 
+                    %>
+                </div>
+            </div>
+            <div class="row rowMargin">
+              <ul class="collapsible popout">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+              </ul>
+            </div>    
         </div>  
         <footer class="page-footer rowMarginT">
 		 <div class="container">
@@ -171,3 +185,4 @@
 	</footer>
     </body>
 </html>
+

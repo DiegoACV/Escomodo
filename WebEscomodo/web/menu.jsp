@@ -1,14 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession();
-    sesion.setAttribute("Mail", "prueba@b.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Mail", "tamalesP@hotmail.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     
     String mail = request.getParameter("email") == null ? "" : request.getParameter("email");
-    mail = "prueba@b.com"; //BORRAR CUANDO MANDEMOS EL NOMBRE DESDE LAS OTRAS PAG
+    mail = "tamalesP@hotmail.com"; //BORRAR CUANDO MANDEMOS EL NOMBRE DESDE LAS OTRAS PAG
     ldn.Establecimiento est = new ldn.Establecimiento(mail);
-    String nomest = est.getNombre();
-    String m = est.getEmail();
     
 %>
 <!DOCTYPE html>
@@ -59,6 +57,7 @@
                     <button class="btn-floating btn-large waves-effect waves-light red aprod" data-button-id="aprod" id="aprod"><i class="fas fa-plus"></i></button>                    
                 </div> <%}%>
                 <input type="hidden" id="email" name="email" value="<%=est.getEmail()%>" />
+                <input type="hidden" id="email" name="email" value="<%=est.getIdest()%>" />
 		<hr class="sound_waves-text">
 		<div class="section items">
                     <div class="row"></div>
