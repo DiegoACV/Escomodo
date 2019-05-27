@@ -132,5 +132,9 @@ call actValoracion("fermata@gmail.com");
 call actValoracion("y-chan@hotmail.com");
 
 call verRepartidor("y-chan@hotmail.com");
+#Para usuario
+call sp_verPedidos("diegoCV@crayds.com");
+#Para repartidor
+call sp_verPedidos("y-chan@hotmail.com");
 
 select * from pedido;

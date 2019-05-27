@@ -303,3 +303,27 @@ begin
     select msj as MSJ;
 end**
 delimiter ;
+
+drop procedure if exists sp_verPedidos;
+delimiter **
+create procedure sp_verPedidos(in mail nvarchar(40))
+begin	
+	declare msj nvarchar(60); 
+    declare idc int;
+    
+    set idc =(select idcliente from cliente where email=mail);
+    if idc is null then 
+		select establecimiento.nombre AS establecimiento, platillo.nombre AS comida, cliente, cantidad, precio, 	
+			preciotot as total, fecha, hora, lugar, pedido.calificacion, estpedido.descripcion as estado
+				from pedido, estpedido, platillo, establecimiento, cliente where estado = idestado and 
+					platillo = idplatillo and cliente=idcliente and pedido.establecimiento = idest 
+						and estado = 5;
+	else 
+		select establecimiento.nombre AS establecimiento, platillo.nombre AS comida,  cliente, cantidad, precio, 
+        preciotot as total, fecha, hora, lugar, pedido.calificacion, estpedido.descripcion as estado 
+        from pedido, estpedido, platillo, establecimiento where estado = idestado and 
+        platillo = idplatillo and pedido.establecimiento = idest and cliente=idc and estado != 1 
+        and estado != 2;
+	end if;
+end**
+delimiter ;
