@@ -9,10 +9,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int index=Integer.parseInt(request.getParameter("numItemsDisplayed"));
+    
     ArrayList <Platillo>platillos=Platillo.getPlatillos();
     Platillo a;
     int cantidadDesplegar=12;
-                    
     int cantidad=platillos.size();
     int restantes=platillos.size()-index;
     if(restantes !=0){
@@ -25,13 +25,13 @@
             for (int i=index+1; i <= (max+index); i++) {
                 a=platillos.get(i-1);
                 out.println("<div class=\"col s12 m6 l4\">");
-                out.println("<div class=\"card small sticky-action\" data-product="+a.getNombre()+">");
+                out.println("<div class=\"card small sticky-action\" data-product="+a.getId()+">");
                 out.println("<div class=\"card-image\">");
                 out.println("<img class=\"activator\" src="+a.getFoto()+"></div>");
                 out.println("<div class=\"card-content\">");
                 out.println("<span class=\"card-title\">"+a.getNombre());
-                out.println("<button class=\"btn-flat right fav\" data-button-id="+a.getNombre()+"><i class=\"far fa-heart\"></i></button>");
-                out.println("<button class=\"btn-flat right add\" data-button-id="+a.getNombre()+"><i class=\"fas fa-shopping-cart\"></i></button>");
+                out.println("<button class=\"btn-flat right fav\" data-button-id="+a.getId()+"><i class=\"far fa-heart\"></i></button>");
+                out.println("<button class=\"btn-flat right add\" data-button-id="+a.getId()+"><i class=\"fas fa-shopping-cart\"></i></button>");
                 out.println("</span></div><div class=\"card-action\">");
                 out.println("<span class=\"grey-text\">"+a.getValoracion()+"<i class=\"fas fa-star\"></i><span class=\"right\">"+a.getPrecio()+" MXN</span></span>");
                 out.println("</div>");
