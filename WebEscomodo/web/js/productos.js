@@ -21,7 +21,7 @@ $(document).ready(function(){
                     url:"crearElementosPlatillos.jsp",
                     data:"numItemsDisplayed="+numItemsDisplayed,
                     success:function(resp){
-                        $("div.row").append(resp);
+                        $(".row.productos").append(resp);
                         if($("#continue").attr("data-continue")=="true"){
                             $("div.my_container").append("<div class=\"scrollCreator\"></div>");
                             $(".delete").remove();

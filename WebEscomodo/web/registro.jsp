@@ -727,7 +727,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio10 name="horaInicio1"" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio10" name="horaInicio1" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio10"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -738,7 +738,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin10 name="horaFin1"" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin10" name="horaFin1" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin10"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>

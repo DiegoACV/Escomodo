@@ -21,7 +21,7 @@ $(document).ready(function(){
                     url:"crearEstablecimientos.jsp",
                     data:"numItemsDisplayed="+numItemsDisplayed,
                     success:function(resp){
-                        $("div.row").append(resp);
+                        $(".row.establecimientos").append(resp);
                         if($("#continue").attr("data-continue")=="true"){
                             $("div.my_container").append("<div class=\"scrollCreator\"></div>");
                             $(".delete").remove();
