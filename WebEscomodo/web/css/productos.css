@@ -15,3 +15,41 @@
 	display: inline-block;
 	padding-right:20px; 
 }
+
+@media only screen and (max-width: 600px){
+    .card-title{
+        font-size: 24px !important;
+    }
+}
+@media only screen and (max-width: 992px) and (min-width: 601px) {
+    .card-title{
+        font-size: 17px !important;
+    }
+}
+@media only screen and (min-width: 993px) {
+    .card-title{
+        font-size: 19px !important;
+    }
+}
+
+.btn-red{
+  background-color: #F54828 !important;
+}
+.jconfirm-type-orange{
+  border-top: solid 8px #F54828 !important;
+}
+
+@keyframes type-orange{
+  1%, 50%, 100%{
+    border-color: #F54828 !important;
+  }
+}
+
+.jconfirm .jconfirm-box.jconfirm-type-orange .jconfirm-title-c .jconfirm-icon-c{
+    color: #F54828 !important;
+}
+
+.ultrasonic_motion.btn-flat{
+    background-color: #F54828 !important;
+    color: white;
+}
