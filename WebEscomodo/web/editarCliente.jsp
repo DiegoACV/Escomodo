@@ -167,10 +167,13 @@
 	                            </div>
                         	</div>
                                 <div class="col s12 m12 l6">
+                                    <a class="waves-effect waves-light btn show">Cambiar contrase&ntilde;a</a>
+                        	</div>
+                                <div class="col s12 m12 l6 psw">
                                     <div class="input-field">
                         		  <i class="prefix fas fa-lock"></i>	
-	                              <input id="acont" name="acont" type="password" class="validate">
-	                              <label for="acont">Contraseña anterior</label>
+                                          <input id="acont" name="acont" type="password" class="validate cc" value="sc">
+                                          <label for="acont">Contraseña anterior</label>
 	                            </div>
                         	</div>
 
@@ -178,18 +181,18 @@
 
                         <div class = "row">
 
-                        	<div class="col s12 m12 l6">
+                        	<div class="col s12 m12 l6 psw">
                         		<div class="input-field">
                         		  <i class="prefix fas fa-lock"></i>
-	                              <input id="contra" name="contra" type="password" class="validate">
+                                          <input id="contra" name="contra" type="password" class="validate cc" value="sc">
 	                              <label for="contra">Contraseña nueva</label>
 	                            </div>
                         	</div>
 
-                        	<div class="col s12 m12 l6">
+                        	<div class="col s12 m12 l6 psw">
                         		<div class="input-field">
                         		  <i class="prefix fas fa-lock"></i>	
-	                              <input id="contra2" type="password" class="validate">
+	                              <input id="contra2" type="password" class="validate cc" value="sc">
 	                              <label for="contra2">Confirma la contraseña nueva</label>
 	                            </div>
                         	</div>

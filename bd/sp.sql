@@ -280,22 +280,25 @@ delimiter **
 create procedure sp_CCliente(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in t nvarchar(20), in acont nvarchar(16), in fot nvarchar(80), in ncont nvarchar(16))
 begin
 	declare msj nvarchar(60); 
-    declare vpsw nvarchar(16);
     declare exs int;
 	
-    set exs = (select count(*) from cliente where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
+    set exs = (select count(*) from cliente where email = mail and email != (select email from cliente where boleta = bol));
     
-    if exs = 1 then
-		set exs = (select count(*) from cliente where email = mail and email != (select email from cliente where boleta = bol));
-        
-		if exs = 0 then
-			update cliente set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends'), foto = fot where boleta = bol;
-			set msj='Datos actualizados';
-		else
-			set msj ='Este correo ya está registrado por otro usuario';
+    if exs = 0 then
+			if acont = 'sc' and ncont = 'sc' then
+				update cliente set nombre = nom, email = mail, tel = t, foto = fot where boleta = bol;
+                set msj='Datos actualizados!';
+			else
+				set exs = (select count(*) from cliente where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
+                if exs = 1 then
+					update cliente set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends'), foto = fot where boleta = bol;
+					set msj='Datos actualizados';
+				else
+					set msj ='La contraseña anterior es incorrecta';
+				end if;
         end if;
     else
-		set msj ='La contraseña anterior no es correcta';
+		set msj ='Este correo ya está registrado por otro usuario';
     end if;
     select msj as MSJ;
 end**
