@@ -140,8 +140,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link href="css/registro.css" rel="stylesheet">
+	<link href="css/nvBar.css" rel="stylesheet">
+	<link href="css/foot.css" rel="stylesheet">
 
 	<script type="text/javascript" src="js/registro.js"></script>
+	<script type="text/javascript" src="js/nvBar.js"></script>
+	<script type="text/javascript" src="js/foot.js"></script>
 
 </head>
 
@@ -155,28 +159,31 @@
 				<nav>
 				    <div class="nav-wrapper">
 
+				      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+				      	<i class="fas fa-bars"></i>
+				      </a>
+
 				      <ul id="nav-mobile" class="left hide-on-med-and-down">
-				        <li><a href="mainPage.jsp" class = "titles">Escomodo</a></li>
-				        <li><a href="productos.html" class = "titles">Escomida</a></li>
-				        <li><a href="collapsible.html" class = "titles">Escomercio</a></li>
-				        <li><a href="sass.html" class = "brand-logo"><i class="fas fa-shopping-cart titles"></i></a></li>
+				        <li><a href="productos.html" class = "white-text">Escomida</a></li>
+				        <li><a href="establecimientos.html" class = "white-text">Escomercio</a></li>
 				      </ul>
 
+				      <ul class="right hide-on-med-and-down">
+
+			      		<li><a href="carrito.jsp"><i class="fas fa-shopping-cart white-text"></i></a></li>
+			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
+
+					  </ul>
+
 				      <a href="mainPage.jsp" class="brand-logo center">
-				      	<img src="images/escomodo.png" class = "responsive-img" id = "logo">
+				      	<img src="https://drive.google.com/uc?id=1-33i2fj72T0A40dxfZpDGTfWMyGbwj63" class = "responsive-img" id = "logo">
 				      </a>
 
-				      <a href="#" class="right hide-on-med-and-down">
-						<form>
-					        <div class="input-field">
-					          <input id="search" type="search" required>
-					          <label class="label-icon" for="search">
-					          	<i class="fas fa-search" class = "titles"></i>
-					          </label>
-					        </div>
-					    </form>
-				      </a>
-
+				      <ul class="sidenav" id="mobile-demo">
+					    <li><a href="productos.html" class = "orange-text">Escomida</a></li>
+				        <li><a href="establecimientos.html" class = "orange-text">Escomercio</a></li>
+				        <li><a href="carrito.jsp" class="orange-text"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
+			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
 				    </div>
 				</nav>
 			</div>
@@ -727,7 +734,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio10 name="horaInicio1"" type="text" class="timepicker"><!---->
+	                    				<input id="horaInicio10" name="horaInicio1" type="text" class="timepicker"><!---->
 	                    				<label for="horaInicio10"> Hora de Inicio </label><!---------->
 	                    			</div>
 	                    		</div>
@@ -738,7 +745,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin10 name="horaFin1"" type="text" class="timepicker"><!------>
+	                    				<input id="horaFin10" name="horaFin1" type="text" class="timepicker"><!------>
 	                    				<label for="horaFin10"> Hora de Final </label><!------------->
 	                    			</div>
 	                    		</div>

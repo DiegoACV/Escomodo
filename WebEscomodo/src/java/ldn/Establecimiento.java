@@ -71,6 +71,26 @@ public class Establecimiento
         }
     }
     
+    public String registrar(String nombre, String ubi, String repre, String email, String tel, String horario, String contra){
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_AEstablecimiento('"+nombre+"','"+ubi+"','"+repre+"','"+email+"','"+tel+"','"+horario+"','"+contra+"','prueba.png')");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            msj = error.toString();
+        }
+        
+        return msj;
+    }
+    
     public static ArrayList<Establecimiento> getEstablecimientos(){
         BD.Datos base = new BD.Datos();
         ResultSet respuesta = null;

@@ -1,5 +1,38 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+	HttpSession sesion = request.getSesion();
+
+	ldn.Establecimiento estab = new ldn.Establecimiento();
+
+	String mensaje = "";
+
+	String nom = request.getParameter("nombreEscomercio") == null ? "" : request.getParameter("nombreEscomercio");
+	String ubi = request.getParameter("ubi") == null ? "" : request.getParameter("ubi");
+	String repre = request.getParameter("repre") == null ? "" : request.getParameter("repre");
+	String email = request.getParameter("email") == null ? "" : request.getParameter("email");
+	String tel = request.getParameter("tel") == null ? "" : request.getParameter("tel");
+	String horario = "";
+	String contra = request.getParameter("contra") == null ? "" : request.getParameter("contra");
+
+	String acc = request.getParameter("acc") == null ? "0" : request.getParameter("acc");
+
+	if (acc.equals("1")) {
+		String horaA = request.getParameter("horaAbierto") == null ? "" : request.getParameter("horaAbierto") + "-";
+		String horaC = request.getParameter("horaCerrado") == null ? "" : request.getParameter("horaCerrado");
+
+		horario = horaA + horaC;
+
+		mensaje = estab.registrar(nom, ubi, repre, email, tel, horario, contra);
+
+		if(mensaje.equals("Has sido registrado")){
+			sesion.setAttribute("Mail", email);
+            sesion.setAttribute("Tipo", "2");
+
+            %><script> alert("<%=mensaje%>"); </script><%
+
+            response.sendRedirect("mainPage.jsp");
+		}
+	}
 
 %>
 
@@ -26,9 +59,11 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+	<link href="css/registroEscomercio.css" rel="stylesheet">
 	<link href="css/nvBar.css" rel="stylesheet">
 	<link href="css/foot.css" rel="stylesheet">
 
+	<script type="text/javascript" src="js/registroEscomercio.js"></script>
 	<script type="text/javascript" src="js/nvBar.js"></script>
 	<script type="text/javascript" src="js/foot.js"></script>
 
@@ -40,37 +75,154 @@
 
 	<main>
 		<div class = "row">
-				<nav>
-				    <div class="nav-wrapper">
+			<nav>
+			    <div class="nav-wrapper">
 
-				      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-				      	<i class="fas fa-bars"></i>
-				      </a>
+			      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+			      	<i class="fas fa-bars"></i>
+			      </a>
 
-				      <ul id="nav-mobile" class="left hide-on-med-and-down">
-				        <li><a href="productos.html" class = "white-text">Escomida</a></li>
-				        <li><a href="establecimientos.html" class = "white-text">Escomercio</a></li>
-				      </ul>
+			      <ul id="nav-mobile" class="left hide-on-med-and-down">
+			        <li><a href="productos.html" class = "white-text">Escomida</a></li>
+			        <li><a href="establecimientos.html" class = "white-text">Escomercio</a></li>
+			      </ul>
 
-				      <ul class="right hide-on-med-and-down">
+			      <ul class="right hide-on-med-and-down">
 
-			      		<li><a href="carrito.jsp"><i class="fas fa-shopping-cart white-text"></i></a></li>
-			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
+		      		<li><a href="carrito.jsp"><i class="fas fa-shopping-cart white-text"></i></a></li>
+		      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
 
-					  </ul>
+				  </ul>
 
-				      <a href="mainPage.jsp" class="brand-logo center">
-				      	<img src="https://drive.google.com/uc?id=1-33i2fj72T0A40dxfZpDGTfWMyGbwj63" class = "responsive-img" id = "logo">
-				      </a>
+			      <a href="mainPage.jsp" class="brand-logo center">
+			      	<img src="https://drive.google.com/uc?id=1-33i2fj72T0A40dxfZpDGTfWMyGbwj63" class = "responsive-img" id = "logo">
+			      </a>
 
-				      <ul class="sidenav" id="mobile-demo">
-					    <li><a href="productos.html" class = "orange-text">Escomida</a></li>
-				        <li><a href="establecimientos.html" class = "orange-text">Escomercio</a></li>
-				        <li><a href="carrito.jsp" class="orange-text"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
-			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
-				    </div>
-				</nav>
+			      <ul class="sidenav" id="mobile-demo">
+				    <li><a href="productos.html" class = "orange-text">Escomida</a></li>
+			        <li><a href="establecimientos.html" class = "orange-text">Escomercio</a></li>
+			        <li><a href="carrito.jsp" class="orange-text"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
+		      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
+			    </div>
+			</nav>
+		</div>
+
+		<div class="container">
+			<div class = "row">
+				<div class = "col s12 m12 l12 center-align">
+					<h1>
+						¡Registra tu Escomercio!
+					</h1>
+				</div>
 			</div>
+
+			<form action="?acc=1" method="POST" id="formRE">
+
+				<div class="row">
+					<div class="col s12 m10 l8 offset-l2 offset-m1">
+						<div class="input-field">
+		                  <i class="prefix fas fa-utensils"></i>
+		                  <input id="nombreEscomercio" name="nombreEscomercio" type="text" class="validate">
+		                  <label for="nombreEscomercio">Nombre del Establecimiento</label>
+		                </div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m10 l8 offset-l2 offset-m1">
+						<div class="input-field">
+		                  <i class="prefix fas fa-search-location"></i>
+		                  <input id="ubi" name="ubi" type="text" class="validate">
+		                  <label for="ubi">Ubicación</label>
+		                </div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s12 m10 l8 offset-l2 offset-m1">
+						<div class="input-field">
+		                  <i class="prefix fas fa-user-tie"></i>
+		                  <input id="repre" name="repre" type="text" class="validate">
+		                  <label for="repre">Nombre del Representante</label>
+		                </div>
+					</div>
+				</div>
+
+				<div class = "row">
+		        	<div class="col s12 m10 l6 offset-m1">
+		        		<div class="input-field">
+		        		  <i class="prefix fas fa-envelope"></i>
+		                  <input id="email" name="email" type="text" class="validate">
+		                  <label for="email">Correo Electrónico</label>
+		                </div>
+		        	</div>
+
+		        	<div class="col s12 m10 l6 offset-m1">
+		        		<div class="input-field">
+		        		  <i class="prefix fas fa-phone"></i>
+		                  <input id="tel" name="tel" type="text" class="validate">
+		                  <label for="tel">Número de Teléfono</label>
+		                </div>
+		        	</div>
+		        </div>
+
+		        <div class="row">
+		        	<h6>Horario de Servicio</h6>
+		        </div>
+
+				<div class="row">
+					<div class="col s2 offset-s2 m2 l1 offset-l1 center-align vertical-margin">
+		    			<p>De</p>
+		    		</div>
+
+		    		<div class="col s6 m4 l4">
+		    			<div class="input-field">
+		    				<input id="horaAbierto" name="horaAbierto" type="text" class="timepicker">
+		    				<label for="horaAbierto"> Hora de Apertura </label>
+		    			</div>
+		    		</div>
+
+		    		<div class="col s2 offset-s2 m1 l1 center-align vertical-margin">
+		    			<p>A</p>
+		    		</div>
+
+		    		<div class="col s6 m4 l4">
+		    			<div class="input-field">
+		    				<input id="horaCerrado" name="horaCerrado" type="text" class="timepicker">
+		    				<label for="horaCerrado"> Hora de Cierre </label>
+		    			</div>
+		    		</div>
+					
+				</div>
+
+				<div class = "row">
+	            	<div class="col s12 m10 l6 offset-m1">
+	            		<div class="input-field">
+	            		  <i class="prefix fas fa-lock"></i>
+	                      <input id="contra" name="contra" type="password" class="validate">
+	                      <label for="contra">Contraseña</label>
+	                    </div>
+	            	</div>
+
+	            	<div class="col s12 m10 l6 offset-m1">
+	            		<div class="input-field">
+	            		  <i class="prefix fas fa-lock"></i>	
+	                      <input id="contra2" type="password" class="validate">
+	                      <label for="contra2">Confirma la Contraseña</label>
+	                    </div>
+	            	</div>
+	            </div>
+
+				<div class="row">
+					<div class="col s12 m12 l12 center-align">
+	            		<button class="btn-large waves-effect waves-light" type="submit" name="action">Registrarse
+						    <i class="fas fa-briefcase"></i>
+						</button>
+	            	</div>
+				</div>
+
+			</form>
+		</div>
 		
 	</main>
 

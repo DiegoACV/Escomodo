@@ -3,32 +3,14 @@ body{
 	background-color: #FFFFFF;
 }
 
-.titles{
-	color: #FFFFFF;
-}
-
-a.right{
-	height: 100% !important;
-	width: 30% !important;
-}
-
 h1{
 	color: #F54828;
 	margin: 50px 0px;
 }
 
-h3, h5{
+h6{
   color: #F54828;
-  margin-bottom: 20px;
-}
-
-#escomensal{
-  padding: 40px;
-}
-
-#foto-insert{
-  height: 15%;
-  width: 15%;
+  margin-bottom: 10px;
 }
 
 i.prefix.fas{
@@ -40,28 +22,7 @@ div.vertical-margin{
   margin-bottom: 10px;
 }
 
-div.switch label a{
-  font-size: 15px;
-}
-
-.lever{
-  background-color: #F54828 !important;
-}
-
-.lever:after{
-  background-color: #F0F0F0 !important;
-}
-
-input[type=checkbox]:checked+.lever:after{
-  background-color: #F54828 !important;
-}
-
-input[type=checkbox]:checked+.lever{
-  background-color: #F7803C !important;
-}
-
-
-   /* label color */
+/* label color */
    .input-field label {
      color: #9C9C9C;
    }
@@ -109,16 +70,6 @@ input[type=checkbox]:checked+.lever{
      box-shadow: 0 1px 0 0 #F7803C !important;
    }
 
-i.fa-question-circle, i.fa-plus{
-  color: #F54828;
-  font-size: 20px;
-}
-
-i.fa-plus, i.fa-minus{
-  font-size: 25px !important;
-  padding-top: 7px;
-}
-
 button.btn-large{
   margin-top: 35px;
   margin-bottom: 50px;
@@ -143,34 +94,8 @@ button.btn-large{
   background-color: #F7803C;
 }
 
-.fa-user-plus, .fa-briefcase{
+.fa-briefcase{
   padding-left: 7%;
-}
-
-.btn-red{
-  background-color: #F54828 !important;
-}
-.jconfirm-type-orange{
-  border-top: solid 8px #F54828 !important;
-}
-
-@keyframes type-orange{
-  1%, 50%, 100%{
-    border-color: #F54828 !important;
-  }
-}
-
-img#img-escom8{
-  height: 60%;
-  width: 60%;
-}
-
-.dropdown-content li>span{
-  color: #F54828 !important;
-}
-
-.select-dropdown li.disabled>span{
-  color: #9C9C9C !important;
 }
 
 .timepicker-digital-display{
@@ -186,15 +111,6 @@ img#img-escom8{
   fill: #F54828 !important;
 }
 
-.page-footer{
-  background-color: #2E0D23;
-}
-
-.white-text{
-  color: #FFFFFF !important;
-}
-
-
 @media only screen and (max-width: 992px){
 
   button.btn-large{
@@ -205,10 +121,6 @@ img#img-escom8{
     width: 200px;
 
     padding: 0;
-  }
-
-  .divider.vertical{
-    height: 75%;
   }
 
 }
@@ -224,15 +136,6 @@ img#img-escom8{
     width: 280px;
 
     padding: 0;
-  }
-
-  .divider.vertical{
-    width: 0px;
-  }
-
-  .divider{
-    height: 1px;
-    width: 100%;
   }
 
 }
