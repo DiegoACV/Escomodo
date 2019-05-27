@@ -1,3 +1,10 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+
+
+%>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -21,8 +28,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link href="css/mainPage.css" rel="stylesheet">
+	<link href="css/nvBar.css" rel="stylesheet">
+	<link href="css/foot.css" rel="stylesheet">
 
 	<script type="text/javascript" src="js/mainPage.js"></script>
+	<script type="text/javascript" src="js/nvBar.js"></script>
 	<script type="text/javascript" src="js/foot.js"></script>
 
 </head>
@@ -53,7 +63,7 @@
 
 					  </ul>
 
-				      <a href="mainPage.html" class="brand-logo center">
+				      <a href="mainPage.jsp" class="brand-logo center">
 				      	<img src="https://drive.google.com/uc?id=1-33i2fj72T0A40dxfZpDGTfWMyGbwj63" class = "responsive-img" id = "logo">
 				      </a>
 
@@ -131,7 +141,7 @@
 					<a class="waves-effect waves-light btn-large" id = "R" href="registro.jsp">Regístrate</a>
 				</div>
 				<div class = "col s12 m6 l6" align="center">
-					<a class="waves-effect waves-light btn-large" id = "RC">Registra tu Escomercio</a>
+					<a class="waves-effect waves-light btn-large" id = "RC" href="registroEscomercio.jsp">Registra tu Escomercio</a>
 				</div>
 			</div>
 

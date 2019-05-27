@@ -5,11 +5,6 @@ $(document).ready(
 
 		var n = 1;
 
-		$('.sidenav').sidenav({
-			preventScrolling: false,
-			edge: 'left'
-		});
-
 		$('.carousel').carousel({
 		    fullWidth: true,
 		    indicators: true,

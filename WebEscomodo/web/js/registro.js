@@ -10,25 +10,35 @@ $(document).ready(
 		var solo8 = $("div#soloEscom8");
 		var n = 1;
 
+		var form = $("form#form-registro");
+
 		if(swch.prop('checked')){
 			eo.css('color', '#9C9C9C');
 			e8.css('color', '#F54828');
 			solo8.show();
+			form.removeAttr('action');
+			form.attr('action', '?acc=2');
 		} else {
 			eo.css('color', '#F54828');
 			e8.css('color', '#9C9C9C');
 			solo8.hide();
+			form.removeAttr('action');
+			form.attr('action', '?acc=1');
 		}
 
 		swch.on("click", function(){
 			if(swch.prop('checked')){
 				eo.css('color', '#9C9C9C');
 				e8.css('color', '#F54828');
+				form.removeAttr('action');
+				form.attr('action', '?acc=2');
 				solo8.show();
 			} else {
 				eo.css('color', '#F54828');
 				e8.css('color', '#9C9C9C');
 				solo8.hide();
+				form.removeAttr('action');
+				form.attr('action', '?acc=1');
 			}
 		});
 
@@ -37,7 +47,7 @@ $(document).ready(
 			$.alert({
 			    title: '<div class="center-align"><h3>Escomensal</h3></div>',
 			    content: '<div class="center-align"><img src="https://drive.google.com/uc?id=16Rcxa1Px6EJj6enn6ncbPAzMPu77KWeb"'+
-			    'class = "responsive-img"></div><div class="center-align"><p>Un Escomensal es un usuario podrá hacer pedidos, ' +
+			    'class = "responsive-img"></div><div class="center-align"><p>Un Escomensal es un usuario que podrá hacer pedidos, ' +
 			    'calificar platillos y calificar repartidores a través de Escomodo.</p></div>',
 			    boxWidth: '50%',
 			    type: 'orange',
@@ -78,7 +88,7 @@ $(document).ready(
 		});
 
 		$('select').formSelect();
-		$('.timepicker').timepicker();
+		$('.timepicker').timepicker({twelveHour: false});
 
 		$("#horario2").hide();
 		$("#horario3").hide();
@@ -132,6 +142,8 @@ $(document).ready(
 		$("i#minus8").on("click", function(){ $("#horario8").hide() });
 		$("i#minus9").on("click", function(){ $("#horario9").hide() });
 		$("i#minus10").on("click", function(){ $("#horario10").hide() });
+
+
 
 
 	}

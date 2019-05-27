@@ -62,7 +62,7 @@
                 <div class="card">
 
                     <div class="card-content center-align">
-                        <a href="mainPage.html">
+                        <a href="mainPage.jsp">
                             <img src="https://drive.google.com/uc?id=1g2Fvmk3s7cDx5cMR1rKVOZZyOTj_DjaP" class="responsive-img" id="logo">
                         </a>
                     </div>
