@@ -3,6 +3,7 @@
 	HttpSession sesion = request.getSession();
 	
         sesion.setAttribute("Mail", "diegoCV@crayds.com");//BORRAR CUANDO ESTÉN LAS SESIONES
+        sesion.setAttribute("Boleta", "2015370179");//BORRAR CUANDO ESTÉN LAS SESIONES
 	ldn.Cliente cliente = new ldn.Cliente(sesion.getAttribute("Mail").toString());
 	//ldn.Repartidor repartidor = new ldn.Repartidor();
 
@@ -16,6 +17,22 @@
 	//String img = "";
 
 	String acc = request.getParameter("acc") == null ? "0" : request.getParameter("acc");
+       
+        if(acc.equals("1"))
+        {
+            String msj = "";
+            String cnombre  = request.getParameter("nombre");
+            String cemail  = request.getParameter("email");
+            String ctel  = request.getParameter("tel");
+            String acont  = request.getParameter("acont");
+            String contra  = request.getParameter("contra");
+        
+            ldn.Cliente cte = new ldn.Cliente();
+            msj = cte.cambios(cnombre, bol, cemail, ctel, acont, bol+".jpg", contra);
+            
+            
+            
+        }
         
         
 
@@ -103,23 +120,15 @@
                             
                 <div class = "container" id="div-registro">
 
-                    <form action="EditarCliente" method="POST" id="form-actualizar" name="form-actualizar" enctype="multipart/form-data">
-                    
+
                         <div class = "row">
                             <div class="col s12 m12 l12 center-align">
-                                <img src="/../build/web/images/img_cliente/<%=nom%>" class="responsive-img" id="foto-insert">  
+                                <img src="images/img_cliente/<%=sesion.getAttribute("Boleta").toString()%>.jpg" class="responsive-img" id="foto-insert">  
+                                <a class="btn-floating btn-small waves-effect waves-light red" href="SubirImagen.jsp"><i class="fa fa-pen"></i></a>
                             </div>
-                            <div class="file-field input-field col s12 m12 l6 center-align">
-                                <div class="btn">
-                                  <span>Imagen</span>
-                                  <input type="file" id="img" name="img" accept="image/*">
-                                </div>
-                                <div class="file-path-wrapper">
-                                  <input class="file-path validate" type="text">
-                                </div>
-                            </div>
-                        </div>
 
+                        </div>
+                    <form action="?acc=1" method="POST" id="form-actualizar" name="form-actualizar">
                         <div class="row">
                             <div class="col s12 m10 l8 offset-l2 offset-m1">
 	                            <div class="input-field">
