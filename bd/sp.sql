@@ -313,17 +313,30 @@ begin
     
     set idc =(select idcliente from cliente where email=mail);
     if idc is null then 
-		select establecimiento.nombre AS establecimiento, platillo.nombre AS comida, cliente, cantidad, precio, 	
+		select idpedido, establecimiento.nombre AS establecimiento, platillo.nombre AS comida, cliente, cantidad, precio, 	
 			preciotot as total, fecha, hora, lugar, pedido.calificacion, estpedido.descripcion as estado
 				from pedido, estpedido, platillo, establecimiento, cliente where estado = idestado and 
 					platillo = idplatillo and cliente=idcliente and pedido.establecimiento = idest 
 						and estado = 5;
 	else 
-		select establecimiento.nombre AS establecimiento, platillo.nombre AS comida,  cliente, cantidad, precio, 
+		select idpedido, establecimiento.nombre AS establecimiento, platillo.nombre AS comida,  cliente, cantidad, precio, 
         preciotot as total, fecha, hora, lugar, pedido.calificacion, estpedido.descripcion as estado 
         from pedido, estpedido, platillo, establecimiento where estado = idestado and 
         platillo = idplatillo and pedido.establecimiento = idest and cliente=idc and estado != 1 
         and estado != 2;
 	end if;
+end**
+delimiter ;
+
+delimiter **
+create procedure sp_verPedidosR(in comer  nvarchar(60), in fech date,in hor time, in preciot float(5,2), 
+									in lug nvarchar(60))
+begin	
+    declare idc int;
+    
+    set idc = (select idest from establecimiento where nombre = comer);
+	select idpedido, platillo.nombre AS comida, cantidad, precio, pedido.calificacion, estpedido.descripcion as estado
+				from pedido, estpedido, platillo where estado = idestado and platillo = idplatillo and 
+					pedido.establecimiento = idc and fecha= fech and hora = hor and preciotot=preciot and lugar= lug;
 end**
 delimiter ;
