@@ -138,3 +138,6 @@ call sp_verPedidos("diegoCV@crayds.com");
 call sp_verPedidos("y-chan@hotmail.com");
 
 select * from pedido;
+
+call sp_verPedidosR('Tamales Doña Pelos', '2019-05-10','09:30:00', 20.00, 'salon 1112');
+call sp_verPedidosR('Jugos y licuados Freskesitos', '2019-05-13','12:15:00', 70.00, 'Cafeteria');
