@@ -30,7 +30,7 @@
             ldn.Cliente cte = new ldn.Cliente();
             msj = cte.cambios(cnombre, bol, cemail, ctel, acont, bol+".jpg", contra);
             
-            
+            response.sendRedirect("perfilC.jsp");
             
         }
         

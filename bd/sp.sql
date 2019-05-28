@@ -205,7 +205,7 @@ drop procedure if exists verRepartidor;
 delimiter **
 create procedure verRepartidor(in mail nvarchar(40))
 begin
-	select nombre, email, tel, horario, foto, valoracion from repartidor where email = mail;
+	select nombre, email, tel, horario, foto, valoracion, boleta from repartidor where email = mail;
 end; **
 delimiter ;
 
@@ -338,5 +338,49 @@ begin
 	select idpedido, platillo.nombre AS comida, cantidad, precio, pedido.calificacion, estpedido.descripcion as estado
 				from pedido, estpedido, platillo where estado = idestado and platillo = idplatillo and 
 					pedido.establecimiento = idc and fecha= fech and hora = hor and preciotot=preciot and lugar= lug;
+end**
+delimiter ;
+
+drop procedure if exists sp_CRepartidor;
+delimiter **
+create procedure sp_CRepartidor(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in t nvarchar(20), in acont nvarchar(16), in fot nvarchar(80), in ncont nvarchar(16), in hor nvarchar(60))
+begin
+	declare msj nvarchar(60); 
+    declare exs int;
+	
+    set exs = (select count(*) from repartidor where email = mail and email != (select email from repartidor where boleta = bol));
+    
+    if exs = 0 then
+			if acont = 'sc' and ncont = 'sc' and hor = 'sc' then
+				update repartidor set nombre = nom, email = mail, tel = t, foto = fot where boleta = bol;
+                set msj='Datos actualizados(excepto contra y horario)';
+			else
+				if acont = 'sc' and ncont = 'sc' and hor != 'sc' then
+					update repartidor set nombre = nom, email = mail, tel = t, foto = fot, horario = hor where boleta = bol;
+					set msj='Datos actualizados(excepto contra)';				
+				else
+					if acont != 'sc' and ncont != 'sc' and hor = 'sc' then
+						set exs = (select count(*) from repartidor where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
+						if exs = 1 then
+							update repartidor set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends'), foto = fot where boleta = bol;
+							set msj='Datos actualizados(excepto horario)';
+						else
+							set msj ='La contraseña anterior es incorrecta';
+						end if;
+					else
+						set exs = (select count(*) from repartidor where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
+						if exs = 1 then
+							update repartidor set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends'), foto = fot, horario = hor where boleta = bol;
+							set msj='Datos actualizados';
+						else
+							set msj ='La contraseña anterior es incorrecta';
+						end if;
+					end if;
+				end if;
+        end if;
+    else
+		set msj ='Este correo ya está registrado por otro usuario';
+    end if;
+    select msj as MSJ;
 end**
 delimiter ;
