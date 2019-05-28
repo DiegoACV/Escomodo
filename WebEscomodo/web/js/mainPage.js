@@ -30,6 +30,8 @@ $(document).ready(
 				var tipo = Jresp["tipo"];
 
 				if(mail == "0"){
+					$("#botones").show();
+				} else {
 					$("#botones").hide();
 				}
 			}

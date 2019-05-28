@@ -19,7 +19,7 @@ $(document).ready(
 				var mail = Jresp["mail"];
 				var tipo = Jresp["tipo"];
 
-				$.alert(mail, tipo);
+				//$.alert(mail, tipo);
 
 				if(mail == "0"){
 					$(".btn-login-nav").show();

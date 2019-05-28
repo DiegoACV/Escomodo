@@ -14,19 +14,19 @@
             {
                 sesion.setAttribute("Mail", email);
                 sesion.setAttribute("Tipo", "1");
-                %><script> alert("<%=mensaje%>"); </script><%
+                response.sendRedirect("mainPage.jsp");
             }
             else if (mensaje.equals("2"))
             {    
                 sesion.setAttribute("Mail", email);
                 sesion.setAttribute("Tipo", "2");
-                %><script> alert("<%=mensaje%>"); </script><%
+                response.sendRedirect("mainPage.jsp");
             }
             else if (mensaje.equals("3"))
             {    
                 sesion.setAttribute("Mail", email);
                 sesion.setAttribute("Tipo", "3");
-                %><script> alert("<%=mensaje%>"); </script><%
+                response.sendRedirect("mainPage.jsp");
             }
             else
             {

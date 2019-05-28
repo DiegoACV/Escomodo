@@ -54,7 +54,7 @@
 				    <div class="nav-wrapper">
 
 				      <a href="#" data-target="small-sidenav" class="sidenav-trigger">
-				      	<i class="fas fa-bars"></i>
+				      	<i class="fas nav-fas fa-bars"></i>
 				      </a>
 
 				      <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -64,9 +64,9 @@
 
 				      <ul class="right hide-on-med-and-down show-on-large">
 
-			      		<li><a href="carrito.jsp" class="showOnCli carr"><i class="fas fa-shopping-cart white-text"></i></a></li>
+			      		<li><a href="carrito.jsp" class="showOnCli carr"><i class="fas nav-fas fa-shopping-cart white-text"></i></a></li>
 			      		<li><a href="login.jsp" class="waves-effect waves-light btn btn-login-nav">Log In</a></li>
-			      		<li><a href="#" id="btn-user-nav" data-target="user-sidenav" class="sidenav-trigger"><i class="fas fa-user white-text"></i></a></li>
+			      		<li><a href="#" id="btn-user-nav" data-target="user-sidenav" class="sidenav-trigger"><i class="fas nav-fas fa-user white-text"></i></a></li>
 
 					  </ul>
 
@@ -75,23 +75,23 @@
 				      </a>
 
 				      <ul class="sidenav" id="small-sidenav">
-				      	<li><a class = "orange-text showOnCli showOnRep showOnCom" id="btn-verPerfil-s"><i class="fas fa-user-circle orange-text"></i>Ver Perfil</a></li>
-					    <li><a href="productos.html" class = "orange-text"><i class="fas fa-pizza-slice orange-text"></i>Escomida</a></li>
-				        <li><a href="establecimientos.html" class = "orange-text"><i class="fas fa-coffee orange-text"></i>Escomercio</a></li>
-				        <li><a class = "orange-text showOnCli showOnRep" id="btn-hist-nav-s"><i class="fas fa-history orange-text"></i>Historial de Pedidos</a></li>
-				        <li><a href="carrito.jsp" class="orange-text showOnCli carr"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
-				         <li><a href="favoritos.jsp" class="orange-text showOnCli" id="btn-fav-nav"><i class="fas fa-heart orange-text"></i>Favoritos</a></li>
-				         <li><a href="#" class="orange-text showOnCli" id="btn-eval-nav"><i class="fas fa-star orange-text"></i>Evaluar</a></li>
+				      	<li><a class = "orange-text showOnCli showOnRep showOnCom" id="btn-verPerfil-s"><i class="fas nav-fas fa-user-circle orange-text"></i>Ver Perfil</a></li>
+					    <li><a href="productos.html" class = "orange-text"><i class="fas nav-fas fa-pizza-slice orange-text"></i>Escomida</a></li>
+				        <li><a href="establecimientos.html" class = "orange-text"><i class="fas nav-fas fa-coffee orange-text"></i>Escomercio</a></li>
+				        <li><a class = "orange-text showOnCli showOnRep" id="btn-hist-nav-s"><i class="fas nav-fas fa-history orange-text"></i>Historial de Pedidos</a></li>
+				        <li><a href="carrito.jsp" class="orange-text showOnCli carr"><i class="fas nav-fas fa-shopping-cart orange-text"></i>Carrito</a></li>
+				         <li><a href="favoritos.jsp" class="orange-text showOnCli" id="btn-fav-nav"><i class="fas nav-fas fa-heart orange-text"></i>Favoritos</a></li>
+				         <li><a href="#" class="orange-text showOnCli" id="btn-eval-nav"><i class="fas nav-fas fa-star orange-text"></i>Evaluar</a></li>
 			      		<li><a href="login.jsp" class="waves-effect waves-light btn btn-login-nav">Log In</a></li>
 			      		<li><a href="#" class="waves-effect waves-light btn cerrar-ses">Cerrar Sesión</a></li>
 			      	  </ul>
 
 			      	  <ul class="sidenav" id="user-sidenav">
-					    <li><a class = "orange-text showOnCli showOnRep showOnCom" id="btn-verPerfil"><i class="fas fa-user-circle orange-text"></i>Ver Perfil</a></li>
-				        <li><a class = "orange-text showOnCli showOnRep" id="btn-hist-nav"><i class="fas fa-history orange-text"></i>Historial de Pedidos</a></li>
-				        <li><a href="carrito.jsp" class="orange-text showOnCli"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
-				        <li><a href="favoritos.jsp" class="orange-text showOnCli" id="btn-fav-nav"><i class="fas fa-heart orange-text"></i>Favoritos</a></li>
-				        <li><a href="#" class="orange-text showOnCli" id="btn-eval-nav"><i class="fas fa-star orange-text"></i>Evaluar</a></li>
+					    <li><a class = "orange-text showOnCli showOnRep showOnCom" id="btn-verPerfil"><i class="fas nav-fas fa-user-circle orange-text"></i>Ver Perfil</a></li>
+				        <li><a class = "orange-text showOnCli showOnRep" id="btn-hist-nav"><i class="fas nav-fas fa-history orange-text"></i>Historial de Pedidos</a></li>
+				        <li><a href="carrito.jsp" class="orange-text showOnCli"><i class="fas nav-fas fa-shopping-cart orange-text"></i>Carrito</a></li>
+				        <li><a href="favoritos.jsp" class="orange-text showOnCli" id="btn-fav-nav"><i class="fas nav-fas fa-heart orange-text"></i>Favoritos</a></li>
+				        <li><a href="#" class="orange-text showOnCli" id="btn-eval-nav"><i class="fas nav-fas fa-star orange-text"></i>Evaluar</a></li>
 			      		<li><a href="#" class="waves-effect waves-light btn cerrar-ses">Cerrar Sesión</a></li>
 			      	  </ul>
 
