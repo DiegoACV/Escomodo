@@ -31,7 +31,8 @@ public class SubirImagenCliente extends HttpServlet {
                 //Guarda la imagen
         Part filePart = request.getPart("img");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        String img = boleta+".jpg";
+        String extension = fileName.substring((fileName.length()-3), fileName.length());
+        String img = boleta+"."+extension;
         //String uploadPath = getServletContext().getRealPath("")+"/images/img_cliente"; //Aquí va tu ruta donde guardas la imagen
         //File uploads = new File(uploadPath);
         ServletContext context = request.getServletContext();

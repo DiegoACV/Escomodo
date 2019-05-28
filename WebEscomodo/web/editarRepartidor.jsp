@@ -3,10 +3,10 @@
 	HttpSession sesion = request.getSession();
 	
         sesion.setAttribute("Mail", "johnyPP@gmail.com");//BORRAR CUANDO ESTÉN LAS SESIONES
-        sesion.setAttribute("Boleta", "2014030245");//BORRAR CUANDO ESTÉN LAS SESIONES
+        sesion.setAttribute("Tipo", "3");//BORRAR CUANDO ESTÉN LAS SESIONES
 	ldn.Repartidor repartidor = new ldn.Repartidor(sesion.getAttribute("Mail").toString());
-	//ldn.Repartidor repartidor = new ldn.Repartidor();
-
+        
+        
 	String mensaje = "";
         String horarioaux = "";
         
@@ -229,7 +229,7 @@
 
                         <div class = "row">
                             <div class="col s12 m12 l12 center-align">
-                                <img src="images/img_cliente/<%=sesion.getAttribute("Boleta").toString()%>.jpg" class="responsive-img" id="foto-insert">  
+                                <img src="images/img_repartidor/<%=sesion.getAttribute("Boleta").toString()%>.jpg" class="responsive-img" id="foto-insert">  
                                 <a class="btn-floating btn-small waves-effect waves-light red" href="SubirImagen.jsp"><i class="fa fa-pen"></i></a>
                             </div>
 

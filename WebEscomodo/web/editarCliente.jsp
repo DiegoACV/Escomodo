@@ -3,7 +3,7 @@
 	HttpSession sesion = request.getSession();
 	
         sesion.setAttribute("Mail", "diegoCV@crayds.com");//BORRAR CUANDO ESTÉN LAS SESIONES
-        sesion.setAttribute("Boleta", "2015370179");//BORRAR CUANDO ESTÉN LAS SESIONES
+        sesion.setAttribute("Tipo", "1");//BORRAR CUANDO ESTÉN LAS SESIONES
 	ldn.Cliente cliente = new ldn.Cliente(sesion.getAttribute("Mail").toString());
 	//ldn.Repartidor repartidor = new ldn.Repartidor();
 
@@ -11,6 +11,7 @@
         
 	String nom = cliente.getNombre();
 	String bol = cliente.getBoleta();
+        sesion.setAttribute("Boleta", bol);
 	String email = cliente.getEmail();
 	String tel = cliente.getTel();
 	String foto = cliente.getFoto();
