@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <%
     HttpSession sesion = request.getSession();
-    sesion.setAttribute("Mail", "chrisOs@crayds.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Mail", "diegoCV@crayds.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     sesion.setAttribute("Tipo", "1"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     String mail = sesion.getAttribute("Mail").toString();
     int tipo = Integer.parseInt(sesion.getAttribute("Tipo").toString());
@@ -90,12 +90,15 @@
     </div>
         <div>
             <div class="row rowMarginT">
-                <div class = "col s6 m4 l2">
+                <div class = "col s10 m4 l2">
                     <div>
                         <img src='<%=Foto%>' class='circle responsive-img z-depth-3'/>
                     </div>
                 </div>
-                <div class="col s5 m6 l9">
+                <div class = "col s1 m2 l1 push-m6 push-l9">
+                    <a class="btn-floating btn-large carnito"><span><i class="small material-icons">edit</i></span></a>
+                </div>
+                <div class="col s11 m6 l9 pull-m2 pull-l1">
                     <br>
                     <div class="col s12 m12 l12">
                         <span class="center-align letradeIMPAKTO"><%=Nombre%></span>
@@ -106,9 +109,6 @@
                     <div class="col s6 m6 l6">
                         <span class="center-align noIMPAKTO"><%=Email%></span>
                     </div>
-                </div>
-                <div class = "col s1 m2 l1">
-                    <a class="btn-floating btn-large carnito"><span><i class="small material-icons">edit</i></span></a>
                 </div>
             </div>
             <div class="row">
@@ -142,11 +142,11 @@
                      <table class="striped">
                         <thead>
                           <tr>
-                              <th><i class="small material-icons">restaurant</i></th>
-                              <th><%=com%></th>
-                              <th><%=fecha%></th>
-                              <th><%=hora%></th>
-                              <th><span class="new badge carnito" data-badge-caption="productos"><%= totalP%></span></th>
+                              <th class="col s2 m1 l1"><i class="small material-icons">restaurant</i></th>
+                              <th class="col s10 m5 l5"><%=com%></th>
+                              <th class="col s3 m2 l2"><%=fecha%></th>
+                              <th class="col s3 m2 l2"><%=hora%></th>
+                              <th class="col s3 m2 l2"><span class="new badge carnito" data-badge-caption="productos"><%= totalP%></span></th>
                           </tr>
                         </thead>
                      </table>
@@ -172,7 +172,7 @@
                             <td><%=a.getCantidad()%></td>
                             <td><%=a.getTotal()%></td>
                             <%if(a.getCalificacion() == 0 && a.getEstado().equals("Entregado")){%>
-                                <td><a class="waves-effect waves-light btn-small pulse"><i class="medium fas fa-star "></i>Puntúa</a></td>
+                                <td><a class="waves-effect waves-light btn-small pulse estrella"><i class="medium fas fa-star "></i>Puntúa</a></td>
                             <%}%>
                           </tr>
                          <%}%>

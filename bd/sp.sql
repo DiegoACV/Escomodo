@@ -244,7 +244,8 @@ begin
 	declare msj nvarchar(60); 
 	if est = 3 then
 		update pedido set fecha=fech, hora=hor, preciotot=preciot, lugar=lug, estado=3 
-			where cliente= idclien and establecimiento=idestab and estado=1;
+			where cliente= idclien and establecimiento=idestab and fecha=fech and 
+				hora=hor and preciotot=preciot and lugar=lug and estado=1;
 		set msj = "Pedido confirmado";
 	else 
 		if est = 4 then
