@@ -1,5 +1,3 @@
-
-
 $(document).ready(
 	function(){
 
@@ -22,6 +20,22 @@ $(document).ready(
 			    setTimeout(autoplay, 5000);
 			}
 		}
+
+		$.ajax({
+			method: "post",
+			url: "checarSesion.jsp",
+			success: function(resp){
+				var Jresp=$.parseJSON(resp);
+				var mail = Jresp["mail"];
+				var tipo = Jresp["tipo"];
+
+				if(mail == "0"){
+					$("#botones").hide();
+				}
+			}
+		});
+
+
 
 	}
 );

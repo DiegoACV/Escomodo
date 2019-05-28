@@ -1,6 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+	HttpSession sesion = request.getSession();
 
+	//sesion.setAttribute("Mail", "rafa@gmail.com");
+   	//sesion.setAttribute("Tipo", "3");
 
 %>
 
@@ -25,6 +28,9 @@
 	<script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
 	<script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link href="css/mainPage.css" rel="stylesheet">
@@ -47,7 +53,7 @@
 				<nav>
 				    <div class="nav-wrapper">
 
-				      <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+				      <a href="#" data-target="small-sidenav" class="sidenav-trigger">
 				      	<i class="fas fa-bars"></i>
 				      </a>
 
@@ -56,10 +62,11 @@
 				        <li><a href="establecimientos.html" class = "white-text">Escomercio</a></li>
 				      </ul>
 
-				      <ul class="right hide-on-med-and-down">
+				      <ul class="right hide-on-med-and-down show-on-large">
 
-			      		<li><a href="carrito.jsp"><i class="fas fa-shopping-cart white-text"></i></a></li>
-			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
+			      		<li><a href="carrito.jsp" class="showOnCli carr"><i class="fas fa-shopping-cart white-text"></i></a></li>
+			      		<li><a href="login.jsp" class="waves-effect waves-light btn btn-login-nav">Log In</a></li>
+			      		<li><a href="#" id="btn-user-nav" data-target="user-sidenav" class="sidenav-trigger"><i class="fas fa-user white-text"></i></a></li>
 
 					  </ul>
 
@@ -67,11 +74,27 @@
 				      	<img src="https://drive.google.com/uc?id=1-33i2fj72T0A40dxfZpDGTfWMyGbwj63" class = "responsive-img" id = "logo">
 				      </a>
 
-				      <ul class="sidenav" id="mobile-demo">
-					    <li><a href="productos.html" class = "orange-text">Escomida</a></li>
-				        <li><a href="establecimientos.html" class = "orange-text">Escomercio</a></li>
-				        <li><a href="carrito.jsp" class="orange-text"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
-			      		<li><a href="login.jsp" class="waves-effect waves-light btn">Log In</a></li>
+				      <ul class="sidenav" id="small-sidenav">
+				      	<li><a class = "orange-text showOnCli showOnRep showOnCom" id="btn-verPerfil-s"><i class="fas fa-user-circle orange-text"></i>Ver Perfil</a></li>
+					    <li><a href="productos.html" class = "orange-text"><i class="fas fa-pizza-slice orange-text"></i>Escomida</a></li>
+				        <li><a href="establecimientos.html" class = "orange-text"><i class="fas fa-coffee orange-text"></i>Escomercio</a></li>
+				        <li><a class = "orange-text showOnCli showOnRep" id="btn-hist-nav-s"><i class="fas fa-history orange-text"></i>Historial de Pedidos</a></li>
+				        <li><a href="carrito.jsp" class="orange-text showOnCli carr"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
+				         <li><a href="favoritos.jsp" class="orange-text showOnCli" id="btn-fav-nav"><i class="fas fa-heart orange-text"></i>Favoritos</a></li>
+				         <li><a href="#" class="orange-text showOnCli" id="btn-eval-nav"><i class="fas fa-star orange-text"></i>Evaluar</a></li>
+			      		<li><a href="login.jsp" class="waves-effect waves-light btn btn-login-nav">Log In</a></li>
+			      		<li><a href="#" class="waves-effect waves-light btn cerrar-ses">Cerrar Sesión</a></li>
+			      	  </ul>
+
+			      	  <ul class="sidenav" id="user-sidenav">
+					    <li><a class = "orange-text showOnCli showOnRep showOnCom" id="btn-verPerfil"><i class="fas fa-user-circle orange-text"></i>Ver Perfil</a></li>
+				        <li><a class = "orange-text showOnCli showOnRep" id="btn-hist-nav"><i class="fas fa-history orange-text"></i>Historial de Pedidos</a></li>
+				        <li><a href="carrito.jsp" class="orange-text showOnCli"><i class="fas fa-shopping-cart orange-text"></i>Carrito</a></li>
+				        <li><a href="favoritos.jsp" class="orange-text showOnCli" id="btn-fav-nav"><i class="fas fa-heart orange-text"></i>Favoritos</a></li>
+				        <li><a href="#" class="orange-text showOnCli" id="btn-eval-nav"><i class="fas fa-star orange-text"></i>Evaluar</a></li>
+			      		<li><a href="#" class="waves-effect waves-light btn cerrar-ses">Cerrar Sesión</a></li>
+			      	  </ul>
+
 				    </div>
 				</nav>
 			</div>
@@ -136,7 +159,7 @@
 
 			<div class = "divider"></div>
 
-			<div class = "row rowMargin">
+			<div class = "row rowMargin" id="botones">
 				<div class = "col s12 m6 l6" align="center">
 					<a class="waves-effect waves-light btn-large" id = "R" href="registro.jsp">Regístrate</a>
 				</div>
@@ -144,6 +167,7 @@
 					<a class="waves-effect waves-light btn-large" id = "RC" href="registroEscomercio.jsp">Registra tu Escomercio</a>
 				</div>
 			</div>
+			
 
 		</div>
 
