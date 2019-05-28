@@ -107,7 +107,7 @@ public class Repartidor extends Usuario{
         return msj;
     }
     
-    public String cambios(String nombre, String boleta, String email, String tel, String acontra, String foto, String ncontra, String horario)
+    public String cambios(String nombre, String boleta, String email, String tel, String acontra, String ncontra, String horario)
     {
         String msj = "";
         BD.Datos base = new BD.Datos();
@@ -115,7 +115,28 @@ public class Repartidor extends Usuario{
         
         try{
             base.conectar();
-            respuesta = base.consulta("call sp_CRepartidor('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+acontra+"','"+foto+"','"+ncontra+"','"+horario+"');");
+            respuesta = base.consulta("call sp_CRepartidor('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+acontra+"','"+ncontra+"','"+horario+"');");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            msj = error.toString();
+        }
+        
+        return msj;
+    }
+    
+    public String gImagen(String img, String boleta)
+    {
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_saveIMGrepartidor('"+img+"','"+boleta+"');");
             if(respuesta.next())
                 msj = respuesta.getString("MSJ");
             

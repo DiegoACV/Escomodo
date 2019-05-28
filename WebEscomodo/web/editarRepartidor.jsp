@@ -2,7 +2,7 @@
 <%
 	HttpSession sesion = request.getSession();
 	
-        sesion.setAttribute("Mail", "johnyPP@gmail.com");//BORRAR CUANDO ESTÉN LAS SESIONES
+        sesion.setAttribute("Mail", "y-chan@hotmail.com");//BORRAR CUANDO ESTÉN LAS SESIONES
         sesion.setAttribute("Tipo", "3");//BORRAR CUANDO ESTÉN LAS SESIONES
 	ldn.Repartidor repartidor = new ldn.Repartidor(sesion.getAttribute("Mail").toString());
         
@@ -126,7 +126,7 @@
                         rhor = rhor + dia10 + hI10 + hF10;
                 }
             }
-            mensaje = repartidor.cambios(rnombre, bol, remail, rtel, acont, bol+".jpg", contra, rhor);
+            mensaje = repartidor.cambios(rnombre, bol, remail, rtel, acont, contra, rhor);
 
             if(mensaje.equals("Datos actualizados(excepto contra y horario)") || mensaje.equals("Datos actualizados(excepto contra)") || mensaje.equals("Datos actualizados(excepto horario)") || mensaje.equals("Datos actualizados")){
                 sesion.setAttribute("Mail", email);
@@ -229,7 +229,7 @@
 
                         <div class = "row">
                             <div class="col s12 m12 l12 center-align">
-                                <img src="images/img_repartidor/<%=sesion.getAttribute("Boleta").toString()%>.jpg" class="responsive-img" id="foto-insert">  
+                                <img src="images/img_repartidor/<%=foto%>" class="responsive-img" id="foto-insert">  
                                 <a class="btn-floating btn-small waves-effect waves-light red" href="SubirImagen.jsp"><i class="fa fa-pen"></i></a>
                             </div>
 

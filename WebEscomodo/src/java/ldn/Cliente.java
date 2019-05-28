@@ -59,7 +59,7 @@ public class Cliente extends Usuario{
         return msj;
     }
     
-    public String cambios(String nombre, String boleta, String email, String tel, String acontra, String foto, String ncontra)
+    public String cambios(String nombre, String boleta, String email, String tel, String acontra, String ncontra)
     {
         String msj = "";
         BD.Datos base = new BD.Datos();
@@ -67,7 +67,28 @@ public class Cliente extends Usuario{
         
         try{
             base.conectar();
-            respuesta = base.consulta("call sp_CCliente('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+acontra+"','"+foto+"','"+ncontra+"');");
+            respuesta = base.consulta("call sp_CCliente('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+acontra+"','"+ncontra+"');");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            msj = error.toString();
+        }
+        
+        return msj;
+    }
+    
+    public String gImagen(String img, String boleta)
+    {
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_saveIMGcliente('"+img+"','"+boleta+"');");
             if(respuesta.next())
                 msj = respuesta.getString("MSJ");
             

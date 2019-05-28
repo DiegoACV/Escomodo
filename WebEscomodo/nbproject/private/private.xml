@@ -3,8 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/src/java/ldn/Platillo.java</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/src/java/ldn/Establecimiento.java</file>
             <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/web/menu.jsp</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/web/editarRepartidor.jsp</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/src/java/ldn/Cliente.java</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/src/java/ldn/Repartidor.java</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/src/java/Servlets/SubirImagenCliente.java</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/web/editarCliente.jsp</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/web/SubirImagen.jsp</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/web/js/menu.js</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/web/perfilR.jsp</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/src/java/Servlets/SubirImagenRepartidor.java</file>
+            <file>file:/C:/Users/usuario/Documents/Escuela/Escom/4to%20semestre/Escomodo/WebEscomodo/web/perfilC.jsp</file>
         </group>
     </open-files>
 </project-private>

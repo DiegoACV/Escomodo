@@ -85,7 +85,7 @@
             <div class="row rowMarginT">
                 <div class = "col s6 m4 l2 offset-s3 offset-m4 offset-l5">
                     <div>
-                        <img src='<%=Foto%>' class='circle responsive-img z-depth-3'/>
+                        <img src="img_repartidor/<%=Foto%>" class='circle responsive-img z-depth-3'/>
                     </div>
                 </div>
                 <div class="col s2 m2 l4"></div> 

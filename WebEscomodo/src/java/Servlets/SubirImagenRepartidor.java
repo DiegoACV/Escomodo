@@ -31,6 +31,8 @@ public class SubirImagenRepartidor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html"); 
+        PrintWriter out = response.getWriter(); 
         HttpSession sesion = request.getSession();
         String boleta = sesion.getAttribute("Boleta").toString();
                 //Guarda la imagen
@@ -68,19 +70,22 @@ public class SubirImagenRepartidor extends HttpServlet {
                     Files.copy(input, file.toPath());
                 }
             }
+            
+            ldn.Repartidor rep = new ldn.Repartidor();
+            String msj = rep.gImagen(img, boleta);
+            
+            
             response.sendRedirect("editarRepartidor.jsp");
         }
         else
         {
-            response.setContentType("text/html"); 
-
-            PrintWriter out = response.getWriter(); 
 
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Tipo de archivo incorrecto');");
             out.println("location='SubirImagen.jsp';");
             out.println("</script>");
         }
+        
         
         
     }

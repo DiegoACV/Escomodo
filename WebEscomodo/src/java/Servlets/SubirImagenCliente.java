@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import ldn.Cliente;
 
 @MultipartConfig
 public class SubirImagenCliente extends HttpServlet {
@@ -62,6 +63,10 @@ public class SubirImagenCliente extends HttpServlet {
                 Files.copy(input, file.toPath());
             }
         }
+        
+        ldn.Cliente cte = new ldn.Cliente();
+        String msj = cte.gImagen(img, boleta);
+        
         response.sendRedirect("editarCliente.jsp");
     }
 
