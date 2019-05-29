@@ -137,6 +137,11 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
+	<link href="libs/validetta/validetta.css" rel="stylesheet" type="text/css" media="screen" >
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="libs/validetta/validetta.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link href="css/registro.css" rel="stylesheet">
@@ -230,7 +235,7 @@
                             <div class="col s12 m10 l8 offset-l2 offset-m1">
 	                            <div class="input-field">
 	                              <i class="prefix fas fa-user"></i>
-	                              <input id="nombre" name="nombre" type="text" class="validate">
+	                              <input id="nombre" name="nombre" type="text" class="counter" data-validetta="required,maxLength[60]" data-length="60">
 	                              <label for="nombre">Nombre Completo</label>
 	                            </div>
 	                        </div>
@@ -240,7 +245,7 @@
 	                        <div class="col s12 m12 l6">
 	                            <div class="input-field">
 	                            	<i class="prefix fas fa-id-card"></i>
-	                                <input id="boleta" name="boleta" type="text" class="validate">
+	                                <input id="boleta" name="boleta" type="text" class="counter" data-validetta="required,maxLength[10],number" data-length="10">
 	                                <label for="boleta">No. de Boleta</label>
 	                            </div>
                             </div>
@@ -267,7 +272,7 @@
                         	<div class="col s12 m12 l6">
                         		<div class="input-field">
                         		  <i class="prefix fas fa-envelope"></i>
-	                              <input id="email" name="email" type="text" class="validate">
+	                              <input id="email" name="email" type="text" class="counter" data-validetta="required,maxLength[40],email" data-length="40">
 	                              <label for="email">Correo Electrónico</label>
 	                            </div>
                         	</div>
@@ -275,7 +280,7 @@
                         	<div class="col s12 m12 l6">
                         		<div class="input-field">
                         		  <i class="prefix fas fa-phone"></i>
-	                              <input id="tel" name="tel" type="text" class="validate">
+	                              <input id="tel" name="tel" type="text" class="counter" data-validetta="required,maxLength[20],number" data-length="20">
 	                              <label for="tel">Número de Teléfono</label>
 	                            </div>
                         	</div>
@@ -287,15 +292,15 @@
                         	<div class="col s12 m12 l6">
                         		<div class="input-field">
                         		  <i class="prefix fas fa-lock"></i>
-	                              <input id="contra" name="contra" type="password" class="validate">
+	                              <input id="contra" name="contra" type="password" class="counter" data-validetta="required,maxLength[16]" data-length="16">
 	                              <label for="contra">Contraseña</label>
 	                            </div>
                         	</div>
 
                         	<div class="col s12 m12 l6">
                         		<div class="input-field">
-                        		  <i class="prefix fas fa-lock"></i>	
-	                              <input id="contra2" type="password" class="validate">
+                        		  <i class="prefix fas fa-lock"></i>
+	                              <input id="contra2" type="password" class="counter" data-validetta="required,maxLength[16],equalTo[contra]" data-length="16">
 	                              <label for="contra2">Confirma la Contraseña</label>
 	                            </div>
                         	</div>
@@ -312,7 +317,7 @@
                         	<div id="horario1">
 	                        	<div class="col s10 offset-s1 m10 offset-m1 l4 offset-l1">
 	                        		<div class="input-field">
-									    <select  name="dia1">
+									    <select class="e8Required" name="dia1" data-validetta="">
 									      <option value="" disabled selected>Elíge un día</option>
 									      <option value="L">Lunes</option>
 									      <option value="M">Martes</option>
@@ -331,7 +336,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaInicio1" name="horaInicio1" type="text" class="timepicker">
+	                    				<input id="horaInicio1" name="horaInicio1" type="text" class="timepicker e8Required" data-validetta="">
 	                    				<label for="horaInicio1"> Hora de Inicio </label>
 	                    			</div>
 	                    		</div>
@@ -342,7 +347,7 @@
 
 	                    		<div class="col s6 m4 l2">
 	                    			<div class="input-field">
-	                    				<input id="horaFin1" name="horaFin1" type="text" class="timepicker">
+	                    				<input id="horaFin1" name="horaFin1" type="text" class="timepicker e8Required" data-validetta="">
 	                    				<label for="horaFin1"> Hora de Final </label>
 	                    			</div>
 	                    		</div>

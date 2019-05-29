@@ -57,6 +57,11 @@
 	<script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
 	<script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
 
+	<link href="libs/validetta/validetta.css" rel="stylesheet" type="text/css" media="screen" >
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="libs/validetta/validetta.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link href="css/registroEscomercio.css" rel="stylesheet">
@@ -139,7 +144,7 @@
 					<div class="col s12 m10 l8 offset-l2 offset-m1">
 						<div class="input-field">
 		                  <i class="prefix fas fa-utensils"></i>
-		                  <input id="nombreEscomercio" name="nombreEscomercio" type="text" class="validate">
+		                  <input id="nombreEscomercio" name="nombreEscomercio" type="text" class="validate counter" data-validetta="required,maxLength[60]" data-length="60">
 		                  <label for="nombreEscomercio">Nombre del Establecimiento</label>
 		                </div>
 					</div>
@@ -149,7 +154,7 @@
 					<div class="col s12 m10 l8 offset-l2 offset-m1">
 						<div class="input-field">
 		                  <i class="prefix fas fa-search-location"></i>
-		                  <input id="ubi" name="ubi" type="text" class="validate">
+		                  <input id="ubi" name="ubi" type="text" class="validate counter" data-validetta="required,maxLength[100]" data-length="100">
 		                  <label for="ubi">Ubicación</label>
 		                </div>
 					</div>
@@ -159,7 +164,7 @@
 					<div class="col s12 m10 l8 offset-l2 offset-m1">
 						<div class="input-field">
 		                  <i class="prefix fas fa-user-tie"></i>
-		                  <input id="repre" name="repre" type="text" class="validate">
+		                  <input id="repre" name="repre" type="text" class="validate counter" data-validetta="required,maxLength[60]" data-length="60">
 		                  <label for="repre">Nombre del Representante</label>
 		                </div>
 					</div>
@@ -169,7 +174,7 @@
 		        	<div class="col s12 m10 l6 offset-m1">
 		        		<div class="input-field">
 		        		  <i class="prefix fas fa-envelope"></i>
-		                  <input id="email" name="email" type="text" class="validate">
+		                  <input id="email" name="email" type="text" class="validate counter" data-length="40" data-validetta="required,maxLength[40],email">
 		                  <label for="email">Correo Electrónico</label>
 		                </div>
 		        	</div>
@@ -177,7 +182,7 @@
 		        	<div class="col s12 m10 l6 offset-m1">
 		        		<div class="input-field">
 		        		  <i class="prefix fas fa-phone"></i>
-		                  <input id="tel" name="tel" type="text" class="validate">
+		                  <input id="tel" name="tel" type="text" class="validate counter" data-length="20" data-validetta="required,maxLength[20],number">
 		                  <label for="tel">Número de Teléfono</label>
 		                </div>
 		        	</div>
@@ -194,7 +199,7 @@
 
 		    		<div class="col s6 m4 l4">
 		    			<div class="input-field">
-		    				<input id="horaAbierto" name="horaAbierto" type="text" class="timepicker">
+		    				<input id="horaAbierto" name="horaAbierto" type="text" class="timepicker" data-validetta="required">
 		    				<label for="horaAbierto"> Hora de Apertura </label>
 		    			</div>
 		    		</div>
@@ -205,7 +210,7 @@
 
 		    		<div class="col s6 m4 l4">
 		    			<div class="input-field">
-		    				<input id="horaCerrado" name="horaCerrado" type="text" class="timepicker">
+		    				<input id="horaCerrado" name="horaCerrado" type="text" class="timepicker" data-validetta="required">
 		    				<label for="horaCerrado"> Hora de Cierre </label>
 		    			</div>
 		    		</div>
@@ -216,7 +221,7 @@
 	            	<div class="col s12 m10 l6 offset-m1">
 	            		<div class="input-field">
 	            		  <i class="prefix fas fa-lock"></i>
-	                      <input id="contra" name="contra" type="password" class="validate">
+	                      <input id="contra" name="contra" type="password" class="validate counter" data-length="16" data-validetta="required,maxLength[16]">
 	                      <label for="contra">Contraseña</label>
 	                    </div>
 	            	</div>
@@ -224,7 +229,7 @@
 	            	<div class="col s12 m10 l6 offset-m1">
 	            		<div class="input-field">
 	            		  <i class="prefix fas fa-lock"></i>	
-	                      <input id="contra2" type="password" class="validate">
+	                      <input id="contra2" type="password" class="validate counter" data-length="16" data-validetta="required,maxLength[16],equalTo[contra]">
 	                      <label for="contra2">Confirma la Contraseña</label>
 	                    </div>
 	            	</div>

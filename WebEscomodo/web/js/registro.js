@@ -12,33 +12,73 @@ $(document).ready(
 
 		var form = $("form#form-registro");
 
+		$('.counter').characterCounter();
+
+		form.validetta({
+			showErrorMessages : true,
+			display : 'bubble',
+			bubblePosition: 'bottom',
+  			bubbleGapLeft: 40,
+  			bubbleGapTop: 5,
+  			realTime : true,
+  			onValid : function(){
+
+  			}
+		});
+
 		if(swch.prop('checked')){
+			//Cuando es Escom8
 			eo.css('color', '#9C9C9C');
 			e8.css('color', '#F54828');
+
 			solo8.show();
+
 			form.removeAttr('action');
 			form.attr('action', '?acc=2');
+
+			$(".e8Required").removeAttr('data-validetta');
+			$(".e8Required").attr('data-validetta','required');
+
 		} else {
+			//Cuando es Escomensal
 			eo.css('color', '#F54828');
 			e8.css('color', '#9C9C9C');
+
 			solo8.hide();
+
 			form.removeAttr('action');
 			form.attr('action', '?acc=1');
+
+			$(".e8Required").removeAttr('data-validetta');
+			$(".e8Required").attr('data-validetta','');
 		}
 
 		swch.on("click", function(){
 			if(swch.prop('checked')){
+				//Cuando es Escom8
 				eo.css('color', '#9C9C9C');
 				e8.css('color', '#F54828');
+
 				form.removeAttr('action');
 				form.attr('action', '?acc=2');
+
 				solo8.show();
+
+				$(".e8Required").removeAttr('data-validetta');
+				$(".e8Required").attr('data-validetta','required');
+
 			} else {
+				//Cuando es Escomensal
 				eo.css('color', '#F54828');
 				e8.css('color', '#9C9C9C');
+
 				solo8.hide();
+
 				form.removeAttr('action');
 				form.attr('action', '?acc=1');
+
+				$(".e8Required").removeAttr('data-validetta');
+				$(".e8Required").attr('data-validetta','');
 			}
 		});
 
