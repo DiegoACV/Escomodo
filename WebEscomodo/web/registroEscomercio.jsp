@@ -61,6 +61,7 @@
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="libs/validetta/validetta.js"></script>
+	<script src="libs/validetta/validetta-es.js" type="text/javascript"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
