@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 	HttpSession sesion = request.getSession();
-        sesion.setAttribute("Boleta", "2015370179");//BORRAR CUANDO ESTÉN LAS SESIONES
 %>	
 
 <!DOCTYPE html>
@@ -84,7 +83,7 @@
                     <div class = "container" id="div-registro">
 
 
-                    <form id="subirimagen" name="subirimagen" method="POST" enctype="multipart/form-data" action="SubirImagenCliente">
+                        <form id="subirimagen" name="subirimagen" method="POST" enctype="multipart/form-data" action="<%if(sesion.getAttribute("Tipo").toString().equals("1")){%>SubirImagenCliente<%}else if(sesion.getAttribute("Tipo").toString().equals("3")){%>SubirImagenRepartidor<%}else{%>SubirImagenEstablecimiento<%}%>">                     
                         <div class = "row">
                             <div class="col s12 m12 l12 center-align">
                                 <img src="images/img_cliente/<%=sesion.getAttribute("Boleta").toString()%>.jpg" class="responsive-img" id="foto-insert">  

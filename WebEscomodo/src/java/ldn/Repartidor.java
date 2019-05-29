@@ -52,6 +52,8 @@ public class Repartidor extends Usuario{
                 this.setNombre(respuesta.getString("nombre"));
                 this.setTel(respuesta.getString("tel"));
                 this.setFoto("images/default.png");
+                this.setEmail(respuesta.getString("email"));
+                this.setBoleta(respuesta.getString("boleta"));
                 _horario = respuesta.getString("horario");
                 _valoracion = respuesta.getString("valoracion");
             }
@@ -93,6 +95,48 @@ public class Repartidor extends Usuario{
         try{
             base.conectar();
             respuesta = base.consulta("call sp_ARepartidor('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+horario+"','"+contra+"','prueba.png')");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            msj = error.toString();
+        }
+        
+        return msj;
+    }
+    
+    public String cambios(String nombre, String boleta, String email, String tel, String acontra, String ncontra, String horario)
+    {
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_CRepartidor('"+nombre+"','"+boleta+"','"+email+"','"+tel+"','"+acontra+"','"+ncontra+"','"+horario+"');");
+            if(respuesta.next())
+                msj = respuesta.getString("MSJ");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            msj = error.toString();
+        }
+        
+        return msj;
+    }
+    
+    public String gImagen(String img, String boleta)
+    {
+        String msj = "";
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_saveIMGrepartidor('"+img+"','"+boleta+"');");
             if(respuesta.next())
                 msj = respuesta.getString("MSJ");
             

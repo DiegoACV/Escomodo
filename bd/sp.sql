@@ -205,7 +205,7 @@ drop procedure if exists verRepartidor;
 delimiter **
 create procedure verRepartidor(in mail nvarchar(40))
 begin
-	select nombre, email, tel, horario, foto, valoracion from repartidor where email = mail;
+	select nombre, email, tel, horario, foto, valoracion, boleta from repartidor where email = mail;
 end; **
 delimiter ;
 
@@ -244,7 +244,8 @@ begin
 	declare msj nvarchar(60); 
 	if est = 3 then
 		update pedido set fecha=fech, hora=hor, preciotot=preciot, lugar=lug, estado=3 
-			where cliente= idclien and establecimiento=idestab and estado=1;
+			where cliente= idclien and establecimiento=idestab and fecha=fech and 
+				hora=hor and preciotot=preciot and lugar=lug and estado=1;
 		set msj = "Pedido confirmado";
 	else 
 		if est = 4 then
@@ -277,7 +278,7 @@ delimiter ;
 
 drop procedure if exists sp_CCliente;
 delimiter **
-create procedure sp_CCliente(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in t nvarchar(20), in acont nvarchar(16), in fot nvarchar(80), in ncont nvarchar(16))
+create procedure sp_CCliente(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in t nvarchar(20), in acont nvarchar(16), in ncont nvarchar(16))
 begin
 	declare msj nvarchar(60); 
     declare exs int;
@@ -286,12 +287,12 @@ begin
     
     if exs = 0 then
 			if acont = 'sc' and ncont = 'sc' then
-				update cliente set nombre = nom, email = mail, tel = t, foto = fot where boleta = bol;
+				update cliente set nombre = nom, email = mail, tel = t where boleta = bol;
                 set msj='Datos actualizados!';
 			else
 				set exs = (select count(*) from cliente where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
                 if exs = 1 then
-					update cliente set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends'), foto = fot where boleta = bol;
+					update cliente set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends') where boleta = bol;
 					set msj='Datos actualizados';
 				else
 					set msj ='La contraseña anterior es incorrecta';
@@ -340,3 +341,83 @@ begin
 					pedido.establecimiento = idc and fecha= fech and hora = hor and preciotot=preciot and lugar= lug;
 end**
 delimiter ;
+
+drop procedure if exists sp_CRepartidor;
+delimiter **
+create procedure sp_CRepartidor(in nom nvarchar(60), in bol nvarchar(10), in mail nvarchar(40), in t nvarchar(20), in acont nvarchar(16), in ncont nvarchar(16), in hor nvarchar(60))
+begin
+	declare msj nvarchar(60); 
+    declare exs int;
+	
+    set exs = (select count(*) from repartidor where email = mail and email != (select email from repartidor where boleta = bol));
+    
+    if exs = 0 then
+			if acont = 'sc' and ncont = 'sc' and hor = 'sc' then
+				update repartidor set nombre = nom, email = mail, tel = t where boleta = bol;
+                set msj='Datos actualizados(excepto contra y horario)';
+			else
+				if acont = 'sc' and ncont = 'sc' and hor != 'sc' then
+					update repartidor set nombre = nom, email = mail, tel = t, horario = hor where boleta = bol;
+					set msj='Datos actualizados(excepto contra)';				
+				else
+					if acont != 'sc' and ncont != 'sc' and hor = 'sc' then
+						set exs = (select count(*) from repartidor where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
+						if exs = 1 then
+							update repartidor set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends') where boleta = bol;
+							set msj='Datos actualizados(excepto horario)';
+						else
+							set msj ='La contraseña anterior es incorrecta';
+						end if;
+					else
+						set exs = (select count(*) from repartidor where (CAST(AES_DECRYPT(contra, 'huecofriends') AS char(16))) = acont and boleta = bol);
+						if exs = 1 then
+							update repartidor set nombre = nom, email = mail, tel = t, contra = aes_encrypt(ncont, 'huecofriends'), horario = hor where boleta = bol;
+							set msj='Datos actualizados';
+						else
+							set msj ='La contraseña anterior es incorrecta';
+						end if;
+					end if;
+				end if;
+        end if;
+    else
+		set msj ='Este correo ya está registrado por otro usuario';
+    end if;
+    select msj as MSJ;
+end**
+delimiter ;
+
+drop procedure if exists sp_saveIMGcliente;
+delimiter **
+create procedure sp_saveIMGcliente(in img nvarchar(60), in bol nvarchar(10))
+begin
+	declare msj nvarchar(60);
+	update cliente set foto = img where boleta = bol;
+    set msj ='Nombre de imagen cliente guardado';
+    select msj as MSJ;
+end**
+delimiter ;
+
+drop procedure if exists sp_saveIMGrepartidor;
+delimiter **
+create procedure sp_saveIMGrepartidor(in img nvarchar(60), in bol nvarchar(10))
+begin
+	declare msj nvarchar(60);
+	update repartidor set foto = img where boleta = bol;
+    set msj ='Nombre de imagen rep guardado';
+    select msj as MSJ;
+end**
+delimiter ;
+
+drop procedure if exists sp_saveIMGestablecimiento;
+delimiter **
+create procedure sp_saveIMGestablecimiento(in img nvarchar(60), in id int)
+begin
+	declare msj nvarchar(60);
+	update establecimiento set foto = img where idest = id;
+    set msj ='Nombre de imagen est guardado';
+    select msj as MSJ;
+end**
+delimiter ;
+
+
+	

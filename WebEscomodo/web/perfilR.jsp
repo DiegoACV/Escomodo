@@ -9,7 +9,7 @@
 <%
     HttpSession sesion = request.getSession();
     sesion.setAttribute("Mail", "y-chan@hotmail.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
-    sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    sesion.setAttribute("Tipo", "3"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
     String mail = sesion.getAttribute("Mail").toString();
     int tipo = Integer.parseInt(sesion.getAttribute("Tipo").toString());
     ldn.Repartidor rep = new ldn.Repartidor(mail);
@@ -85,11 +85,11 @@
             <div class="row rowMarginT">
                 <div class = "col s6 m4 l2 offset-s3 offset-m4 offset-l5">
                     <div>
-                        <img src='<%=Foto%>' class='circle responsive-img z-depth-3'/>
+                        <img src="img_repartidor/<%=Foto%>" class='circle responsive-img z-depth-3'/>
                     </div>
                 </div>
                 <div class="col s2 m2 l4"></div> 
-                <%if(tipo == 2){%>
+                <%if(tipo == 3){%>
                 <div class = "col s1 m2 l1">
                     <a class="btn-floating btn-large"><span><i class="small material-icons">edit</i></span></a>
                 </div>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="col s6 m6 l4"><div class = "divider"></div></div>
             </div>
-            <%if(tipo == 2){%>  
+            <%if(tipo == 3){%>  
                 <div class = "row rowMarginT">
                     <div class = "col s12 m6 l6" align="center">
                             <a class="waves-effect waves-light btn-large" href=" ">Pedidos disponibles</a>

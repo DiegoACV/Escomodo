@@ -3,7 +3,7 @@
 	HttpSession sesion = request.getSession();
 	
         sesion.setAttribute("Mail", "diegoCV@crayds.com");//BORRAR CUANDO ESTÉN LAS SESIONES
-        sesion.setAttribute("Boleta", "2015370179");//BORRAR CUANDO ESTÉN LAS SESIONES
+        sesion.setAttribute("Tipo", "1");//BORRAR CUANDO ESTÉN LAS SESIONES
 	ldn.Cliente cliente = new ldn.Cliente(sesion.getAttribute("Mail").toString());
 	//ldn.Repartidor repartidor = new ldn.Repartidor();
 
@@ -11,6 +11,7 @@
         
 	String nom = cliente.getNombre();
 	String bol = cliente.getBoleta();
+        sesion.setAttribute("Boleta", bol);
 	String email = cliente.getEmail();
 	String tel = cliente.getTel();
 	String foto = cliente.getFoto();
@@ -28,9 +29,9 @@
             String contra  = request.getParameter("contra");
         
             ldn.Cliente cte = new ldn.Cliente();
-            msj = cte.cambios(cnombre, bol, cemail, ctel, acont, bol+".jpg", contra);
+            msj = cte.cambios(cnombre, bol, cemail, ctel, acont, contra);
             
-            
+            response.sendRedirect("perfilC.jsp");
             
         }
         
@@ -123,7 +124,7 @@
 
                         <div class = "row">
                             <div class="col s12 m12 l12 center-align">
-                                <img src="images/img_cliente/<%=sesion.getAttribute("Boleta").toString()%>.jpg" class="responsive-img" id="foto-insert">  
+                                <img src="images/img_cliente/<%=foto%>" class="responsive-img" id="foto-insert">  
                                 <a class="btn-floating btn-small waves-effect waves-light red" href="SubirImagen.jsp"><i class="fa fa-pen"></i></a>
                             </div>
 

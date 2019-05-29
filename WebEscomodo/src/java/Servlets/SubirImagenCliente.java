@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import ldn.Cliente;
 
 @MultipartConfig
 public class SubirImagenCliente extends HttpServlet {
@@ -31,7 +32,8 @@ public class SubirImagenCliente extends HttpServlet {
                 //Guarda la imagen
         Part filePart = request.getPart("img");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        String img = boleta+".jpg";
+        String extension = fileName.substring((fileName.length()-3), fileName.length());
+        String img = boleta+"."+extension;
         //String uploadPath = getServletContext().getRealPath("")+"/images/img_cliente"; //Aquí va tu ruta donde guardas la imagen
         //File uploads = new File(uploadPath);
         ServletContext context = request.getServletContext();
@@ -61,6 +63,10 @@ public class SubirImagenCliente extends HttpServlet {
                 Files.copy(input, file.toPath());
             }
         }
+        
+        ldn.Cliente cte = new ldn.Cliente();
+        String msj = cte.gImagen(img, boleta);
+        
         response.sendRedirect("editarCliente.jsp");
     }
 
