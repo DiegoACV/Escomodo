@@ -184,4 +184,44 @@ public class Pedido {
     }
        return pgrupales;
    }
+   
+    public String insertarPedido(int idCli, int idPla, String f, String h, float p, int c, String l, int est, String des){
+       BD.Datos base = new BD.Datos();
+       ResultSet respuesta = null;
+       String msj="";
+       try{
+        base.conectar();
+        
+        respuesta= base.consulta("call sp_APedido("+idCli+", "+idPla+", '"+f+
+                "', '"+h+"',"+p+", "+c+" , '"+l+"', "+est+
+                ",'"+des+"');");
+        while (respuesta.next()){
+           msj=respuesta.getString("MSJ");
+        }
+        base.cierraConexion();
+        }
+    catch (Exception e){
+        e.printStackTrace();
+    }
+       return msj;
+   }
+   
+   public String eliminarFav(int idCliente, int idPlatillo, int idEstab){
+       BD.Datos base = new BD.Datos();
+       ResultSet respuesta = null;
+       String msj="";
+       try{
+        base.conectar();
+        
+        respuesta= base.consulta("call sp_deleteFav("+idCliente+", "+idPlatillo+", "+idEstab+")");
+        while (respuesta.next()){
+           msj=respuesta.getString("MSJ");
+        }
+        base.cierraConexion();
+        }
+    catch (Exception e){
+        e.printStackTrace();
+    }
+       return msj;
+   }
 }

@@ -4,10 +4,20 @@
     Author     : chistopher
 --%>
 
+<%@page import="ldn.Cliente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ldn.Platillo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    
+    HttpSession sesion = request.getSession();
+    int tipo=0;
+    Cliente c=null;
+    if(sesion.getAttribute("Mail")!=null){
+        tipo = Integer.parseInt(session.getAttribute("Tipo").toString());
+        c= new Cliente(sesion.getAttribute("Mail").toString());
+    }
+    
     int index=Integer.parseInt(request.getParameter("numItemsDisplayed"));
     
     ArrayList <Platillo>platillos=Platillo.getPlatillos();
@@ -30,8 +40,15 @@
                 out.println("<img class=\"activator\" src="+a.getFoto()+"></div>");
                 out.println("<div class=\"card-content\">");
                 out.println("<span class=\"card-title\">"+a.getNombre());
-                out.println("<button class=\"btn-flat right fav\" data-button-id="+a.getId()+"><i class=\"far fa-heart\"></i></button>");
-                out.println("<button class=\"btn-flat right add\" data-button-id="+a.getId()+"><i class=\"fas fa-shopping-cart\"></i></button>");
+                if(tipo == 1){
+                    if(a.esFavorito(c.getId()).equals("true")){
+                        out.println("<button class=\"btn-flat right fav\" data-button-id="+a.getId()+"><i class=\"fas fa-heart\"></i></button>");
+                    }
+                    else if(a.esFavorito(c.getId()).equals("false")){
+                        out.println("<button class=\"btn-flat right fav\" data-button-id="+a.getId()+"><i class=\"far fa-heart\"></i></button>");
+                    }
+                    out.println("<button class=\"btn-flat right add\" data-button-id="+a.getId()+"><i class=\"fas fa-shopping-cart\"></i></button>");
+                }
                 out.println("</span></div><div class=\"card-action\">");
                 out.println("<span class=\"grey-text\">"+a.getValoracion()+"<i class=\"fas fa-star\"></i><span class=\"right\">"+a.getPrecio()+" MXN</span></span>");
                 out.println("</div>");

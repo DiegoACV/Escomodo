@@ -427,4 +427,56 @@ begin
 	select nombre, tel, foto from cliente where idcliente = id;
 end**
 delimiter ;
+
+drop procedure if exists sp_verCarrito;
+delimiter **
+create procedure sp_verCarrito(in mail nvarchar(40))
+begin	
+		select idpedido, establecimiento.nombre AS establecimiento, platillo.nombre AS comida, cliente, cantidad, precio, 	
+		preciotot as total, fecha, hora, lugar, pedido.calificacion, estpedido.descripcion as estado
+		from pedido, estpedido, platillo, establecimiento, cliente where estado = idestado and 
+		platillo = idplatillo and cliente=idcliente and pedido.establecimiento = idest 
+		and estado = 1;
+end**
+delimiter ;
+
+drop procedure if exists sp_verFavoritos;
+delimiter **
+create procedure sp_verFavoritos(in mail nvarchar(40))
+begin	
+		select idpedido, establecimiento.nombre AS establecimiento, platillo.nombre AS comida, cliente, cantidad, precio, 	
+		preciotot as total, fecha, hora, lugar, pedido.calificacion, estpedido.descripcion as estado
+		from pedido, estpedido, platillo, establecimiento, cliente where estado = idestado and 
+		platillo = idplatillo and cliente=idcliente and pedido.establecimiento = idest 
+		and estado = 2;
+end**
+delimiter ;
+
+drop procedure if exists sp_getIdCliente;
+delimiter **
+create procedure sp_getIdCliente(in mail nvarchar(40))
+begin	
+		select idcliente from cliente where email=mail;
+end**
+delimiter ;
+
+drop procedure if exists verPlatilloById;
+delimiter **
+create procedure verPlatilloById(in id int)
+begin
+	select idplatillo, platillo.nombre, valoracion, precio, descripcion, 
+    platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento 
+    where establecimiento=idest and id=idplatillo;
+end; **
+delimiter ;
+
+drop procedure if exists verEstByName;
+delimiter **
+create procedure verEstByName(in nom nvarchar(60))
+begin
+	select distinct idest from platillo, establecimiento 
+    where establecimiento=idest and establecimiento.nombre=nom;
+end; **
+delimiter ;
+
 	

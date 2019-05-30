@@ -32,6 +32,33 @@ public class Platillo {
         _descripcion=descripcion;
     }
     
+    public Platillo(int id){
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta= base.consulta("call verPlatilloById("+id+");");
+         
+            while (respuesta.next()){
+            
+                Platillo platillo = new Platillo();
+               _id=id;
+                _nombre=respuesta.getString("nombre");
+                _valoracion=respuesta.getFloat("valoracion");
+                _precio=respuesta.getFloat("precio");
+                _descripcion=respuesta.getString("descripcion");
+                _foto= respuesta.getString("foto");
+                _origen=respuesta.getString("establecimiento");
+            
+            }
+            base.cierraConexion();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     public int getId(){
         return _id;
     }
@@ -195,4 +222,45 @@ public class Platillo {
         }
         return msj;
     }
+    
+    public int getIdOrigen(){
+       int id=0;
+       
+       BD.Datos base = new BD.Datos();
+       ResultSet respuesta = null;
+       try{
+            base.conectar();
+        
+            respuesta= base.consulta("call verEstByName('"+this._origen+"');");
+            while (respuesta.next()){
+                id=Integer.parseInt(respuesta.getString("idest"));
+            }
+           
+            base.cierraConexion();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+       
+       return id;
+   }
+    
+    public String esFavorito(int idUsuario){
+       BD.Datos base = new BD.Datos();
+       ResultSet respuesta = null;
+       String msj="";
+       try{
+        base.conectar();
+        
+        respuesta= base.consulta("call sp_isFav("+idUsuario+", "+this._id+", "+this.getIdOrigen()+")");
+        while (respuesta.next()){
+           msj=respuesta.getString("MSJ");
+        }
+           base.cierraConexion();
+        }
+    catch (Exception e){
+        e.printStackTrace();
+    }
+       return msj;
+   }
 }
