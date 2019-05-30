@@ -111,6 +111,27 @@ public class Establecimiento
         }
         return listaEst;
    }
+    
+    public static ArrayList<Establecimiento> getEstablecimientosbySearch(String cad){
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        ArrayList<Establecimiento> listaEst=new ArrayList<Establecimiento>();
+        try{
+            base.conectar();
+            respuesta= base.consulta("call sp_verEstbySearch('"+cad+"');");
+         
+            while (respuesta.next()){
+                Establecimiento e = new Establecimiento(respuesta.getInt("idest"),respuesta.getString("nombre")
+                ,respuesta.getString("email"), "images/comida1.jpg");//cambiar foto
+                listaEst.add(e);
+            }
+            base.cierraConexion();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return listaEst;
+   }
 
     public int getIdest() {
         return _idest;

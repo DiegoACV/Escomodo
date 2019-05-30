@@ -1,18 +1,28 @@
+<%-- 
+    Document   : buscarPlatillo
+    Created on : 29/05/2019, 09:57:23 PM
+    Author     : Diego
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String cad = request.getParameter("buscar") == null ? "" : request.getParameter("buscar");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Escomercio</title>
+    <title>Escomida</title>
     <script type="text/javascript" src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
     <script src="libs/materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/establecimientos.js"></script>
+    <script type="text/javascript" src="js/buscarEstablecimiento.js"></script>
     <script src="libs/jquery-confirm/js/jquery-confirm.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="libs/materialize/css/materialize.min.css" rel="stylesheet">
     <link href="libs/jquery-confirm/css/jquery-confirm.css" rel="stylesheet">
     <link rel="stylesheet" href="css/colors.css">
-    <link rel="stylesheet" href="css/establecimientos.css">
-    <link href="css/mainPage.css" rel="stylesheet" type="text/css"/> 
+    <link rel="stylesheet" href="css/productos.css">
+    <link href="css/mainPage.css" rel="stylesheet" type="text/css"/>   
     <link href="css/nvBar.css" rel="stylesheet" type="text/css"/>
     <link href="css/foot.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -50,14 +60,11 @@
             </nav>
     </div>
 	<div class="my_container">
-		<div class="section"><h3 class="header left-align">Establecimientos populares</h3></div>
+		<div class="section"><h3 class="header left-align">Resultados de búsqueda</h3></div>
 		<hr class="sound_waves-text">
-                <form action="buscarEstablecimiento.jsp" method="get">
-                    <input type="text" id="buscar" name="buscar" >
-                    <input type="submit">
-                </form>
+                <input name="busqueda" id="busqueda" value="<%=cad%>"/>
 		<div class="section items">
-                    <div class="row establecimientos"></div>
+                    <div class="row productos"></div>
 		</div>
                 <div class="scrollCreator"></div>
 	</div>

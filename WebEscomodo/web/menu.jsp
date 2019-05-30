@@ -53,11 +53,10 @@
             <div> 
 		<div class="section"><h3 class="header left-align">Menú de <%=est.getNombre()%></h3></div>
                 <%if(est.getEmail().equals(sesion.getAttribute("Mail").toString())){%>
-                <div >
+                <div class="fixed-action-btn">
                     <button class="btn-floating btn-large waves-effect waves-light red aprod" data-button-id="aprod" id="aprod"><i class="fas fa-plus"></i></button>                    
                 </div> <%}%>
                 <input type="hidden" id="email" name="email" value="<%=est.getEmail()%>" />
-                <input type="hidden" id="idest" name="idest" value="<%=est.getIdest()%>" />
 		<hr class="sound_waves-text">
 		<div class="section items">
                     <div class="row"></div>
