@@ -146,6 +146,35 @@ public class Platillo {
     return listaPlatillos;
    }
     
+    public static ArrayList<Platillo> getPlatillosbySearch(String cad){
+    BD.Datos base = new BD.Datos();
+    ResultSet respuesta = null;
+    ArrayList<Platillo> listaPlatillos=new ArrayList<Platillo>();
+    try{
+        base.conectar();
+        respuesta= base.consulta("call sp_verPlatbySearch('"+cad+"');");
+
+        while (respuesta.next()){
+
+            Platillo platillo = new Platillo();
+            platillo.setId(respuesta.getInt("idplatillo"));
+            platillo.setNombre(respuesta.getString("nombre"));
+            platillo.setValoracion(respuesta.getFloat("valoracion"));
+            platillo.setPrecio(respuesta.getFloat("precio"));
+            platillo.setDescripcion(respuesta.getString("descripcion"));
+            platillo.setFoto("images/comida1.jpg");//cambiar por la foto de la base
+            platillo.setOrigen(respuesta.getString("lugar"));
+
+            listaPlatillos.add(platillo);
+        }
+        base.cierraConexion();
+    }
+    catch (Exception e){
+        e.printStackTrace();
+    }
+    return listaPlatillos;
+   }
+    
     public String registrar(String nombre, float precio, String desc, String foto, String mailest)
     {
         String msj = "";

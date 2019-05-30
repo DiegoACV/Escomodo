@@ -14,12 +14,13 @@ $(document).ready(function(){
         //por medio de ajax se imprime todo lo establecido en crearElementos.jsp
         function createElements(){
             var numItemsDisplayed = $('.card.small.sticky-action').length;
+            var cad = document.getElementById("busqueda").value;
             $('div.scrollCreator').addClass('delete');
                 $('div').removeClass('scrollCreator');
                 $.ajax({
                     method:"post",
-                    url:"crearElementosPlatillos.jsp",
-                    data:"numItemsDisplayed="+numItemsDisplayed,
+                    url:"crearElementosSearchP.jsp",
+                    data:jQuery.param({ numItemsDisplayed: numItemsDisplayed, cad : cad}),
                     success:function(resp){
                         $(".row.productos").append(resp);
                         if($("#continue").attr("data-continue")=="true"){
@@ -290,23 +291,6 @@ $(document).ready(function(){
             	$(this).parent().children("p:first").text(cantidad-1)
             }
         });
-
-//        $(".srch").on("click",function(){
-//            var b = document.getElementById("buscar").value;
-//            $.ajax({
-//                type:"POST",
-//                url: "buscarPlatillo.jsp",
-//                data: "busqueda="+b,
-//                success:function(){
-//                    window.location = 'buscarPlatillo.jsp';
-//                },
-//                error:function(){
-//                    alert("error");
-//                }
-//            });
-//        });
-        
-        
     
     //LLAMADAS A FUNCIONES
         createElements();

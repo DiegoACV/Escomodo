@@ -1,3 +1,13 @@
+<%-- 
+    Document   : buscarPlatillo
+    Created on : 29/05/2019, 09:57:23 PM
+    Author     : Diego
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String cad = request.getParameter("buscar") == null ? "" : request.getParameter("buscar");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +15,7 @@
     <script type="text/javascript" src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
     <script src="libs/materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/productos.js"></script>
+    <script type="text/javascript" src="js/buscarPlatillo.js"></script>
     <script src="libs/jquery-confirm/js/jquery-confirm.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="libs/materialize/css/materialize.min.css" rel="stylesheet">
@@ -50,12 +60,9 @@
             </nav>
     </div>
 	<div class="my_container">
-		<div class="section"><h3 class="header left-align">Productos populares</h3></div>
+		<div class="section"><h3 class="header left-align">Resultados de búsqueda</h3></div>
 		<hr class="sound_waves-text">
-                <form action="buscarPlatillo.jsp" method="get">
-                    <input type="text" id="buscar" name="buscar" >
-                    <input type="submit">
-                </form>
+                <input hidden name="busqueda" id="busqueda" value="<%=cad%>"/>
 		<div class="section items">
                     <div class="row productos"></div>
 		</div>

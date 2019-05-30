@@ -419,5 +419,20 @@ begin
 end**
 delimiter ;
 
+drop procedure if exists sp_verEstbySearch;
+delimiter **
+create procedure sp_verEstbySearch(in cad varchar(40))
+begin
+	select * from establecimiento where nombre like CONCAT('%', cad, '%');
+end**
+delimiter ;
+
+drop procedure if exists sp_verPlatbySearch;
+delimiter **
+create procedure sp_verPlatbySearch(in cad varchar(40))
+begin
+	select idplatillo, platillo.nombre, valoracion, precio, descripcion, platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento where establecimiento=idest and platillo.nombre like CONCAT('%', cad, '%') or descripcion like CONCAT('%', cad, '%');
+end**
+delimiter ;
 
 	
