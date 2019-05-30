@@ -101,4 +101,24 @@ public class Cliente extends Usuario{
         return msj;
     }
     
+    public int getId(){
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        int id=0;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_getIdCliente('"+super.getEmail()+"');");
+            if(respuesta.next())
+                id = respuesta.getInt("idcliente");
+            
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            
+        }
+        
+        return id;
+    }
+    
 }
