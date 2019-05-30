@@ -40,10 +40,13 @@
 	<link type="text/css" rel="stylesheet" href="libs/materialize/css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="libs/jquery-confirm/css/jquery-confirm.css" rel="stylesheet">
         
 	<script type="text/javascript" src="libs/materialize/js/materialize.min.js"></script>
         <script type="text/javascript" src="libs/jquery-3.1.1/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ></script>
+        <script src="libs/jquery-confirm/js/jquery-confirm.js"></script>
         <script type="text/javascript" src="js/nvBar.js"></script>
 	<script type="text/javascript" src="js/foot.js"></script>
         <script type="text/javascript" src="js/pedidos.js"></script>
@@ -142,7 +145,7 @@
                      <table class="striped">
                         <thead>
                           <tr>
-                              <th class="col s2 m1 l1"><i class="small material-icons">restaurant</i></th>
+                              <th class="col s2 m1 l1"><i class="fas fa-hamburger"></i></th>
                               <th class="col s10 m5 l5"><%=com%></th>
                               <th class="col s3 m2 l2"><%=fecha%></th>
                               <th class="col s3 m2 l2"><%=hora%></th>
@@ -152,7 +155,21 @@
                      </table>
                   </div>
                   <div class="collapsible-body">
-                      <table class="highlight">
+                      <table class="striped">
+                          <thead>
+                              <tr>
+                                  <th><span><i class="fas fa-map-marker-alt"></i> Lugar de entrega: <%=lugar%></span></th>
+                                  <%if(!a.getEstado().equals("Entregado")){%>
+                                  <th><span><i class="fas fa-dolly"></i>Estado: <%=a.getEstado()%></span></th>
+                                  <%}
+                                   if (a.getEstado().equals("Entrega en proceso")){
+                                    %>
+                                  <th><span class="right-aligned"><a class="waves-effect waves-light btn-small pulse lime"><i class="medium fas fa-drumstick-bite"></i>Marcar como completado</a></span></th>
+                                  <%}%>
+                              </tr>
+                          </thead>
+                      </table>
+                      <table>
                         <thead>
                           <tr>
                               <th>Producto</th>
@@ -172,9 +189,10 @@
                             <td><%=a.getCantidad()%></td>
                             <td><%=a.getTotal()%></td>
                             <%if(a.getCalificacion() == 0 && a.getEstado().equals("Entregado")){%>
-                                <td><a class="waves-effect waves-light btn-small pulse estrella"><i class="medium fas fa-star "></i>Puntúa</a></td>
-                            <%}%>
-                          </tr>
+                                <td>
+                                    <span><button class="waves-effect waves-light btn-small pulse amber cal"><i class="medium fas fa-cookie"></i>Puntúa</button></span>
+                                </td>
+                                <%}%>
                          <%}%>
                          <tr>
                             <td><span>Total Pedido</span></td>
@@ -184,18 +202,6 @@
                             <td></td>
                           </tr>
                       </table>
-                      <br>
-                      <div class="s12 m12 l12"><span>Lugar de entrega: <%=lugar%></span></div>
-                      <br>
-                      <div class="s12 m12 l12">
-                      <%if(!a.getEstado().equals("Entregado")){%>
-                      <span>Estado: <%=a.getEstado()%></span>
-                      <%}
-                       if (a.getEstado().equals("Entrega en proceso")){
-                        %>
-                        <span class="right-aligned"><a class="waves-effect waves-light btn-small pulse"><i class="medium fas fa-star "></i>Marcar como completado</a></span>
-                      <%}%>
-                      </div>
                   </div>
                 </li>
                 <%

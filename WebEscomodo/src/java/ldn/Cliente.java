@@ -100,5 +100,22 @@ public class Cliente extends Usuario{
         
         return msj;
     }
-    
+    public Cliente(int id)
+    {
+        BD.Datos base = new BD.Datos();
+        ResultSet respuesta = null;
+        
+        try{
+            base.conectar();
+            respuesta = base.consulta("call sp_NombreCbyId('"+id+"');");
+            if(respuesta.next())
+                this.setNombre(respuesta.getString("nombre"));
+                this.setTel(respuesta.getString("tel"));
+                this.setFoto(respuesta.getString("foto"));
+            base.cierraConexion();
+        }
+        catch(Exception error){
+            System.out.println(error.getMessage());
+        }
+    }
 }
