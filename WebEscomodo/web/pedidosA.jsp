@@ -9,8 +9,7 @@
 <!DOCTYPE html>
 <%
     HttpSession sesion = request.getSession();
-    sesion.setAttribute("Mail", "y-chan@hotmail.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
-    sesion.setAttribute("Tipo", "3"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    
     String mail = sesion.getAttribute("Mail").toString();
     int tipo = Integer.parseInt(sesion.getAttribute("Tipo").toString());    
 

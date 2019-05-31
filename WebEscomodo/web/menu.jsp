@@ -1,8 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession();
-    sesion.setAttribute("Mail", "tamalesP@hotmail.com"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
-    sesion.setAttribute("Tipo", "2"); //BORRAR CUANDO ESTEN BIEN LAS SESIONES
+    
     
     String mail = request.getParameter("email") == null ? "" : request.getParameter("email");
     mail = "tamalesP@hotmail.com"; //BORRAR CUANDO MANDEMOS EL NOMBRE DESDE LAS OTRAS PAG

@@ -2,8 +2,7 @@
 <%
 	HttpSession sesion = request.getSession();
 	
-        sesion.setAttribute("Mail", "y-chan@hotmail.com");//BORRAR CUANDO ESTÉN LAS SESIONES
-        sesion.setAttribute("Tipo", "3");//BORRAR CUANDO ESTÉN LAS SESIONES
+        
 	ldn.Repartidor repartidor = new ldn.Repartidor(sesion.getAttribute("Mail").toString());
         
         

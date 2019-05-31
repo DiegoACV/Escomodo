@@ -479,4 +479,67 @@ begin
 end; **
 delimiter ;
 
-	
+drop procedure if exists sp_verEstbySearch;
+delimiter **
+create procedure sp_verEstbySearch(in cad varchar(40))
+begin
+    select idest, nombre, email, foto from establecimiento where nombre like CONCAT('%', cad, '%');
+end **
+delimiter ;
+
+drop procedure if exists sp_verPlatbySearch;
+delimiter **
+create procedure sp_verPlatbySearch(in cad varchar(40))
+begin
+    select idplatillo, platillo.nombre, valoracion, precio, descripcion, platillo.foto, establecimiento.nombre as lugar from platillo, establecimiento where establecimiento=idest and platillo.nombre like CONCAT('%', cad, '%') or descripcion like CONCAT('%', cad, '%');
+end **
+delimiter ;
+
+drop procedure if exists sp_isFav;
+delimiter **
+create procedure sp_isFav(in idcliente int, in idPlatillo int, in idEstablecimiento int)
+begin
+    declare msj nvarchar(60); 
+    declare cant int;
+    set cant =(select count(*) from pedido where cliente=idcliente and platillo=idPlatillo and establecimiento=
+    idEstablecimiento
+    and estado=2 and especif='Favoritos');
+
+    if cant=0 then
+        set msj ="false";
+    else
+        if cant=1 then
+            set msj="true";
+        else
+            set msj="error";
+        end if;
+    end if;
+    select msj as MSJ;
+end; **
+delimiter ;
+
+drop procedure if exists sp_deleteFav;
+delimiter **
+create procedure sp_deleteFav(in idcliente int, in idPlatillo int, in idEstablecimiento int)
+begin
+    declare msj nvarchar(60); 
+    declare cant int;
+    set cant =(select count(*) from pedido where cliente=idcliente and platillo=idPlatillo and establecimiento=idEstablecimiento and estado=2 and especif='Favoritos');
+    if cant=1 then
+        delete from pedido where cliente=idcliente and platillo=idPlatillo and establecimiento=
+        idEstablecimiento and estado=2 and especif='Favoritos';
+
+        set cant =(select count(*) from pedido where cliente=idcliente and platillo=idPlatillo and establecimiento=idEstablecimiento and estado=2 and especif='Favoritos');
+
+        if cant=0 then
+            set msj ="Eliminado";
+        else
+            set msj="No eliminado";
+        end if;
+
+    else
+        set msj="No fav";
+    end if;
+
+end; **
+delimiter ;

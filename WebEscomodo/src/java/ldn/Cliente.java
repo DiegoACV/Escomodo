@@ -28,7 +28,7 @@ public class Cliente extends Usuario{
                 this.setBoleta(respuesta.getString("boleta"));
                 this.setTel(respuesta.getString("tel"));
                 this.setEmail(respuesta.getString("email"));
-                this.setFoto("images/default.png");
+                this.setFoto(respuesta.getString("foto"));
             }
             base.cierraConexion();
         }

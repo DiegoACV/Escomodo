@@ -14,19 +14,19 @@
             {
                 sesion.setAttribute("Mail", email);
                 sesion.setAttribute("Tipo", "1");
-                %><script> alert("<%=mensaje%>"); </script><%
+                response.sendRedirect("mainPage.jsp");
             }
             else if (mensaje.equals("2"))
             {    
                 sesion.setAttribute("Mail", email);
                 sesion.setAttribute("Tipo", "2");
-                %><script> alert("<%=mensaje%>"); </script><%
+                response.sendRedirect("mainPage.jsp");
             }
             else if (mensaje.equals("3"))
             {    
                 sesion.setAttribute("Mail", email);
                 sesion.setAttribute("Tipo", "3");
-                %><script> alert("<%=mensaje%>"); </script><%
+                response.sendRedirect("mainPage.jsp");
             }
             else
             {
@@ -62,7 +62,7 @@
                 <div class="card">
 
                     <div class="card-content center-align">
-                        <a href="mainPage.html">
+                        <a href="mainPage.jsp">
                             <img src="https://drive.google.com/uc?id=1g2Fvmk3s7cDx5cMR1rKVOZZyOTj_DjaP" class="responsive-img" id="logo">
                         </a>
                     </div>
@@ -82,7 +82,7 @@
                                 <div class="input-field">
                                     <i class="prefix fas fa-lock"></i>
                                     <input type="password" id="contra" name="contra" class="validate">
-                                    <label for="email">Contraseña</label>
+                                    <label for="contra">Contraseña</label>
                                 </div>
                             </div>
 
@@ -93,6 +93,12 @@
                             </div>
 
                         </form>
+
+                        <div class="row" id="sinCuentaRow">
+                            <a href="registro.jsp" class="">
+                                <p id="sinCuenta" class="right-align">¿No tienes una Cuenta? ¡Regístrate!</p>
+                            </a>
+                        </div>
                     </div>
 
                 </div>
@@ -102,5 +108,8 @@
     </body>
 
     <footer>
+        <div id="copy">
+            © 2019 CRAYDS
+        </div>
     </footer>
 </html>

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    HttpSession sesion = request.getSession();
     String cad = request.getParameter("buscar") == null ? "" : request.getParameter("buscar");
 %>
 <!DOCTYPE html>

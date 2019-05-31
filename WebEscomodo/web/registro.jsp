@@ -137,9 +137,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
-	<link href="libs/validetta/validetta.css" rel="stylesheet" type="text/css" media="screen" >
+	<link href="libs/validetta/validetta.css" rel="stylesheet" type="text/css" media="screen">
 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="libs/validetta/validetta.js"></script>
 	<script src="libs/validetta/validetta-es.js" type="text/javascript"></script>
 
