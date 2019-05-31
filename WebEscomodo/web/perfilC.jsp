@@ -111,7 +111,7 @@
             <div class="row rowMarginT">
                 <div class = "col s10 m4 l2">
                     <div>
-                        <img src='<%=Foto%>' class='circle responsive-img z-depth-3'/>
+                        <img src='images/img_cliente/<%=Foto%>' class='circle responsive-img z-depth-3'/>
                     </div>
                 </div>
                 <div class = "col s1 m2 l1 push-m6 push-l9">

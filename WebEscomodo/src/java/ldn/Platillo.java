@@ -189,7 +189,7 @@ public class Platillo {
             platillo.setValoracion(respuesta.getFloat("valoracion"));
             platillo.setPrecio(respuesta.getFloat("precio"));
             platillo.setDescripcion(respuesta.getString("descripcion"));
-            platillo.setFoto("images/comida1.jpg");//cambiar por la foto de la base
+            platillo.setFoto(respuesta.getString("foto"));//cambiar por la foto de la base
             platillo.setOrigen(respuesta.getString("lugar"));
 
             listaPlatillos.add(platillo);

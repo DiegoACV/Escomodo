@@ -73,7 +73,7 @@
                             <div class="row">
                                 <div class="input-field">
                                     <i class="prefix far fa-user"></i>
-                                    <input type="text" id="email" name="email"  class="validate">
+                                    <input type="text" id="email" name="email" autocomplete="off" class="validate">
                                     <label for="email">Correo Electrónico</label>
                                 </div>
                             </div>

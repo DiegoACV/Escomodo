@@ -51,7 +51,7 @@ public class Repartidor extends Usuario{
             if(respuesta.next()){
                 this.setNombre(respuesta.getString("nombre"));
                 this.setTel(respuesta.getString("tel"));
-                this.setFoto("images/default.png");
+                this.setFoto(respuesta.getString("foto"));
                 this.setEmail(respuesta.getString("email"));
                 this.setBoleta(respuesta.getString("boleta"));
                 _horario = respuesta.getString("horario");

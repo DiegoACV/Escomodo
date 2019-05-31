@@ -22,7 +22,7 @@ $(document).ready(function(){
                     url: "crearElementosMail.jsp",
                     data: jQuery.param({ numItemsDisplayed: numItemsDisplayed, email : email}),
                     success:function(resp){
-                        $("div.row").append(resp);
+                        $("div.row.hola").append(resp);
                         if($("#continue").attr("data-continue")=="true"){
                             $("div.my_container").append("<div class=\"scrollCreator\"></div>");
                             $(".delete").remove();
@@ -52,7 +52,7 @@ $(document).ready(function(){
                             '<label for="precio">Precio</label></div>'+
                         ' <div class="input-field">'+
                             '<textarea id="desc" name="desc" class="validate materialize-textarea"></textarea>'+
-                            '<label for="textarea1">Descripción del platillo</label></div>',
+                            '<label for="desc">Descripción del platillo</label></div>',
                 buttons: {
                 agregar: function agregarPlatillo() {
                     $.ajax({
